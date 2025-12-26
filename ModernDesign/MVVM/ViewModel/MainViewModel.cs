@@ -1,6 +1,7 @@
 ﻿using ModernDesign.Core;
 using ModernDesign.MVVM.View;
 using System.Windows.Input;
+using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.ViewModel
 {
@@ -8,6 +9,8 @@ namespace ModernDesign.MVVM.ViewModel
     {
         private object _currentView;
 
+        public string SettingsText => LanguageManager.Get("MainWindowSettingsRadio");
+        
         public object CurrentView
         {
             get => _currentView;

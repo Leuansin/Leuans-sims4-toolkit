@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
 {
@@ -53,50 +54,8 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            string languageCode = GetLanguageCode();
-            bool isSpanish = languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
-
-            if (isSpanish)
-            {
-                HeaderText.Text = "📢 Anuncio";
-                CloseButton.Content = "Cerrar";
-            }
-            else
-            {
-                HeaderText.Text = "📢 Announcement";
-                CloseButton.Content = "Close";
-            }
-        }
-
-        private string GetLanguageCode()
-        {
-            string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string toolkitFolder = Path.Combine(appData, "Leuan's - Sims 4 ToolKit");
-            string iniPath = Path.Combine(toolkitFolder, "language.ini");
-
-            string languageCode = "en-US";
-
-            try
-            {
-                if (File.Exists(iniPath))
-                {
-                    string[] lines = File.ReadAllLines(iniPath);
-                    foreach (string line in lines)
-                    {
-                        if (line.StartsWith("Language = ", StringComparison.OrdinalIgnoreCase))
-                        {
-                            languageCode = line.Substring("Language = ".Length).Trim();
-                            break;
-                        }
-                    }
-                }
-            }
-            catch
-            {
-                // Si falla, quedamos con en-US
-            }
-
-            return languageCode;
+            HeaderText.Text = LanguageManager.Get("AnnouncementWindow.HeaderText");
+            CloseButton.Content = LanguageManager.Get("AnnouncementWindow.CloseButton");
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

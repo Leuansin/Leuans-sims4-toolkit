@@ -15,6 +15,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using ModernDesign.Localization;
 
 namespace ModernDesign
 {
@@ -37,7 +38,7 @@ namespace ModernDesign
             public string Action { get; set; } // acción a ejecutar
 
         }
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -113,18 +114,10 @@ namespace ModernDesign
 
         private void ShowRamWarning(double ramUsageMB)
         {
-            string languageCode = GetLanguageCode();
-            bool isSpanish = languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
-
-            string message = isSpanish
-                ? $"⚠️ Alto uso de RAM detectado ({ramUsageMB:F0} MB)\n\n" +
-                  "Recomendamos DESACTIVAR la opción 'Preload Images on Startup' en Settings para reducir el consumo de memoria.\n\n" +
-                  "Esto mejorará significativamente el rendimiento de la aplicación."
-                : $"⚠️ High RAM usage detected ({ramUsageMB:F0} MB)\n\n" +
-                  "We strongly recommend DISABLING the 'Preload Images on Startup' option in Settings to reduce memory consumption.\n\n" +
-                  "This will significantly improve application performance.";
-
-            string title = isSpanish ? "Advertencia de Memoria" : "Memory Warning";
+            var title = LanguageManager.Get("RamWarningTitle");
+            var message = string.Format(
+                LanguageManager.Get("RamWarningMessage"), 
+                ramUsageMB.ToString("F0"));
 
             MessageBox.Show(
                 message,

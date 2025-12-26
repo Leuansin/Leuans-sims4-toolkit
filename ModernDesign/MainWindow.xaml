@@ -206,7 +206,7 @@
                                      Style="{StaticResource NavButtonStyle}"
                                      Command="{Binding SocialViewCommand}"/>
 
-                        <RadioButton Content="⚙️  Settings"
+                        <RadioButton Content="{Binding SettingsText}"
                                      Style="{StaticResource NavButtonStyle}"
                                      Command="{Binding SettingsViewCommand}"/>
 

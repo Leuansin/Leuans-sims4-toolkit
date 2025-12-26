@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
 {
@@ -16,24 +17,12 @@ namespace ModernDesign.MVVM.View
         {
             bool isSpanish = IsSpanishLanguage();
 
-            if (isSpanish)
-            {
-                HeaderText.Text = "🎮 ¿Qué deseas hacer?";
-                SubHeaderText.Text = "Selecciona una opción para continuar";
-                DownloadDLCsBtn.Content = "Descargar DLC's";
-                DownloadDLCsBtn.ToolTip = "Si ya posees el juego y quieres instalarle los DLC's";
-                UpdateGameBtn.Content = "Actualizar el Juego";
-                UpdateGameBtn.ToolTip = "Si quieres actualizar tu Sims 4 a la última versión";
-            }
-            else
-            {
-                HeaderText.Text = "🎮 What do you want to do?";
-                SubHeaderText.Text = "Select an option to continue";
-                DownloadDLCsBtn.Content = "Download DLC's";
-                DownloadDLCsBtn.ToolTip = "If you already own the game and want to install DLC's";
-                UpdateGameBtn.Content = "Update the Game";
-                UpdateGameBtn.ToolTip = "If you want to update your Sims 4 to the latest version";
-            }
+            HeaderText.Text = LanguageManager.Get("MainSelectionViewHeaderText");
+            SubHeaderText.Text = LanguageManager.Get("MainSelectionViewSubHeaderText");
+            DownloadDLCsBtn.Content = LanguageManager.Get("MainSelectionViewDownloadDLCsBtn");
+            DownloadDLCsBtn.ToolTip = LanguageManager.Get("MainSelectionViewDownloadDLCsBtnTooltip");
+            UpdateGameBtn.Content = LanguageManager.Get("MainSelectionViewUpdateGameBtn");
+            UpdateGameBtn.ToolTip = LanguageManager.Get("MainSelectionViewUpdateGameBtnTooltip");
         }
 
         private static bool IsSpanishLanguage()
@@ -81,22 +70,9 @@ namespace ModernDesign.MVVM.View
 
         private void UpdateGameBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Mostrar popup de advertencia
-            bool isSpanish = IsSpanishLanguage();
+            string message = LanguageManager.Get("MainSelectionViewUpdateWarning");
 
-            string message = isSpanish
-                ? "⚠️ ADVERTENCIA IMPORTANTE ⚠️\n\n" +
-                  "Te recordamos que esto solo es para las versiones offline y crackeadas.\n\n" +
-                  "Si tienes el juego de Steam/EA, no necesitas actualizar tu juego, " +
-                  "ya que tu plataforma lo actualizará automáticamente.\n\n" +
-                  "¿Deseas continuar?"
-                : "⚠️ IMPORTANT WARNING ⚠️\n\n" +
-                  "Updating your game is only for offline and cracked versions.\n\n" +
-                  "If you have the game from Steam/EA, you don't need to update your game, " +
-                  "as your platform will update it automatically.\n\n" +
-                  "Do you want to continue?";
-
-            string title = isSpanish ? "Advertencia" : "Warning";
+            string title = LanguageManager.Get("Warning");
 
             var result = MessageBox.Show(message, title, MessageBoxButton.YesNo, MessageBoxImage.Warning);
 

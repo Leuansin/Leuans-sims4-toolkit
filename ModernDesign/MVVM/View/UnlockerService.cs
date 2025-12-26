@@ -118,6 +118,8 @@ namespace ModernDesign.MVVM.View
                     // Clean old files first
                     DeleteFileSafe(Path.Combine(_unlockerFolder, "setup.bat"));
                     DeleteFileSafe(Path.Combine(_unlockerFolder, "setup.exe"));
+                    DeleteFileSafe(Path.Combine(_unlockerFolder, "setup_linux.sh"));
+                    DeleteFileSafe(Path.Combine(_unlockerFolder, "setup_macos.sh"));
                     DeleteFileSafe(Path.Combine(_unlockerFolder, "g_The Sims 4.ini"));
                     DeleteFileSafe(Path.Combine(_unlockerFolder, "config.ini"));
                     DeleteDirectorySafe(Path.Combine(_unlockerFolder, "ea_app"));

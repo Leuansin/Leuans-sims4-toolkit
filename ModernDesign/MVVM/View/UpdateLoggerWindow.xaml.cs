@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using ModernDesign.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -136,48 +137,30 @@ namespace ModernDesign.MVVM.View
 
             await Task.Run(() =>
             {
-                var commonPaths = new[]
+                if (Sims4PathFinder.FindSims4Path(out var potentialRoot))
                 {
-                    @"C:\Program Files\EA Games\The Sims 4",
-                    @"C:\Program Files (x86)\EA Games\The Sims 4",
-                    @"C:\Program Files\Origin Games\The Sims 4",
-                    @"C:\Program Files (x86)\Origin Games\The Sims 4",
-                    @"C:\Program Files (x86)\Steam\steamapps\common\The Sims 4",
-                    @"D:\Games\The Sims 4",
-                    @"D:\Origin Games\The Sims 4",
-                    @"D:\Steam\steamapps\common\The Sims 4",
-                    @"D:\The Sims 4",
-                    @"E:\Games\The Sims 4",
-                };
-
-                foreach (var path in commonPaths)
-                {
-                    var exePath = Path.Combine(path, "Game", "Bin", "TS4_x64.exe");
-                    if (File.Exists(exePath))
-                    {
-                        var rootPath = Directory.GetParent(Directory.GetParent(exePath).FullName).FullName;
-                        rootPath = Directory.GetParent(rootPath).FullName;
-
-                        Dispatcher.Invoke(() => SetSimsPath(rootPath, true));
-                        return;
-                    }
+                    Dispatcher.Invoke(() => SetSimsPath(potentialRoot, true));
                 }
-
-                Dispatcher.Invoke(() =>
+                else
                 {
-                    StatusText.Text = isSpanish
-                        ? "  (No encontrado - seleccionar manualmente)"
-                        : "  (Not found - select manually)";
-                    StatusText.Foreground = new System.Windows.Media.SolidColorBrush(
-                        (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#EF4444"));
 
-                    AddLog(isSpanish
-                        ? "⚠️ No se pudo detectar automáticamente la carpeta de The Sims 4."
-                        : "⚠️ Could not auto-detect The Sims 4 folder.");
-                    AddLog(isSpanish
-                        ? "Por favor, selecciónala manualmente usando el botón 'Buscar'."
-                        : "Please select it manually using the 'Browse' button.");
-                });
+                    Dispatcher.Invoke(() =>
+                    {
+                        StatusText.Text = isSpanish
+                            ? "  (No encontrado - seleccionar manualmente)"
+                            : "  (Not found - select manually)";
+                        StatusText.Foreground = new System.Windows.Media.SolidColorBrush(
+                            (System.Windows.Media.Color)System.Windows.Media.ColorConverter
+                                .ConvertFromString("#EF4444"));
+
+                        AddLog(isSpanish
+                            ? "⚠️ No se pudo detectar automáticamente la carpeta de The Sims 4."
+                            : "⚠️ Could not auto-detect The Sims 4 folder.");
+                        AddLog(isSpanish
+                            ? "Por favor, selecciónala manualmente usando el botón 'Buscar'."
+                            : "Please select it manually using the 'Browse' button.");
+                    });
+                }
             });
         }
 

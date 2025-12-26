@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using ModernDesign.Core;
 using ModernDesign.MVVM.View; // or whatever namespace DLCUnlockerWindow is in
 
 namespace ModernDesign.MVVM.View
@@ -239,49 +240,12 @@ namespace ModernDesign.MVVM.View
 
             await Task.Run(() =>
             {
-                var commonPaths = new[]
-                {
-                    @"C:\Program Files\EA Games\The Sims 4",
-                    @"C:\Program Files (x86)\EA Games\The Sims 4",
-                    @"C:\Program Files\Origin Games\The Sims 4",
-                    @"C:\Program Files (x86)\Origin Games\The Sims 4",
-                    @"D:\Games\The Sims 4",
-                    @"D:\Origin Games\The Sims 4",
-                    @"E:\Games\The Sims 4",
-                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "EA Games", "The Sims 4"),
-                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "EA Games", "The Sims 4"),
-                };
 
-                foreach (var path in commonPaths)
+                if (Sims4PathFinder.FindSims4Path(out var rootPath))
                 {
-                    var exePath = Path.Combine(path, "Game", "Bin", "TS4_x64.exe");
-                    if (File.Exists(exePath))
-                    {
-                        var rootPath = Directory.GetParent(Directory.GetParent(exePath).FullName).FullName;
-                        rootPath = Directory.GetParent(rootPath).FullName;
-
-                        Dispatcher.Invoke(() => SetSimsPath(rootPath, true));
-                        return;
-                    }
+                    Dispatcher.Invoke(() => SetSimsPath(rootPath, true));
                 }
-
-                try
-                {
-                    using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Maxis\The Sims 4"))
-                    {
-                        if (key != null)
-                        {
-                            var installDir = key.GetValue("Install Dir") as string;
-                            if (!string.IsNullOrEmpty(installDir) && Directory.Exists(installDir))
-                            {
-                                Dispatcher.Invoke(() => SetSimsPath(installDir, true));
-                                return;
-                            }
-                        }
-                    }
-                }
-                catch { }
-
+                
                 Dispatcher.Invoke(() =>
                 {
                     Sims4StatusText.Text = isSpanish
