@@ -12,7 +12,7 @@ namespace ModernDesign.Localization
 
         private static readonly Dictionary<string, Dictionary<string, string>> Translations =
             new Dictionary<string, Dictionary<string, string>>();
-        private static string _currentLocale = "en"; // default
+        private static string _currentLocale = "en-US"; // default
         static LanguageManager()
         {
             LoadLanguage();
@@ -80,7 +80,7 @@ namespace ModernDesign.Localization
             }
 
             // Fallback to English
-            if (Translations.TryGetValue("en", out var enDict) && 
+            if (Translations.TryGetValue("en-US", out var enDict) && 
                 enDict.TryGetValue(key, out var fallback))
             {
                 return fallback;
