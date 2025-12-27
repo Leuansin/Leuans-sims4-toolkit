@@ -1,5 +1,4 @@
-﻿using ModernDesign.Localization;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,45 +7,33 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using LeuanS4ToolKit.Core;
+using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
 {
     public partial class CheatsGuideView : Window
     {
         private List<CheatItem> _allCheats = new List<CheatItem>();
-        private string _selectedCategory = "All";
+        private string SelectedCategory
+        {
+            get => _selectedCategory;
+            set => _selectedCategory = value;
+        } 
         private HashSet<string> _favoriteCommands = new HashSet<string>();
+        private readonly ILanguageManager _lm;
+        
+        private string _selectedCategory;
 
         public CheatsGuideView()
         {
+            _lm = ServiceLocator.Get<ILanguageManager>();
             InitializeComponent();
             LoadFavorites();
-            ApplyLanguage();
             InitializeCheats();
+            SelectedCategory = _lm.Get("CheatsGuideView.AllCategory");
         }
-
-        private void ApplyLanguage()
-        {
-            bool es = LanguageManager.IsSpanish;
-
-            this.Title = es ? "Guía de Trucos" : "Cheats Guide";
-            TitleText.Text = es ? "🎮 Guía de Trucos" : "🎮 Cheats Guide";
-            SubtitleText.Text = es
-                ? "Lista completa de códigos de trucos de Los Sims 4"
-                : "Complete list of The Sims 4 cheat codes";
-
-            SearchBox.Text = es ? "Buscar trucos..." : "Search cheats...";
-
-            ExportAllButton.Content = es ? "📥 Exportar Todo" : "📥 Export All";
-            ExportAllButton.ToolTip = es
-                ? "Exportar todos los trucos a un archivo .txt en el Escritorio"
-                : "Export all cheats to a .txt file on Desktop";
-
-            ExportFavoritesButton.Content = es ? "⭐ Exportar Favoritos" : "⭐ Export Favorites";
-            ExportFavoritesButton.ToolTip = es
-                ? "Exportar solo los trucos favoritos a un archivo .txt en el Escritorio"
-                : "Export only favorite cheats to a .txt file on Desktop";
-        }
+        
 
         private void LoadFavorites()
         {
@@ -95,483 +82,397 @@ namespace ModernDesign.MVVM.View
 
         private void InitializeCheats()
         {
-            bool es = LanguageManager.IsSpanish;
-
-            _allCheats = new List<CheatItem>
+           _allCheats = new List<CheatItem>
             {
                 // BASIC CHEATS
                 new CheatItem
                 {
-                    Category = es ? "Básicos" : "Basic",
+                    Category = _lm.Get("CheatsGuideView.BasicCategory"),
                     Command = "testingcheats true",
-                    Name = es ? "Activar Trucos" : "Enable Cheats",
-                    Description = es
-                        ? "Activa los trucos en el juego. DEBE activarse primero antes de usar otros trucos."
-                        : "Enables cheats in the game. MUST be activated first before using other cheats.",
-                    Usage = es ? "Escribe en la consola: testingcheats true" : "Type in console: testingcheats true"
+                    Name = _lm.Get("CheatsGuideView.EnableCheatsName"),
+                    Description = _lm.Get("CheatsGuideView.EnableCheatsDescription"),
+                    Usage = _lm.Get("CheatsGuideView.EnableCheatsUsage")
                 },
                 new CheatItem
                 {
-                    Category = es ? "Básicos" : "Basic",
+                    Category = _lm.Get("CheatsGuideView.BasicCategory"),
                     Command = "testingcheats false",
-                    Name = es ? "Desactivar Trucos" : "Disable Cheats",
-                    Description = es
-                        ? "Desactiva los trucos en el juego."
-                        : "Disables cheats in the game.",
-                    Usage = es ? "Escribe en la consola: testingcheats false" : "Type in console: testingcheats false"
+                    Name = _lm.Get("CheatsGuideView.DisableCheatsName"),
+                    Description = _lm.Get("CheatsGuideView.DisableCheatsDescription"),
+                    Usage = _lm.Get("CheatsGuideView.DisableCheatsUsage")
                 },
                 new CheatItem
                 {
-                    Category = es ? "Básicos" : "Basic",
+                    Category = _lm.Get("CheatsGuideView.BasicCategory"),
                     Command = "headlineeffects on/off",
-                    Name = es ? "Efectos de Título" : "Headline Effects",
-                    Description = es
-                        ? "Activa o desactiva los efectos sobre la cabeza de los Sims (plumbob y pensamientos)."
-                        : "Enables or disables effects above Sims' heads (plumbob and thoughts).",
-                    Usage = es ? "headlineeffects on o headlineeffects off" : "headlineeffects on or headlineeffects off"
+                    Name = _lm.Get("CheatsGuideView.HeadlineEffectsName"),
+                    Description = _lm.Get("CheatsGuideView.HeadlineEffectsDescription"),
+                    Usage = _lm.Get("CheatsGuideView.HeadlineEffectsUsage")
                 },
                 new CheatItem
                 {
-                    Category = es ? "Básicos" : "Basic",
+                    Category = _lm.Get("CheatsGuideView.BasicCategory"),
                     Command = "fps on/off",
-                    Name = "FPS",
-                    Description = es
-                        ? "Muestra u oculta el contador de FPS en la esquina superior."
-                        : "Shows or hides the FPS counter in the top corner.",
-                    Usage = "fps on / fps off"
+                    Name = _lm.Get("CheatsGuideView.FPSName"),
+                    Description = _lm.Get("CheatsGuideView.FPSDescription"),
+                    Usage = _lm.Get("CheatsGuideView.FPSUsage")
                 },
                 new CheatItem
                 {
-                    Category = es ? "Básicos" : "Basic",
+                    Category = _lm.Get("CheatsGuideView.BasicCategory"),
                     Command = "fullscreen",
-                    Name = es ? "Pantalla Completa" : "Fullscreen",
-                    Description = es
-                        ? "Alterna entre modo ventana y pantalla completa."
-                        : "Toggles between windowed and fullscreen mode.",
-                    Usage = "fullscreen"
+                    Name = _lm.Get("CheatsGuideView.FullscreenName"),
+                    Description = _lm.Get("CheatsGuideView.FullscreenDescription"),
+                    Usage = _lm.Get("CheatsGuideView.FullscreenUsage")
                 },
+                
                 new CheatItem
                 {
-                    Category = es ? "Básicos" : "Basic",
-                    Command = "hovereffects on/off",
-                    Name = es ? "Efectos Hover" : "Hover Effects",
-                    Description = es
-                        ? "Activa o desactiva el resaltado al pasar el mouse sobre objetos."
-                        : "Enables or disables highlighting when hovering over objects.",
-                    Usage = "hovereffects on / hovereffects off"
-                },
+                Category = _lm.Get("CheatsGuideView.BasicCategory"),
+                Command = "hovereffects on/off",
+                Name = _lm.Get("CheatsGuideView.HoverEffectsName"),
+                Description = _lm.Get("CheatsGuideView.HoverEffectsDescription"),
+                Usage = "hovereffects on / hovereffects off"
+            },
 
-                // MONEY CHEATS
-                new CheatItem
-                {
-                    Category = es ? "Dinero" : "Money",
-                    Command = "motherlode",
-                    Name = "Motherlode",
-                    Description = es
-                        ? "Añade §50,000 simoleones a tu hogar."
-                        : "Adds §50,000 simoleons to your household.",
-                    Usage = "motherlode"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Dinero" : "Money",
-                    Command = "kaching",
-                    Name = "Kaching",
-                    Description = es
-                        ? "Añade §1,000 simoleones a tu hogar."
-                        : "Adds §1,000 simoleons to your household.",
-                    Usage = "kaching"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Dinero" : "Money",
-                    Command = "rosebud",
-                    Name = "Rosebud",
-                    Description = es
-                        ? "Añade §1,000 simoleones a tu hogar (igual que kaching)."
-                        : "Adds §1,000 simoleons to your household (same as kaching).",
-                    Usage = "rosebud"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Dinero" : "Money",
-                    Command = "money [cantidad]",
-                    Name = es ? "Dinero Exacto" : "Exact Money",
-                    Description = es
-                        ? "Establece la cantidad exacta de dinero que deseas. Requiere testingcheats true."
-                        : "Sets the exact amount of money you want. Requires testingcheats true.",
-                    Usage = es ? "money 1000000 (reemplaza con la cantidad deseada)" : "money 1000000 (replace with desired amount)"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Dinero" : "Money",
-                    Command = "household.autopay_bills true/false",
-                    Name = es ? "Auto-pagar Facturas" : "Auto-pay Bills",
-                    Description = es
-                        ? "Activa o desactiva el pago automático de facturas."
-                        : "Enables or disables automatic bill payment.",
-                    Usage = "household.autopay_bills true / false"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Dinero" : "Money",
-                    Command = "FreeRealEstate on/off",
-                    Name = es ? "Bienes Raíces Gratis" : "Free Real Estate",
-                    Description = es
-                        ? "Hace que todas las casas y lotes sean gratis al mudarse."
-                        : "Makes all houses and lots free when moving in.",
-                    Usage = "FreeRealEstate on / off"
-                },
+// MONEY CHEATS
+            new CheatItem
+            {
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
+                Command = "motherlode",
+                Name = _lm.Get("CheatsGuideView.MotherlodeName"),
+                Description = _lm.Get("CheatsGuideView.MotherlodeDescription"),
+                Usage = "motherlode"
+            },
+            new CheatItem
+            {
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
+                Command = "kaching",
+                Name = _lm.Get("CheatsGuideView.KachingName"),
+                Description = _lm.Get("CheatsGuideView.KachingDescription"),
+                Usage = "kaching"
+            },
+            new CheatItem
+            {
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
+                Command = "rosebud",
+                Name = _lm.Get("CheatsGuideView.RosebudName"),
+                Description = _lm.Get("CheatsGuideView.RosebudDescription"),
+                Usage = "rosebud"
+            },
+            new CheatItem
+            {
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
+                Command = "money [cantidad]",
+                Name = _lm.Get("CheatsGuideView.ExactMoneyName"),
+                Description = _lm.Get("CheatsGuideView.ExactMoneyDescription"),
+                Usage = "money 1000000 (replace with desired amount)"
+            },
+            new CheatItem
+            {
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
+                Command = "household.autopay_bills true/false",
+                Name = _lm.Get("CheatsGuideView.AutoPayBillsName"),
+                Description = _lm.Get("CheatsGuideView.AutoPayBillsDescription"),
+                Usage = "household.autopay_bills true / false"
+            },
+            new CheatItem
+            {
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
+                Command = "FreeRealEstate on/off",
+                Name = _lm.Get("CheatsGuideView.FreeRealEstateName"),
+                Description = _lm.Get("CheatsGuideView.FreeRealEstateDescription"),
+                Usage = "FreeRealEstate on / off"
+            },
 
-                // NEEDS CHEATS
-                new CheatItem
-                {
-                    Category = es ? "Necesidades" : "Needs",
-                    Command = "fillmotive motive_[tipo]",
-                    Name = es ? "Llenar Necesidad" : "Fill Need",
-                    Description = es
-                        ? "Llena una necesidad específica del Sim seleccionado. Tipos: hunger, energy, bladder, hygiene, social, fun."
-                        : "Fills a specific need of the selected Sim. Types: hunger, energy, bladder, hygiene, social, fun.",
-                    Usage = "fillmotive motive_hunger"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Necesidades" : "Needs",
-                    Command = "sims.fill_all_commodities",
-                    Name = es ? "Llenar Todas las Necesidades" : "Fill All Needs",
-                    Description = es
-                        ? "Llena todas las necesidades del Sim activo."
-                        : "Fills all needs of the active Sim.",
-                    Usage = "sims.fill_all_commodities"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Necesidades" : "Needs",
-                    Command = "sims.disable_all_commodities",
-                    Name = es ? "Desactivar Decaimiento de Necesidades" : "Disable Needs Decay",
-                    Description = es
-                        ? "Las necesidades no disminuirán. Requiere testingcheats true."
-                        : "Needs will not decay. Requires testingcheats true.",
-                    Usage = "sims.disable_all_commodities"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Necesidades" : "Needs",
-                    Command = "sims.enable_all_commodities",
-                    Name = es ? "Activar Decaimiento de Necesidades" : "Enable Needs Decay",
-                    Description = es
-                        ? "Reactiva el decaimiento normal de necesidades."
-                        : "Re-enables normal needs decay.",
-                    Usage = "sims.enable_all_commodities"
-                },
+// NEEDS CHEATS
+            new CheatItem
+            {
+                Category = _lm.Get("CheatsGuideView.NeedsCategory"),
+                Command = "fillmotive motive_[tipo]",
+                Name = _lm.Get("CheatsGuideView.FillNeedName"),
+                Description = _lm.Get("CheatsGuideView.FillNeedDescription"),
+                Usage = "fillmotive motive_hunger"
+            },
+            new CheatItem
+            {
+                Category = _lm.Get("CheatsGuideView.NeedsCategory"),
+                Command = "sims.fill_all_commodities",
+                Name = _lm.Get("CheatsGuideView.FillAllNeedsName"),
+                Description = _lm.Get("CheatsGuideView.FillAllNeedsDescription"),
+                Usage = "sims.fill_all_commodities"
+            },
+            new CheatItem
+            {
+                Category = _lm.Get("CheatsGuideView.NeedsCategory"),
+                Command = "sims.disable_all_commodities",
+                Name = _lm.Get("CheatsGuideView.DisableNeedsDecayName"),
+                Description = _lm.Get("CheatsGuideView.DisableNeedsDecayDescription"),
+                Usage = "sims.disable_all_commodities"
+            },
+            new CheatItem
+            {
+                Category = _lm.Get("CheatsGuideView.NeedsCategory"),
+                Command = "sims.enable_all_commodities",
+                Name = _lm.Get("CheatsGuideView.EnableNeedsDecayName"),
+                Description = _lm.Get("CheatsGuideView.EnableNeedsDecayDescription"),
+                Usage = "sims.enable_all_commodities"
+            }
+,
 
                 // SKILLS CHEATS
                 new CheatItem
                 {
-                    Category = es ? "Habilidades" : "Skills",
+                    Category = _lm.Get("CheatsGuideView.SkillsCategory"),
                     Command = "stats.set_skill_level Major_[habilidad] [nivel]",
-                    Name = es ? "Establecer Habilidad Mayor" : "Set Major Skill",
-                    Description = es
-                        ? "Establece el nivel de una habilidad mayor (1-10). Habilidades: Baking, Bartending, Charisma, Comedy, Fishing, Fitness, Gardening, GourmetCooking, Guitar, Handiness, HomestyleCooking, Logic, Mischief, Painting, Photography, Piano, Programming, RocketScience, Singing, Violin, VideoGaming, Writing."
-                        : "Sets the level of a major skill (1-10). Skills: Baking, Bartending, Charisma, Comedy, Fishing, Fitness, Gardening, GourmetCooking, Guitar, Handiness, HomestyleCooking, Logic, Mischief, Painting, Photography, Piano, Programming, RocketScience, Singing, Violin, VideoGaming, Writing.",
+                    Name = _lm.Get("CheatsGuideView.SetMajorSkillName"),
+                    Description = _lm.Get("CheatsGuideView.SetMajorSkillDescription"),
                     Usage = "stats.set_skill_level Major_Painting 10"
                 },
                 new CheatItem
                 {
-                    Category = es ? "Habilidades" : "Skills",
+                    Category = _lm.Get("CheatsGuideView.SkillsCategory"),
                     Command = "stats.set_skill_level Minor_[habilidad] [nivel]",
-                    Name = es ? "Establecer Habilidad Menor" : "Set Minor Skill",
-                    Description = es
-                        ? "Establece el nivel de una habilidad menor (1-5). Habilidades: Dancing, DJMixing, MediaProduction, Wellness."
-                        : "Sets the level of a minor skill (1-5). Skills: Dancing, DJMixing, MediaProduction, Wellness.",
+                    Name = _lm.Get("CheatsGuideView.SetMinorSkillName"),
+                    Description = _lm.Get("CheatsGuideView.SetMinorSkillDescription"),
                     Usage = "stats.set_skill_level Minor_Dancing 5"
                 },
                 new CheatItem
                 {
-                    Category = es ? "Habilidades" : "Skills",
+                    Category = _lm.Get("CheatsGuideView.SkillsCategory"),
                     Command = "stats.set_skill_level Skill_Child_[habilidad] [nivel]",
-                    Name = es ? "Habilidad de Niño" : "Child Skill",
-                    Description = es
-                        ? "Establece habilidades de niños (1-10). Habilidades: Creativity, Mental, Motor, Social."
-                        : "Sets child skills (1-10). Skills: Creativity, Mental, Motor, Social.",
+                    Name = _lm.Get("CheatsGuideView.ChildSkillName"),
+                    Description = _lm.Get("CheatsGuideView.ChildSkillDescription"),
                     Usage = "stats.set_skill_level Skill_Child_Creativity 10"
                 },
                 new CheatItem
                 {
-                    Category = es ? "Habilidades" : "Skills",
+                    Category = _lm.Get("CheatsGuideView.SkillsCategory"),
                     Command = "stats.set_skill_level Skill_Toddler_[habilidad] [nivel]",
-                    Name = es ? "Habilidad de Infante" : "Toddler Skill",
-                    Description = es
-                        ? "Establece habilidades de infantes (1-5). Habilidades: Communication, Imagination, Movement, Potty, Thinking."
-                        : "Sets toddler skills (1-5). Skills: Communication, Imagination, Movement, Potty, Thinking.",
+                    Name = _lm.Get("CheatsGuideView.ToddlerSkillName"),
+                    Description = _lm.Get("CheatsGuideView.ToddlerSkillDescription"),
                     Usage = "stats.set_skill_level Skill_Toddler_Thinking 5"
-                },
-
-                // CAREER CHEATS
-                new CheatItem
-                {
-                    Category = es ? "Carreras" : "Careers",
-                    Command = "careers.promote [carrera]",
-                    Name = es ? "Promoción Instantánea" : "Instant Promotion",
-                    Description = es
-                        ? "Promociona al Sim en su carrera actual. Carreras comunes: Adult_Active_Astronaut, Adult_Active_Athlete, Adult_Criminal, Adult_Culinary, Adult_Entertainer, Adult_Painter, Adult_SecretAgent, Adult_TechGuru, Adult_Writer."
-                        : "Promotes the Sim in their current career. Common careers: Adult_Active_Astronaut, Adult_Active_Athlete, Adult_Criminal, Adult_Culinary, Adult_Entertainer, Adult_Painter, Adult_SecretAgent, Adult_TechGuru, Adult_Writer.",
-                    Usage = "careers.promote Adult_Painter"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Carreras" : "Careers",
-                    Command = "careers.demote [carrera]",
-                    Name = es ? "Degradar Carrera" : "Demote Career",
-                    Description = es
-                        ? "Degrada al Sim un nivel en su carrera."
-                        : "Demotes the Sim one level in their career.",
-                    Usage = "careers.demote Adult_Painter"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Carreras" : "Careers",
-                    Command = "careers.add_career [carrera]",
-                    Name = es ? "Añadir Carrera" : "Add Career",
-                    Description = es
-                        ? "Añade una carrera específica al Sim."
-                        : "Adds a specific career to the Sim.",
-                    Usage = "careers.add_career Adult_Painter"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Carreras" : "Careers",
-                    Command = "careers.remove_career [carrera]",
-                    Name = es ? "Eliminar Carrera" : "Remove Career",
-                    Description = es
-                        ? "Elimina la carrera del Sim."
-                        : "Removes the career from the Sim.",
-                    Usage = "careers.remove_career Adult_Painter"
-                },
-
-                // RELATIONSHIPS CHEATS
-                new CheatItem
-                {
-                    Category = es ? "Relaciones" : "Relationships",
-                    Command = "modifyrelationship [Sim1] [Sim2] [cantidad] LTR_Friendship_Main",
-                    Name = es ? "Modificar Amistad" : "Modify Friendship",
-                    Description = es
-                        ? "Modifica el nivel de amistad entre dos Sims (-100 a 100)."
-                        : "Modifies the friendship level between two Sims (-100 to 100).",
-                    Usage = "modifyrelationship John Doe Jane Doe 100 LTR_Friendship_Main"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Relaciones" : "Relationships",
-                    Command = "modifyrelationship [Sim1] [Sim2] [cantidad] LTR_Romance_Main",
-                    Name = es ? "Modificar Romance" : "Modify Romance",
-                    Description = es
-                        ? "Modifica el nivel de romance entre dos Sims (-100 a 100)."
-                        : "Modifies the romance level between two Sims (-100 to 100).",
-                    Usage = "modifyrelationship John Doe Jane Doe 100 LTR_Romance_Main"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Relaciones" : "Relationships",
-                    Command = "relationship.introduce_sim_to_all_others",
-                    Name = es ? "Conocer a Todos" : "Meet Everyone",
-                    Description = es
-                        ? "El Sim activo conocerá a todos los Sims del mundo."
-                        : "The active Sim will meet all Sims in the world.",
-                    Usage = "relationship.introduce_sim_to_all_others"
-                },
-
-                // BUILD/BUY CHEATS
-                new CheatItem
-                {
-                    Category = es ? "Construcción" : "Build",
-                    Command = "bb.moveobjects on/off",
-                    Name = es ? "Mover Objetos" : "Move Objects",
-                    Description = es
-                        ? "Permite colocar objetos en cualquier lugar, ignorando restricciones."
-                        : "Allows placing objects anywhere, ignoring restrictions.",
-                    Usage = "bb.moveobjects on"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Construcción" : "Build",
-                    Command = "bb.showhiddenobjects",
-                    Name = es ? "Objetos Ocultos" : "Hidden Objects",
-                    Description = es
-                        ? "Muestra objetos ocultos en el modo construcción/compra."
-                        : "Shows hidden objects in build/buy mode.",
-                    Usage = "bb.showhiddenobjects"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Construcción" : "Build",
-                    Command = "bb.showliveeditobjects",
-                    Name = es ? "Objetos de Edición en Vivo" : "Live Edit Objects",
-                    Description = es
-                        ? "Muestra objetos especiales de edición en vivo."
-                        : "Shows special live edit objects.",
-                    Usage = "bb.showliveeditobjects"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Construcción" : "Build",
-                    Command = "bb.ignoregameplayunlocksentitlement",
-                    Name = es ? "Desbloquear Objetos de Carrera" : "Unlock Career Objects",
-                    Description = es
-                        ? "Desbloquea objetos de recompensa de carrera en construcción/compra."
-                        : "Unlocks career reward objects in build/buy.",
-                    Usage = "bb.ignoregameplayunlocksentitlement"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Construcción" : "Build",
-                    Command = "bb.enablefreebuild",
-                    Name = es ? "Construcción Libre" : "Free Build",
-                    Description = es
-                        ? "Permite editar lotes especiales como el hospital o comisaría."
-                        : "Allows editing special lots like hospital or police station.",
-                    Usage = "bb.enablefreebuild"
-                },
-
-                // CAS CHEATS
-                new CheatItem
-                {
-                    Category = "CAS",
-                    Command = "cas.fulleditmode",
-                    Name = es ? "Modo Edición Completa CAS" : "Full Edit Mode CAS",
-                    Description = es
-                        ? "Permite edición completa en CAS (Crear un Sim) incluyendo cambiar rasgos y aspiraciones. Requiere testingcheats true. Shift+Click en el Sim y selecciona 'Modificar en CAS'."
-                        : "Allows full editing in CAS (Create a Sim) including changing traits and aspirations. Requires testingcheats true. Shift+Click on Sim and select 'Modify in CAS'.",
-                    Usage = "cas.fulleditmode"
-                },
-
-                // DEATH & LIFE CHEATS
-                new CheatItem
-                {
-                    Category = es ? "Vida/Muerte" : "Life/Death",
-                    Command = "death.toggle true/false",
-                    Name = es ? "Desactivar Muerte" : "Disable Death",
-                    Description = es
-                        ? "Activa o desactiva la muerte en el juego."
-                        : "Enables or disables death in the game.",
-                    Usage = "death.toggle false (desactiva muerte / disables death)"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Vida/Muerte" : "Life/Death",
-                    Command = "traits.equip_trait Ghost_[tipo]",
-                    Name = es ? "Convertir en Fantasma" : "Make Ghost",
-                    Description = es
-                        ? "Convierte al Sim en un fantasma. Tipos: OldAge, Drowning, Electrocution, Fire, Hunger, Anger, Embarrassment."
-                        : "Turns the Sim into a ghost. Types: OldAge, Drowning, Electrocution, Fire, Hunger, Anger, Embarrassment.",
-                    Usage = "traits.equip_trait Ghost_OldAge"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Vida/Muerte" : "Life/Death",
-                    Command = "traits.remove_trait Ghost_[tipo]",
-                    Name = es ? "Quitar Fantasma" : "Remove Ghost",
-                    Description = es
-                        ? "Elimina el rasgo de fantasma del Sim."
-                        : "Removes the ghost trait from the Sim.",
-                    Usage = "traits.remove_trait Ghost_OldAge"
-                },
-
-                // ASPIRATION & SATISFACTION CHEATS
-                new CheatItem
-                {
-                    Category = es ? "Aspiraciones" : "Aspirations",
-                    Command = "aspirations.complete_current_milestone",
-                    Name = es ? "Completar Hito Actual" : "Complete Current Milestone",
-                    Description = es
-                        ? "Completa el hito actual de la aspiración del Sim."
-                        : "Completes the current milestone of the Sim's aspiration.",
-                    Usage = "aspirations.complete_current_milestone"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Aspiraciones" : "Aspirations",
-                    Command = "sims.give_satisfaction_points [cantidad]",
-                    Name = es ? "Puntos de Satisfacción" : "Satisfaction Points",
-                    Description = es
-                        ? "Añade puntos de satisfacción al Sim activo."
-                        : "Adds satisfaction points to the active Sim.",
-                    Usage = "sims.give_satisfaction_points 5000"
-                },
-
-                // TRAITS CHEATS
-                new CheatItem
-                {
-                    Category = es ? "Rasgos" : "Traits",
-                    Command = "traits.equip_trait [rasgo]",
-                    Name = es ? "Añadir Rasgo" : "Add Trait",
-                    Description = es
-                        ? "Añade un rasgo al Sim. Ejemplos: Active, Cheerful, Creative, Genius, Romantic, etc."
-                        : "Adds a trait to the Sim. Examples: Active, Cheerful, Creative, Genius, Romantic, etc.",
-                    Usage = "traits.equip_trait Creative"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Rasgos" : "Traits",
-                    Command = "traits.remove_trait [rasgo]",
-                    Name = es ? "Eliminar Rasgo" : "Remove Trait",
-                    Description = es
-                        ? "Elimina un rasgo del Sim."
-                        : "Removes a trait from the Sim.",
-                    Usage = "traits.remove_trait Creative"
-                },
-
-                // MISC CHEATS
-                new CheatItem
-                {
-                    Category = es ? "Varios" : "Misc",
-                    Command = "sims.hard_reset",
-                    Name = es ? "Resetear Sim" : "Reset Sim",
-                    Description = es
-                        ? "Resetea al Sim seleccionado (útil si está atascado)."
-                        : "Resets the selected Sim (useful if stuck).",
-                    Usage = "sims.hard_reset"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Varios" : "Misc",
-                    Command = "sims.spawnsimple [ID]",
-                    Name = es ? "Invocar Objeto" : "Spawn Object",
-                    Description = es
-                        ? "Invoca un objeto específico por su ID."
-                        : "Spawns a specific object by its ID.",
-                    Usage = "sims.spawnsimple"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Varios" : "Misc",
-                    Command = "clock.advance_game_time [horas] [minutos] [segundos]",
-                    Name = es ? "Avanzar Tiempo" : "Advance Time",
-                    Description = es
-                        ? "Avanza el tiempo del juego."
-                        : "Advances game time.",
-                    Usage = "clock.advance_game_time 8 0 0"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Varios" : "Misc",
-                    Command = "sims.add_buff [buff]",
-                    Name = es ? "Añadir Estado de Ánimo" : "Add Moodlet",
-                    Description = es
-                        ? "Añade un estado de ánimo específico. Ejemplos: e_buff_happy, e_buff_sad, e_buff_energized, e_buff_flirty, e_buff_angry."
-                        : "Adds a specific moodlet. Examples: e_buff_happy, e_buff_sad, e_buff_energized, e_buff_flirty, e_buff_angry.",
-                    Usage = "sims.add_buff e_buff_happy"
-                },
-                new CheatItem
-                {
-                    Category = es ? "Varios" : "Misc",
-                    Command = "sims.remove_all_buffs",
-                    Name = es ? "Eliminar Todos los Estados" : "Remove All Moodlets",
-                    Description = es
-                        ? "Elimina todos los estados de ánimo del Sim."
-                        : "Removes all moodlets from the Sim.",
-                    Usage = "sims.remove_all_buffs"
                 }
+,
+// CAREER CHEATS
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.CareersCategory"),
+    Command = "careers.promote [carrera]",
+    Name = _lm.Get("CheatsGuideView.InstantPromotionName"),
+    Description = _lm.Get("CheatsGuideView.InstantPromotionDescription"),
+    Usage = "careers.promote Adult_Painter"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.CareersCategory"),
+    Command = "careers.demote [carrera]",
+    Name = _lm.Get("CheatsGuideView.DemoteCareerName"),
+    Description = _lm.Get("CheatsGuideView.DemoteCareerDescription"),
+    Usage = "careers.demote Adult_Painter"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.CareersCategory"),
+    Command = "careers.add_career [carrera]",
+    Name = _lm.Get("CheatsGuideView.AddCareerName"),
+    Description = _lm.Get("CheatsGuideView.AddCareerDescription"),
+    Usage = "careers.add_career Adult_Painter"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.CareersCategory"),
+    Command = "careers.remove_career [carrera]",
+    Name = _lm.Get("CheatsGuideView.RemoveCareerName"),
+    Description = _lm.Get("CheatsGuideView.RemoveCareerDescription"),
+    Usage = "careers.remove_career Adult_Painter"
+}
+,
+
+// RELATIONSHIPS CHEATS
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.RelationshipsCategory"),
+    Command = "modifyrelationship [Sim1] [Sim2] [cantidad] LTR_Friendship_Main",
+    Name = _lm.Get("CheatsGuideView.ModifyFriendshipName"),
+    Description = _lm.Get("CheatsGuideView.ModifyFriendshipDescription"),
+    Usage = "modifyrelationship John Doe Jane Doe 100 LTR_Friendship_Main"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.RelationshipsCategory"),
+    Command = "modifyrelationship [Sim1] [Sim2] [cantidad] LTR_Romance_Main",
+    Name = _lm.Get("CheatsGuideView.ModifyRomanceName"),
+    Description = _lm.Get("CheatsGuideView.ModifyRomanceDescription"),
+    Usage = "modifyrelationship John Doe Jane Doe 100 LTR_Romance_Main"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.RelationshipsCategory"),
+    Command = "relationship.introduce_sim_to_all_others",
+    Name = _lm.Get("CheatsGuideView.MeetEveryoneName"),
+    Description = _lm.Get("CheatsGuideView.MeetEveryoneDescription"),
+    Usage = "relationship.introduce_sim_to_all_others"
+},
+
+// BUILD/BUY CHEATS
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.BuildCategory"),
+    Command = "bb.moveobjects on/off",
+    Name = _lm.Get("CheatsGuideView.MoveObjectsName"),
+    Description = _lm.Get("CheatsGuideView.MoveObjectsDescription"),
+    Usage = "bb.moveobjects on"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.BuildCategory"),
+    Command = "bb.showhiddenobjects",
+    Name = _lm.Get("CheatsGuideView.HiddenObjectsName"),
+    Description = _lm.Get("CheatsGuideView.HiddenObjectsDescription"),
+    Usage = "bb.showhiddenobjects"
+}
+,
+               new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.BuildCategory"),
+    Command = "bb.showliveeditobjects",
+    Name = _lm.Get("CheatsGuideView.LiveEditObjectsName"),
+    Description = _lm.Get("CheatsGuideView.LiveEditObjectsDescription"),
+    Usage = "bb.showliveeditobjects"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.BuildCategory"),
+    Command = "bb.ignoregameplayunlocksentitlement",
+    Name = _lm.Get("CheatsGuideView.UnlockCareerObjectsName"),
+    Description = _lm.Get("CheatsGuideView.UnlockCareerObjectsDescription"),
+    Usage = "bb.ignoregameplayunlocksentitlement"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.BuildCategory"),
+    Command = "bb.enablefreebuild",
+    Name = _lm.Get("CheatsGuideView.FreeBuildName"),
+    Description = _lm.Get("CheatsGuideView.FreeBuildDescription"),
+    Usage = "bb.enablefreebuild"
+},
+
+// CAS CHEATS
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.CASCategory"),
+    Command = "cas.fulleditmode",
+    Name = _lm.Get("CheatsGuideView.FullEditModeCASName"),
+    Description = _lm.Get("CheatsGuideView.FullEditModeCASDescription"),
+    Usage = "cas.fulleditmode"
+},
+
+// DEATH & LIFE CHEATS
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.LifeDeathCategory"),
+    Command = "death.toggle true/false",
+    Name = _lm.Get("CheatsGuideView.DisableDeathName"),
+    Description = _lm.Get("CheatsGuideView.DisableDeathDescription"),
+    Usage = "death.toggle false (desactiva muerte / disables death)"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.LifeDeathCategory"),
+    Command = "traits.equip_trait Ghost_[tipo]",
+    Name = _lm.Get("CheatsGuideView.MakeGhostName"),
+    Description = _lm.Get("CheatsGuideView.MakeGhostDescription"),
+    Usage = "traits.equip_trait Ghost_OldAge"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.LifeDeathCategory"),
+    Command = "traits.remove_trait Ghost_[tipo]",
+    Name = _lm.Get("CheatsGuideView.RemoveGhostName"),
+    Description = _lm.Get("CheatsGuideView.RemoveGhostDescription"),
+    Usage = "traits.remove_trait Ghost_OldAge"
+},
+
+// ASPIRATION & SATISFACTION CHEATS
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.AspirationsCategory"),
+    Command = "aspirations.complete_current_milestone",
+    Name = _lm.Get("CheatsGuideView.CompleteCurrentMilestoneName"),
+    Description = _lm.Get("CheatsGuideView.CompleteCurrentMilestoneDescription"),
+    Usage = "aspirations.complete_current_milestone"
+}
+,
+            new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.AspirationsCategory"),
+    Command = "sims.give_satisfaction_points [cantidad]",
+    Name = _lm.Get("CheatsGuideView.SatisfactionPointsName"),
+    Description = _lm.Get("CheatsGuideView.SatisfactionPointsDescription"),
+    Usage = "sims.give_satisfaction_points 5000"
+},
+
+// TRAITS CHEATS
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.TraitsCategory"),
+    Command = "traits.equip_trait [rasgo]",
+    Name = _lm.Get("CheatsGuideView.AddTraitName"),
+    Description = _lm.Get("CheatsGuideView.AddTraitDescription"),
+    Usage = "traits.equip_trait Creative"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.TraitsCategory"),
+    Command = "traits.remove_trait [rasgo]",
+    Name = _lm.Get("CheatsGuideView.RemoveTraitName"),
+    Description = _lm.Get("CheatsGuideView.RemoveTraitDescription"),
+    Usage = "traits.remove_trait Creative"
+},
+
+// MISC CHEATS
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.MiscCategory"),
+    Command = "sims.hard_reset",
+    Name = _lm.Get("CheatsGuideView.ResetSimName"),
+    Description = _lm.Get("CheatsGuideView.ResetSimDescription"),
+    Usage = "sims.hard_reset"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.MiscCategory"),
+    Command = "sims.spawnsimple [ID]",
+    Name = _lm.Get("CheatsGuideView.SpawnObjectName"),
+    Description = _lm.Get("CheatsGuideView.SpawnObjectDescription"),
+    Usage = "sims.spawnsimple"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.MiscCategory"),
+    Command = "clock.advance_game_time [horas] [minutos] [segundos]",
+    Name = _lm.Get("CheatsGuideView.AdvanceTimeName"),
+    Description = _lm.Get("CheatsGuideView.AdvanceTimeDescription"),
+    Usage = "clock.advance_game_time 8 0 0"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.MiscCategory"),
+    Command = "sims.add_buff [buff]",
+    Name = _lm.Get("CheatsGuideView.AddMoodletName"),
+    Description = _lm.Get("CheatsGuideView.AddMoodletDescription"),
+    Usage = "sims.add_buff e_buff_happy"
+},
+new CheatItem
+{
+    Category = _lm.Get("CheatsGuideView.MiscCategory"),
+    Command = "sims.remove_all_buffs",
+    Name = _lm.Get("CheatsGuideView.RemoveAllMoodletsName"),
+    Description = _lm.Get("CheatsGuideView.RemoveAllMoodletsDescription"),
+    Usage = "sims.remove_all_buffs"
+}
+
             };
         }
 
@@ -583,14 +484,14 @@ namespace ModernDesign.MVVM.View
 
         private void CreateCategoryButtons()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = _lm.IsSpanish;
 
             // Get unique categories
             var categories = _allCheats.Select(c => c.Category).Distinct().OrderBy(c => c).ToList();
-            categories.Insert(0, es ? "Todos" : "All");
+            categories.Insert(0, _lm.Get("CheatsGuideView.AllCategory"));
 
             // Add Favorites category
-            categories.Insert(1, es ? "⭐ Favoritos" : "⭐ Favorites");
+            categories.Insert(1, _lm.Get("CheatsGuideView.FavoritesCategory"));
 
             foreach (var category in categories)
             {
@@ -601,7 +502,7 @@ namespace ModernDesign.MVVM.View
                     Tag = category
                 };
 
-                if (category == (es ? "Todos" : "All"))
+                if (category == _lm.Get("CheatsGuideView.AllCategory"))
                 {
                     btn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6366F1"));
                 }
@@ -613,14 +514,13 @@ namespace ModernDesign.MVVM.View
 
         private void CategoryButton_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
-            Button btn = sender as Button;
-            _selectedCategory = btn.Tag.ToString();
+             Button btn = sender as Button;
+            SelectedCategory = btn.Tag.ToString();
 
             // Update button colors
             foreach (Button categoryBtn in CategoryPanel.Children)
             {
-                if (categoryBtn.Tag.ToString() == _selectedCategory)
+                if (categoryBtn.Tag.ToString() == SelectedCategory)
                 {
                     categoryBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6366F1"));
                 }
@@ -640,24 +540,24 @@ namespace ModernDesign.MVVM.View
 
         private void DisplayCheats()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = _lm.IsSpanish;
             CheatsPanel.Children.Clear();
 
             string searchText = SearchBox.Text.ToLower();
             var filteredCheats = _allCheats.AsEnumerable();
 
             // Filter by category
-            if (_selectedCategory == (es ? "⭐ Favoritos" : "⭐ Favorites"))
+            if (SelectedCategory == _lm.Get("CheatsGuideView.FavoritesCategory"))
             {
                 filteredCheats = filteredCheats.Where(c => _favoriteCommands.Contains(c.Command));
             }
-            else if (_selectedCategory != "All" && _selectedCategory != "Todos")
+            else if (SelectedCategory != _lm.Get("CheatsGuideView.AllCategory"))
             {
-                filteredCheats = filteredCheats.Where(c => c.Category == _selectedCategory);
+                filteredCheats = filteredCheats.Where(c => c.Category == SelectedCategory);
             }
 
             // Filter by search
-            if (!string.IsNullOrWhiteSpace(searchText) && searchText != (es ? "buscar trucos..." : "search cheats..."))
+            if (!string.IsNullOrWhiteSpace(searchText) && searchText != _lm.Get("CheatsGuide.SearchBox").ToLower())
             {
                 filteredCheats = filteredCheats.Where(c =>
                     c.Command.ToLower().Contains(searchText) ||
@@ -674,7 +574,7 @@ namespace ModernDesign.MVVM.View
             {
                 TextBlock noResults = new TextBlock
                 {
-                    Text = es ? "No se encontraron trucos" : "No cheats found",
+                    Text = _lm.Get("CheatsGuideView.NoCheatsFound"),
                     Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#94A3B8")),
                     FontSize = 16,
                     FontFamily = new FontFamily("Bahnschrift Light"),
@@ -688,7 +588,7 @@ namespace ModernDesign.MVVM.View
 
         private void CreateCheatCard(CheatItem cheat)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = _lm.IsSpanish;
 
             Border card = new Border
             {
@@ -855,7 +755,7 @@ namespace ModernDesign.MVVM.View
 
         private void CopyButton_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = _lm.IsSpanish;
             Button btn = sender as Button;
             string command = btn.Tag.ToString();
 
@@ -891,7 +791,7 @@ namespace ModernDesign.MVVM.View
 
             if (!favoriteCheats.Any())
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = _lm.IsSpanish;
                 MessageBox.Show(
                     es ? "No tienes trucos favoritos marcados." : "You don't have any favorite cheats marked.",
                     es ? "Sin Favoritos" : "No Favorites",
@@ -905,7 +805,7 @@ namespace ModernDesign.MVVM.View
 
         private void ExportCheats(List<CheatItem> cheats, string fileName)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = _lm.IsSpanish;
 
             try
             {

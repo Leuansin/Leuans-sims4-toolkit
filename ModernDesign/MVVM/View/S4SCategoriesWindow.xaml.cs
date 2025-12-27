@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using ModernDesign.Localization;
 using ModernDesign.Profile;
 using System.IO.Compression;
+using LeuanS4ToolKit.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -28,7 +29,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             Title = es ? "Crear un Mod - Categorías" : "Create a Mod - Categories";
             TitleText.Text = es ? "🎨 Elige qué Crear" : "🎨 Choose What to Create";
             SubtitleText.Text = es ? "Selecciona una categoría para ver tutoriales paso a paso" : "Select a category to see step-by-step tutorials";
@@ -154,7 +155,7 @@ namespace ModernDesign.MVVM.View
             if (_isDownloading)
                 return;
 
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
 
             _isDownloading = true;

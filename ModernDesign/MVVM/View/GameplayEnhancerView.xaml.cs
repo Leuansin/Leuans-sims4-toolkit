@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using LeuanS4ToolKit.Core;
 using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
@@ -17,7 +18,7 @@ namespace ModernDesign.MVVM.View
         #region Language
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             Title = es ? "Optimizador de Juego" : "Gameplay Enhancer";
             TitleText.Text = es ? "⚡ Optimizador de Juego" : "⚡ Gameplay Enhancer";
@@ -62,7 +63,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyPrettyGraphicsPreset()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             string title = es ? "Gráficos Hermosos" : "Pretty Graphics";
             string message = es
                 ? "Este preset aplicará:\n\n• Todas las configuraciones en ULTRA\n• Texturas sin comprimir\n• Reflejos al máximo\n• Distancia de visión alta\n• Post-procesamiento activado\n\n¿Deseas continuar?"
@@ -77,7 +78,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyBalancedPreset()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             string title = es ? "Hermoso y Rendimiento" : "Pretty & Performance";
             string message = es
                 ? "Este preset aplicará:\n\n• Sims y Objetos: Medio\n• Iluminación: Media\n• Reflejos: Alto\n• Partículas: Bajo\n• Suavizado de bordes: Medio\n• Texturas 3D: No\n• Distancia de visión: Alta\n• Texturas sin comprimir: Sí\n• Post-procesamiento: No\n• Modo portátil: No\n\n¿Deseas continuar?"
@@ -92,7 +93,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyPerformancePreset()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             string title = es ? "Rendimiento" : "Performance";
             string message = es
                 ? "Este preset aplicará:\n\n• Todas las configuraciones en BAJO\n• Efectos visuales desactivados\n• Texturas comprimidas\n• Modo portátil activado\n• Optimizado para máximo FPS\n\n¿Deseas continuar?"
@@ -107,7 +108,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyPreset(string presetName)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             string optionsPath = GetOptionsIniPath();
 
             if (string.IsNullOrEmpty(optionsPath) || !File.Exists(optionsPath))

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using LeuanS4ToolKit.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -18,7 +19,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             TitleText.Text = es ? "⚠️ Acceso Denegado" : "⚠️ Access Denied";
 
@@ -44,7 +45,7 @@ namespace ModernDesign.MVVM.View
 
         private void ShowProgress()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             var progress = DeveloperModeManager.GetProgress();
 
             ProgressItems.Children.Clear();

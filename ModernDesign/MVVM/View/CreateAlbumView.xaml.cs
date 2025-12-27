@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using LeuanS4ToolKit.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -29,7 +30,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             this.Title = es ? "Crear Álbum" : "Create Album";
             TitleText.Text = es ? "📁 Crear Álbum" : "📁 Create Album";
@@ -175,7 +176,7 @@ namespace ModernDesign.MVVM.View
 
         private void UpdateSelectedCount()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             SelectedCountText.Text = es
                 ? $"{SelectedPhotos.Count} seleccionada{(SelectedPhotos.Count != 1 ? "s" : "")}"
                 : $"{SelectedPhotos.Count} selected";
@@ -199,7 +200,7 @@ namespace ModernDesign.MVVM.View
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             if (string.IsNullOrWhiteSpace(AlbumNameTextBox.Text))
             {

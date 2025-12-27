@@ -4,6 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using LeuanS4ToolKit.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -57,7 +58,7 @@ namespace ModernDesign.MVVM.View
 
         private void ConfigureMedal()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             string medalEmoji;
             string medalName;
             Color medalColor;

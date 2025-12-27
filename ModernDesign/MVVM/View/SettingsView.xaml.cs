@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using LeuanS4ToolKit.Core;
+using ModernDesign.Core;
+using ModernDesign.Localization;
 using Microsoft.Win32;
 
 namespace ModernDesign.MVVM.View
 {
     public partial class SettingsView : UserControl
     {
-        private string _languageCode = "en-US";
         private string _appDataFolder;
         private string _languageIniPath;
         private string _profileIniPath;
@@ -27,15 +29,19 @@ namespace ModernDesign.MVVM.View
         private const string VERSION_CHECK_URL = "https://zeroauno.blob.core.windows.net/leuan/TheSims4/version.txt";
         // =====================================
 
+        private readonly ILanguageManager _lm;
+        
         public SettingsView()
         {
+            _lm = ServiceLocator.Get<ILanguageManager>();
             InitializeComponent();
             InitializePaths();
             LoadLanguageFromIni();
             LoadPreloadImagesFromProfile();
             LoadDLCImagesFromProfile();
             InitLocalization();
-            SetCurrentLanguageInComboBox();
+            _lm.LanguageChanged += (_, __) => InitLocalization();
+            SelectLanguageByTag(_lm.CurrentLocale);
             _isInitializing = false;
 
             // Cargar estados de forma asíncrona
@@ -122,7 +128,7 @@ namespace ModernDesign.MVVM.View
             bool isChecked = LoadDLCImagesCheckBox.IsChecked ?? false;
             SaveLoadDLCImagesToProfile(isChecked);
 
-            bool es = _languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
+            bool es = _lm.CurrentLocale.StartsWith("es", StringComparison.OrdinalIgnoreCase);
 
             string message = isChecked
                 ? (es ? "Las imágenes de DLC se cargarán en la próxima apertura del Updater.\n\n⚠️ Esto puede consumir hasta 1GB de RAM adicional."
@@ -291,7 +297,7 @@ namespace ModernDesign.MVVM.View
             bool isChecked = PreloadImagesCheckBox.IsChecked ?? false;
             SavePreloadImagesToProfile(isChecked);
 
-            bool es = _languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
+            bool es = _lm.CurrentLocale.StartsWith("es", StringComparison.OrdinalIgnoreCase);
 
             string message = isChecked
                 ? (es ? "Las imágenes se precargarán en el próximo inicio de la aplicación.\n\nEsto puede aumentar el uso de RAM pero mejorará la respuesta de la interfaz."
@@ -306,45 +312,36 @@ namespace ModernDesign.MVVM.View
                 MessageBoxImage.Information);
         }
 
-        private void InitLocalization()
+        private async Task InitLocalization()
         {
-            bool es = _languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
-
-            TitleText.Text = es ? "Configuración" : "Settings";
-            SubtitleText.Text = es
-                ? "Configura tus preferencias y visualiza el estado del sistema"
-                : "Configure your preferences and view system status";
-
-            LanguageSectionTitle.Text = es ? "🌐 Idioma" : "🌐 Language";
-            LanguageLabel.Text = es ? "Idioma de la Aplicación" : "Application Language";
-            LanguageDesc.Text = es
-                ? "Cambia el idioma de visualización de la aplicación"
-                : "Change the display language of the application";
-
-            PerformanceSectionTitle.Text = es ? "⚡ Rendimiento" : "⚡ Performance";
-            PreloadImagesLabel.Text = es ? "Precargar Imágenes al Inicio" : "Preload Images on Startup";
-            PreloadImagesDesc.Text = es
-                ? "Cargar imágenes de DLCs durante el inicio (aumenta el uso de RAM pero mejora la respuesta)"
-                : "Load DLC images during startup (increases RAM usage but improves responsiveness)";
-            LoadDLCImagesLabel.Text = es ? "Cargar Imágenes de DLC" : "Load DLC Images";
-            LoadDLCImagesDesc.Text = es
-                ? "Mostrar imágenes de portada de DLCs en el DLC Updater (puede consumir hasta 1GB de RAM)"
-                : "Display DLC cover images in the updater (may consume up to 1GB of RAM)";
-
-            StatusSectionTitle.Text = es ? "📊 Estado del Sistema" : "📊 System Status";
-            DLCStatusTitle.Text = es ? "DLCs Instalados" : "Installed DLCs";
-            UnlockerStatusTitle.Text = "EA DLC Unlocker";
-            VersionTitle.Text = es ? "Versión del Launcher" : "Launcher Version";
-            CurrentVersionLabel.Text = es ? "Actual: " : "Current: ";
-            LatestVersionLabel.Text = es ? "Última: " : "Latest: ";
-
-            ActionsSectionTitle.Text = es ? "⚡ Acciones Rápidas" : "⚡ Quick Actions";
-            RefreshBtn.Content = es ? "🔄 Actualizar Estado" : "🔄 Refresh Status";
-            OpenFolderBtn.Content = es ? "📁 Abrir Carpeta" : "📁 Open Data Folder";
-            ResetBtn.Content = es ? "🔧 Resetear Config" : "🔧 Reset Settings";
-
+            TitleText.Text = _lm.Get("Title");
+            SubtitleText.Text = _lm.Get("Subtitle");
+    
+            LanguageSectionTitle.Text = _lm.Get("LanguageSectionTitle");
+            LanguageLabel.Text = _lm.Get("LanguageLabel");
+            LanguageDesc.Text = _lm.Get("LanguageDesc");
+    
+            PerformanceSectionTitle.Text = _lm.Get("PerformanceSectionTitle");
+            PreloadImagesLabel.Text = _lm.Get("PreloadImagesLabel");
+            PreloadImagesDesc.Text = _lm.Get("PreloadImagesDesc");
+            LoadDLCImagesLabel.Text = _lm.Get("LoadDLCImagesLabel");
+            LoadDLCImagesDesc.Text = _lm.Get("LoadDLCImagesDesc");
+    
+            StatusSectionTitle.Text = _lm.Get("StatusSectionTitle");
+            DLCStatusTitle.Text = _lm.Get("DLCStatusTitle");
+            UnlockerStatusTitle.Text = _lm.Get("UnlockerStatusTitle");
+            VersionTitle.Text = _lm.Get("VersionTitle");
+            CurrentVersionLabel.Text = _lm.Get("CurrentVersionLabel");
+            LatestVersionLabel.Text = _lm.Get("LatestVersionLabel");
+    
+            ActionsSectionTitle.Text = _lm.Get("ActionsSectionTitle");
+            RefreshBtn.Content = _lm.Get("SettingsViewRefreshBtn");
+            OpenFolderBtn.Content = _lm.Get("OpenFolderBtn");
+            ResetBtn.Content = _lm.Get("ResetBtn");
+    
             AppVersionText.Text = $"Version {CURRENT_VERSION}";
             CurrentVersion.Text = CURRENT_VERSION;
+            await LoadAllStatusAsync();
         }
 
         private void LoadLanguageFromIni()
@@ -354,7 +351,7 @@ namespace ModernDesign.MVVM.View
                 if (!File.Exists(_languageIniPath))
                 {
                     CreateDefaultLanguageIni();
-                    _languageCode = "en-US";
+                    _lm.CurrentLocale = "en-US";
                     return;
                 }
 
@@ -371,30 +368,18 @@ namespace ModernDesign.MVVM.View
                         {
                             var value = parts[1].Trim();
                             if (!string.IsNullOrEmpty(value))
-                                _languageCode = value;
+                                _lm.CurrentLocale = value;
                         }
                         break;
                     }
                 }
 
-                if (_languageCode != "es-ES" && _languageCode != "en-US")
-                    _languageCode = "en-US";
+                if (!_lm.LanguageSupported(_lm.CurrentLocale))
+                    _lm.CurrentLocale = "en-US";
             }
             catch
             {
-                _languageCode = "en-US";
-            }
-        }
-
-        private void SetCurrentLanguageInComboBox()
-        {
-            foreach (ComboBoxItem item in LanguageComboBox.Items)
-            {
-                if (item.Tag?.ToString() == _languageCode)
-                {
-                    LanguageComboBox.SelectedItem = item;
-                    break;
-                }
+                _lm.CurrentLocale = "en-US";
             }
         }
 
@@ -465,7 +450,19 @@ Language = en-US
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        
+        private void SelectLanguageByTag(string current)
+        {
+            foreach (ComboBoxItem item in LanguageComboBox.Items)
+            {
+                if (item.Tag.ToString() == current)
+                {
+                    LanguageComboBox.SelectedItem = item;
+                    break;
+                }
+            }
+        }
+        
         private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_isInitializing) return;
@@ -474,13 +471,13 @@ Language = en-US
             if (selected?.Tag == null) return;
 
             string newLang = selected.Tag.ToString();
-            if (newLang == _languageCode) return;
+            if (newLang == _lm.CurrentLocale) return;
 
             SaveLanguageToIni(newLang);
-            _languageCode = newLang;
+            _lm.CurrentLocale = newLang;
 
-            bool es = _languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
-
+            bool es = _lm.CurrentLocale.StartsWith("es", StringComparison.OrdinalIgnoreCase);
+            
             var result = MessageBox.Show(
                 es ? "El idioma se cambiará al reiniciar la aplicación.\n\n¿Reiniciar ahora?"
                    : "Language will change after restarting the application.\n\nRestart now?",
@@ -491,10 +488,6 @@ Language = en-US
             if (result == MessageBoxResult.Yes)
             {
                 RestartApplication();
-            }
-            else
-            {
-                InitLocalization();
             }
         }
 
@@ -520,59 +513,7 @@ Language = en-US
                 LoadVersionStatusAsync()
             );
         }
-
-        private bool TryAutoDetectSimsPath()
-        {
-            if (!string.IsNullOrEmpty(_simsPath) && Directory.Exists(_simsPath))
-                return true;
-
-            var commonPaths = new[]
-            {
-                @"C:\Program Files\EA Games\The Sims 4",
-                @"C:\Program Files (x86)\EA Games\The Sims 4",
-                @"C:\Program Files\Origin Games\The Sims 4",
-                @"C:\Program Files (x86)\Origin Games\The Sims 4",
-                @"D:\Games\The Sims 4",
-                @"D:\Origin Games\The Sims 4",
-                @"E:\Games\The Sims 4",
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "EA Games", "The Sims 4"),
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "EA Games", "The Sims 4"),
-            };
-
-            foreach (var path in commonPaths)
-            {
-                try
-                {
-                    var exePath = Path.Combine(path, "Game", "Bin", "TS4_x64.exe");
-                    if (File.Exists(exePath) || Directory.Exists(Path.Combine(path, "Data")))
-                    {
-                        _simsPath = path;
-                        return true;
-                    }
-                }
-                catch { }
-            }
-
-            try
-            {
-                using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Maxis\The Sims 4"))
-                {
-                    if (key != null)
-                    {
-                        var installDir = key.GetValue("Install Dir") as string;
-                        if (!string.IsNullOrEmpty(installDir) && Directory.Exists(installDir))
-                        {
-                            _simsPath = installDir;
-                            return true;
-                        }
-                    }
-                }
-            }
-            catch { }
-
-            return false;
-        }
-
+        
         private static bool IsDlcInstalled(string simsPath, string dlcId)
         {
             if (string.IsNullOrEmpty(simsPath))
@@ -599,13 +540,11 @@ Language = en-US
 
         private async Task LoadDLCStatusAsync()
         {
-            bool es = _languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
-
             await Task.Run(() =>
             {
                 int installedCount = 0;
                 int totalDlc = 0;
-                bool simsFound = TryAutoDetectSimsPath();
+                bool simsFound = Sims4PathFinder.FindSims4Path(out _simsPath);
 
                 try
                 {
@@ -627,9 +566,7 @@ Language = en-US
                     if (!simsFound)
                     {
                         DLCCount.Text = "0";
-                        DLCStatusDesc.Text = es
-                            ? "No se encontró una instalación de The Sims 4"
-                            : "No The Sims 4 installation found";
+                        DLCStatusDesc.Text = _lm.Get("SettingsViewDLCStatusNotFound");
 
                         DLCCount.Foreground = new SolidColorBrush(
                             (Color)ColorConverter.ConvertFromString("#EF4444"));
@@ -637,9 +574,10 @@ Language = en-US
                     }
 
                     DLCCount.Text = installedCount.ToString();
-                    DLCStatusDesc.Text = es
-                        ? $"{installedCount} DLCs instalados detectados ({installedCount}/{totalDlc})"
-                        : $"{installedCount} installed DLCs detected ({installedCount}/{totalDlc})";
+                    DLCStatusDesc.Text = string.Format(
+                        _lm.Get("SettingsViewDLCStatusFound"), 
+                        installedCount, 
+                        totalDlc);
 
                     double ratio = totalDlc > 0 ? (double)installedCount / totalDlc : 0;
 
@@ -659,8 +597,6 @@ Language = en-US
 
         private async Task LoadUnlockerStatusAsync()
         {
-            bool es = _languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
-
             await Task.Run(() =>
             {
                 bool isInstalled = false;
@@ -679,26 +615,22 @@ Language = en-US
                 {
                     if (isInstalled)
                     {
-                        UnlockerStatus.Text = es
-                            ? $"✓ Instalado ({clientName})"
-                            : $"✓ Installed ({clientName})";
+                        UnlockerStatus.Text = string.Format(
+                            _lm.Get("SettingsViewUnlockerStatusInstalled"), 
+                            clientName);
 
                         UnlockerStatus.Foreground = new SolidColorBrush(
                             (Color)ColorConverter.ConvertFromString("#22C55E"));
 
-                        UnlockerStatusDesc.Text = es
-                            ? "EA DLC Unlocker detectado y funcionando"
-                            : "EA DLC Unlocker detected and working";
+                        UnlockerStatusDesc.Text = _lm.Get("SettingsViewUnlockerStatusDescWorking");
                     }
                     else
                     {
-                        UnlockerStatus.Text = es ? "✗ No instalado" : "✗ Not installed";
+                        UnlockerStatus.Text = _lm.Get("SettingsViewUnlockerStatusNotInstalled");
                         UnlockerStatus.Foreground = new SolidColorBrush(
                             (Color)ColorConverter.ConvertFromString("#EF4444"));
 
-                        UnlockerStatusDesc.Text = es
-                            ? "Instala el unlocker desde la ventana de instalación de DLCs."
-                            : "Install the unlocker from the DLC install window.";
+                        UnlockerStatusDesc.Text = _lm.Get("SettingsViewUnlockerStatusDescInstall");
                     }
                 });
             });
@@ -706,7 +638,7 @@ Language = en-US
 
         private async Task LoadVersionStatusAsync()
         {
-            bool es = _languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
+            bool es = _lm.CurrentLocale.StartsWith("es", StringComparison.OrdinalIgnoreCase);
 
             try
             {
@@ -724,7 +656,7 @@ Language = en-US
 
                         if (isUpToDate)
                         {
-                            VersionStatus.Text = es ? "✓ Actualizado" : "✓ Up to date";
+                            VersionStatus.Text = _lm.Get("SettingsView.UpdaterLatestInstalled");
                             VersionStatus.Foreground = new SolidColorBrush(
                                 (Color)ColorConverter.ConvertFromString("#22C55E"));
                             LatestVersion.Foreground = new SolidColorBrush(
@@ -732,7 +664,7 @@ Language = en-US
                         }
                         else
                         {
-                            VersionStatus.Text = es ? "⬆ Actualización disponible" : "⬆ Update available";
+                            VersionStatus.Text = _lm.Get("SettingsView.UpdaterNewVersionAvailable");
                             VersionStatus.Foreground = new SolidColorBrush(
                                 (Color)ColorConverter.ConvertFromString("#F59E0B"));
                             LatestVersion.Foreground = new SolidColorBrush(
@@ -769,22 +701,20 @@ Language = en-US
 
         private async void RefreshBtn_Click(object sender, RoutedEventArgs e)
         {
-            bool es = _languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
-
             RefreshBtn.IsEnabled = false;
-            RefreshBtn.Content = es ? "⏳ Actualizando..." : "⏳ Refreshing...";
+            RefreshBtn.Content = _lm.Get("SettingsViewRefreshLoading");
 
             DLCCount.Text = "--";
-            DLCStatusDesc.Text = es ? "Escaneando..." : "Scanning...";
+            DLCStatusDesc.Text = _lm.Get("SettingsViewScanning");
             UnlockerStatus.Text = "...";
-            UnlockerStatusDesc.Text = es ? "Verificando..." : "Checking...";
+            UnlockerStatusDesc.Text = _lm.Get("SettingsViewChecking");
             LatestVersion.Text = "...";
-            VersionStatus.Text = es ? "Verificando..." : "Checking...";
+            VersionStatus.Text = _lm.Get("SettingsViewVersionChecking");
 
             await LoadAllStatusAsync();
 
             RefreshBtn.IsEnabled = true;
-            RefreshBtn.Content = es ? "🔄 Actualizar Estado" : "🔄 Refresh Status";
+            RefreshBtn.Content = _lm.Get("SettingsViewRefreshBtn");
         }
 
         private void OpenFolderBtn_Click(object sender, RoutedEventArgs e)
@@ -805,7 +735,7 @@ Language = en-US
 
         private void ResetBtn_Click(object sender, RoutedEventArgs e)
         {
-            bool es = _languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
+            bool es = _lm.CurrentLocale.StartsWith("es", StringComparison.OrdinalIgnoreCase);
 
             var result = MessageBox.Show(
                 es ? "¿Estás seguro de que quieres resetear la configuración?\n\nEsto restaurará el idioma a inglés."

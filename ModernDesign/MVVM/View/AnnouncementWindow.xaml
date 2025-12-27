@@ -1,6 +1,7 @@
 ﻿<Window x:Class="ModernDesign.MVVM.View.AnnouncementWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:core="clr-namespace:LeuanS4ToolKit.Core"
         Title="Announcement"
         Height="550" Width="650"
         WindowStyle="None"
@@ -75,6 +76,7 @@
                 <!-- Título -->
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="📢 Announcement"
+                               core:LocalizationProperties.LocalizeText="AnnouncementWindow.HeaderText"
                               x:Name="HeaderText"
                               FontSize="24"
                               FontWeight="Bold"
@@ -126,6 +128,7 @@
             <!-- Footer con botón -->
             <StackPanel Grid.Row="2" HorizontalAlignment="Center">
                 <Button x:Name="CloseButton"
+                        core:LocalizationProperties.LocalizeText="AnnouncementWindow.CloseButton"
                         Content="Close"
                         Style="{StaticResource CloseButtonStyle}"
                         Click="CloseButton_Click"/>

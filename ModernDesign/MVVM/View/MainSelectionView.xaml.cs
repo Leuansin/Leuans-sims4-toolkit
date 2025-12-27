@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using LeuanS4ToolKit.Core;
+using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
 {
     public partial class MainSelectionView : UserControl
     {
+        private readonly ILanguageManager _lm;
+
         public MainSelectionView()
         {
+            _lm = ServiceLocator.Get<ILanguageManager>();
             InitializeComponent();
             ApplyLanguage();
         }
@@ -16,24 +21,12 @@ namespace ModernDesign.MVVM.View
         {
             bool isSpanish = IsSpanishLanguage();
 
-            if (isSpanish)
-            {
-                HeaderText.Text = "🎮 ¿Qué deseas hacer?";
-                SubHeaderText.Text = "Selecciona una opción para continuar";
-                DownloadDLCsBtn.Content = "Descargar DLC's";
-                DownloadDLCsBtn.ToolTip = "Si ya posees el juego y quieres instalarle los DLC's";
-                UpdateGameBtn.Content = "Actualizar el Juego";
-                UpdateGameBtn.ToolTip = "Si quieres actualizar tu Sims 4 a la última versión";
-            }
-            else
-            {
-                HeaderText.Text = "🎮 What do you want to do?";
-                SubHeaderText.Text = "Select an option to continue";
-                DownloadDLCsBtn.Content = "Download DLC's";
-                DownloadDLCsBtn.ToolTip = "If you already own the game and want to install DLC's";
-                UpdateGameBtn.Content = "Update the Game";
-                UpdateGameBtn.ToolTip = "If you want to update your Sims 4 to the latest version";
-            }
+            HeaderText.Text = _lm.Get("MainSelectionViewHeaderText");
+            SubHeaderText.Text = _lm.Get("MainSelectionViewSubHeaderText");
+            DownloadDLCsBtn.Content = _lm.Get("MainSelectionViewDownloadDLCsBtn");
+            DownloadDLCsBtn.ToolTip = _lm.Get("MainSelectionViewDownloadDLCsBtnTooltip");
+            UpdateGameBtn.Content = _lm.Get("MainSelectionViewUpdateGameBtn");
+            UpdateGameBtn.ToolTip = _lm.Get("MainSelectionViewUpdateGameBtnTooltip");
         }
 
         private static bool IsSpanishLanguage()
@@ -81,22 +74,9 @@ namespace ModernDesign.MVVM.View
 
         private void UpdateGameBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Mostrar popup de advertencia
-            bool isSpanish = IsSpanishLanguage();
+            string message = _lm.Get("MainSelectionViewUpdateWarning");
 
-            string message = isSpanish
-                ? "⚠️ ADVERTENCIA IMPORTANTE ⚠️\n\n" +
-                  "Te recordamos que esto solo es para las versiones offline y crackeadas.\n\n" +
-                  "Si tienes el juego de Steam/EA, no necesitas actualizar tu juego, " +
-                  "ya que tu plataforma lo actualizará automáticamente.\n\n" +
-                  "¿Deseas continuar?"
-                : "⚠️ IMPORTANT WARNING ⚠️\n\n" +
-                  "Updating your game is only for offline and cracked versions.\n\n" +
-                  "If you have the game from Steam/EA, you don't need to update your game, " +
-                  "as your platform will update it automatically.\n\n" +
-                  "Do you want to continue?";
-
-            string title = isSpanish ? "Advertencia" : "Warning";
+            string title = _lm.Get("Warning");
 
             var result = MessageBox.Show(message, title, MessageBoxButton.YesNo, MessageBoxImage.Warning);
 

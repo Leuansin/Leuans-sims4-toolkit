@@ -6,6 +6,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
+using LeuanS4ToolKit.Core;
 using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
@@ -24,7 +25,7 @@ namespace ModernDesign.MVVM.View
         #region Language
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             Title = es ? "Hub de Modelado 3D" : "3D Modeling Hub";
             TitleText.Text = es ? "🎭 Hub de Modelado 3D" : "🎭 3D Modeling Hub";
             SubtitleText.Text = es ? "Aprende a crear meshes 3D personalizados con Blender" : "Learn to create custom 3D meshes with Blender";
@@ -64,7 +65,7 @@ namespace ModernDesign.MVVM.View
 
         private void LoadVideosAndDocs()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             VideosList.Items.Clear();
             DocsList.Items.Clear();
 
@@ -134,7 +135,7 @@ namespace ModernDesign.MVVM.View
 
         private void ShowStepMessage(int step)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             string title = "", msg = "";
             switch (step)
             {

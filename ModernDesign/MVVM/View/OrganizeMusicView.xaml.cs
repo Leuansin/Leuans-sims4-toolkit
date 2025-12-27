@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using LeuanS4ToolKit.Core;
 using WpfMessageBox = System.Windows.MessageBox;
 using WpfDragEventArgs = System.Windows.DragEventArgs;
 using WpfDragDropEffects = System.Windows.DragDropEffects;
@@ -43,7 +44,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             this.Title = es ? "Organizar Música" : "Organize Music";
             TitleText.Text = es ? "📂 Organizar Música" : "📂 Organize Music";
@@ -90,7 +91,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 WpfMessageBox.Show(
                     $"{(es ? "Error cargando datos: " : "Error loading data: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -235,7 +236,7 @@ namespace ModernDesign.MVVM.View
 
                     if (File.Exists(newPath))
                     {
-                        bool es = LanguageManager.IsSpanish;
+                        bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                         WpfMessageBox.Show(
                             es ? "Ya existe un archivo con ese nombre en la carpeta destino." : "A file with that name already exists in the destination folder.",
                             es ? "Error" : "Error",
@@ -263,7 +264,7 @@ namespace ModernDesign.MVVM.View
                 }
                 catch (Exception ex)
                 {
-                    bool es = LanguageManager.IsSpanish;
+                    bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                     WpfMessageBox.Show(
                         $"{(es ? "Error moviendo archivo: " : "Error moving file: ")}{ex.Message}",
                         es ? "Error" : "Error",

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using LeuanS4ToolKit.Core;
 using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
@@ -16,7 +17,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             Title = es ? "Comienza a Crear" : "Start Creating";
             TitleText.Text = es ? "¿Listo para Crear Tu Primer Mod?" : "Ready to Create Your First Mod?";

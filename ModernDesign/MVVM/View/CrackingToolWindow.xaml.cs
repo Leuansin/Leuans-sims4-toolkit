@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
+using ModernDesign.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -98,37 +99,13 @@ namespace ModernDesign.MVVM.View
 
             AddConsoleLog(isSpanish ? ">> INICIANDO ESCANEO..." : ">> INITIATING SCAN...");
 
-            string[] registryPaths = new[]
+            if (Sims4PathFinder.FindSims4Path(out var path))
             {
-                @"SOFTWARE\Maxis\The Sims 4",
-                @"SOFTWARE\WOW6432Node\Maxis\The Sims 4"
-            };
-
-            foreach (var regPath in registryPaths)
-            {
-                try
-                {
-                    using (var key = Registry.LocalMachine.OpenSubKey(regPath))
-                    {
-                        if (key != null)
-                        {
-                            var installDir = key.GetValue("Install Dir");
-                            if (installDir != null)
-                            {
-                                string path = installDir.ToString();
-                                if (Directory.Exists(path))
-                                {
-                                    _gamePath = path;
-                                    PathText.Text = path;
-                                    AddConsoleLog(isSpanish ? ">> OBJETIVO DETECTADO" : ">> TARGET DETECTED");
-                                    await ValidateGamePath(path);
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                }
-                catch { }
+                _gamePath = path;
+                PathText.Text = path;
+                AddConsoleLog(isSpanish ? ">> OBJETIVO DETECTADO" : ">> TARGET DETECTED");
+                await ValidateGamePath(path);
+                return;
             }
 
             PathText.Text = isSpanish ? "NO DETECTADO" : "NOT DETECTED";

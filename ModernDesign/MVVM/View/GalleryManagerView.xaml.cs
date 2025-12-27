@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using LeuanS4ToolKit.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -31,7 +32,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             this.Title = es ? "Gestor de Galería - Capturas de Los Sims 4" : "Gallery Manager - Sims 4 Screenshots";
 
@@ -85,7 +86,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
                 string[] possiblePaths = new string[]
@@ -116,7 +117,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error detectando carpeta: " : "Error detecting folder: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -127,7 +128,7 @@ namespace ModernDesign.MVVM.View
 
         private void HowToTakeScreenshots_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             string message = es
                 ? "Para tomar capturas de pantalla en Los Sims 4:\n\n" +
@@ -173,7 +174,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 LoadingPanel.Visibility = Visibility.Visible;
                 EmptyPanel.Visibility = Visibility.Collapsed;
@@ -235,7 +236,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error cargando fotos: " : "Error loading photos: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -247,7 +248,7 @@ namespace ModernDesign.MVVM.View
 
         private void CreateAlbumCard(string albumPath)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             string folderName = Path.GetFileName(albumPath);
 
             string albumName = folderName;
@@ -536,7 +537,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 string albumName = Path.GetFileName(albumPath);
 
                 string displayName = albumName;
@@ -594,7 +595,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error eliminando álbum: " : "Error deleting album: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -607,7 +608,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 string currentName = Path.GetFileNameWithoutExtension(photoPath);
 
                 var inputDialog = new Window
@@ -710,7 +711,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error renombrando foto: " : "Error renaming photo: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -734,7 +735,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error viendo foto: " : "Error viewing photo: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -747,7 +748,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 var result = MessageBox.Show(
                     es ? $"¿Estás seguro de que quieres eliminar esta foto?\n\n{Path.GetFileName(photoPath)}"
                        : $"Are you sure you want to delete this photo?\n\n{Path.GetFileName(photoPath)}",
@@ -768,7 +769,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error eliminando foto: " : "Error deleting photo: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -781,7 +782,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 if (!string.IsNullOrEmpty(compressorPath) && File.Exists(compressorPath))
                     return;
@@ -803,7 +804,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 HideProgress();
                 MessageBox.Show(
                     $"{(es ? "Error descargando compresor: " : "Error downloading compressor: ")}{ex.Message}",
@@ -817,7 +818,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 Process.Start(new ProcessStartInfo
                 {
@@ -834,7 +835,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     es ? $"Error abriendo cliente de correo: {ex.Message}\n\nPuedes adjuntar el archivo manualmente:\n{photoPath}"
                        : $"Error opening email client: {ex.Message}\n\nYou can manually attach the file:\n{photoPath}",
@@ -848,7 +849,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 if (photoFiles.Count == 0)
                 {
@@ -957,7 +958,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 HideProgress();
                 MessageBox.Show(
                     $"{(es ? "Error comprimiendo fotos: " : "Error compressing photos: ")}{ex.Message}",
@@ -979,7 +980,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     es ? $"Error abriendo el navegador: {ex.Message}" : $"Error opening browser: {ex.Message}",
                     es ? "Error" : "Error",
@@ -992,7 +993,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 if (currentAlbum != null)
                 {
@@ -1059,7 +1060,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error creando álbum: " : "Error creating album: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -1082,7 +1083,7 @@ namespace ModernDesign.MVVM.View
 
         private async void ChangeFolderButton_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             var dialog = new System.Windows.Forms.FolderBrowserDialog
             {

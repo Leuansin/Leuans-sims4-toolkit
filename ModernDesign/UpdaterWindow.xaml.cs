@@ -17,6 +17,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using ModernDesign.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -1430,56 +1431,19 @@ namespace ModernDesign.MVVM.View
 
             await Task.Run(() =>
             {
-                var commonPaths = new[]
+                if (Sims4PathFinder.FindSims4Path(out var potentialRoot))
                 {
-                    @"C:\Program Files\EA Games\The Sims 4",
-                    @"C:\Program Files (x86)\EA Games\The Sims 4",
-                    @"C:\Program Files\Origin Games\The Sims 4",
-                    @"C:\Program Files (x86)\Origin Games\The Sims 4",
-                    @"D:\Games\The Sims 4",
-                    @"D:\Origin Games\The Sims 4",
-                    @"D:\The Sims 4",
-                    @"E:\Games\The Sims 4",
-                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "EA Games", "The Sims 4"),
-                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "EA Games", "The Sims 4"),
-                };
-
-                foreach (var path in commonPaths)
-                {
-                    var exePath = Path.Combine(path, "Game", "Bin", "TS4_x64.exe");
-                    if (File.Exists(exePath))
-                    {
-                        var rootPath = Directory.GetParent(Directory.GetParent(exePath).FullName).FullName;
-                        rootPath = Directory.GetParent(rootPath).FullName;
-
-                        Dispatcher.Invoke(() => SetSimsPath(rootPath, true));
-                        return;
-                    }
+                    Dispatcher.Invoke(() => SetSimsPath(potentialRoot, true));
                 }
-
-                try
+                else
                 {
-                    using (var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Maxis\The Sims 4"))
+                    Dispatcher.Invoke(() =>
                     {
-                        if (key != null)
-                        {
-                            var installDir = key.GetValue("Install Dir") as string;
-                            if (!string.IsNullOrEmpty(installDir) && Directory.Exists(installDir))
-                            {
-                                Dispatcher.Invoke(() => SetSimsPath(installDir, true));
-                                return;
-                            }
-                        }
-                    }
+                        StatusText.Text = "  (Not found - select manually)";
+                        StatusText.Foreground = new SolidColorBrush(
+                            (Color)ColorConverter.ConvertFromString("#EF4444"));
+                    });
                 }
-                catch { }
-
-                Dispatcher.Invoke(() =>
-                {
-                    StatusText.Text = "  (Not found - select manually)";
-                    StatusText.Foreground = new SolidColorBrush(
-                        (Color)ColorConverter.ConvertFromString("#EF4444"));
-                });
             });
         }
 

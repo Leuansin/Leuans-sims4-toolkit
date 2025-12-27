@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using ModernDesign.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -124,31 +125,10 @@ namespace ModernDesign.MVVM.View
 
             await Task.Run(() =>
             {
-                var commonPaths = new[]
+                if (Sims4PathFinder.FindSims4Path(out var rootPath))
                 {
-                    @"C:\Program Files\EA Games\The Sims 4",
-                    @"C:\Program Files (x86)\EA Games\The Sims 4",
-                    @"C:\Program Files\Origin Games\The Sims 4",
-                    @"C:\Program Files (x86)\Origin Games\The Sims 4",
-                    @"C:\Program Files (x86)\Steam\steamapps\common\The Sims 4",
-                    @"D:\Games\The Sims 4",
-                    @"D:\Origin Games\The Sims 4",
-                    @"D:\Steam\steamapps\common\The Sims 4",
-                    @"D:\The Sims 4",
-                    @"E:\Games\The Sims 4",
-                };
-
-                foreach (var path in commonPaths)
-                {
-                    var exePath = Path.Combine(path, "Game", "Bin", "TS4_x64.exe");
-                    if (File.Exists(exePath))
-                    {
-                        var rootPath = Directory.GetParent(Directory.GetParent(exePath).FullName).FullName;
-                        rootPath = Directory.GetParent(rootPath).FullName;
-
-                        Dispatcher.Invoke(() => SetSimsPath(rootPath, true));
-                        return;
-                    }
+                    Dispatcher.Invoke(() => SetSimsPath(rootPath, true));
+                    return;
                 }
 
                 Dispatcher.Invoke(() =>

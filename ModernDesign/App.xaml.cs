@@ -1,15 +1,22 @@
-﻿using ModernDesign.MVVM.View;
-using System;
+﻿using System;
 using System.IO;
 using System.Windows;
+using LeuanS4ToolKit.Core;
+using ModernDesign.Localization;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ModernDesign
 {
     public partial class App : Application
     {
-
         private void Application_Startup(object sender, StartupEventArgs e)
-        {
+        { 
+            var services = new ServiceCollection();
+            services.AddSingleton<ILanguageManager, LanguageManager>();
+            // add viemodels as transient here
+            // services.AddTransient<ChildViewModel>();
+            ServiceLocator.Current = services.BuildServiceProvider();
+            
             string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string toolkitFolder = Path.Combine(appData, "Leuan's - Sims 4 ToolKit");
             string iniPath = Path.Combine(toolkitFolder, "language.ini");

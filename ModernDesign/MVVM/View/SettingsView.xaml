@@ -191,10 +191,12 @@
                                   Grid.Column="2"
                                   Width="180" 
                                   Height="36"
+                                  Foreground="Black"
                                   Style="{StaticResource ComboBoxStyle}"
                                   SelectionChanged="LanguageComboBox_SelectionChanged">
-                            <ComboBoxItem Content="🇺🇸  English (US)" Tag="en-US"/>
-                            <ComboBoxItem Content="🇪🇸  Español (ES)" Tag="es-ES"/>
+                            <ComboBoxItem Foreground="Gray" Content="🇺🇸  English (US)" Tag="en-US"/>
+                            <ComboBoxItem Foreground="Gray" Content="🇪🇸  Español (ES)" Tag="es-ES"/>
+                            <ComboBoxItem Foreground="Gray" Content="ru  Русский (RU)" Tag="ru-RU"/>
                         </ComboBox>
                     </Grid>
                 </Border>

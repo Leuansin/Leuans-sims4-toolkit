@@ -189,24 +189,24 @@
                                 HorizontalAlignment="Center"
                                 shell:WindowChrome.IsHitTestVisibleInChrome="True">
 
-                        <RadioButton Content="🏠  Home"
+                        <RadioButton Content="{Binding HomeText}"
                                      Style="{StaticResource NavButtonStyle}"
                                      IsChecked="True"
                                      Command="{Binding HomeViewCommand}"/>
 
-                        <RadioButton Content="🔍  Discovery"
+                        <RadioButton Content="{Binding DiscoveryText}"
                                      Style="{StaticResource NavButtonStyle}"
                                      Command="{Binding DiscoveryViewCommand}"/>
 
-                        <RadioButton Content="⚡  FPS Booster"
+                        <RadioButton Content="{Binding FpsBoosterText}"
                                      Style="{StaticResource NavButtonStyle}"
                                      Command="{Binding FPSBoosterViewCommand}"/>
 
-                        <RadioButton Content="👥  Social"
+                        <RadioButton Content="{Binding SocialText}"
                                      Style="{StaticResource NavButtonStyle}"
                                      Command="{Binding SocialViewCommand}"/>
 
-                        <RadioButton Content="⚙️  Settings"
+                        <RadioButton Content="{Binding SettingsText}"
                                      Style="{StaticResource NavButtonStyle}"
                                      Command="{Binding SettingsViewCommand}"/>
 

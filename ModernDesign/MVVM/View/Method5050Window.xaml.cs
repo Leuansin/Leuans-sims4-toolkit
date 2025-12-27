@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using LeuanS4ToolKit.Core;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ModernDesign.MVVM.View
@@ -23,7 +24,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             Title = es ? "Método 50/50" : "50/50 Method";
             TitleText.Text = es ? "🔎 Método 50/50" : "🔎 50/50 Method";
             DescText.Text = es
@@ -56,7 +57,7 @@ namespace ModernDesign.MVVM.View
                 if (Directory.Exists(path))
                 {
                     _modsFolderPath = path;
-                    UpdateStatus(LanguageManager.IsSpanish
+                    UpdateStatus(ServiceLocator.Get<ILanguageManager>().IsSpanish
                         ? $"📁 Carpeta Mods detectada: {_modsFolderPath}"
                         : $"📁 Mods folder detected: {_modsFolderPath}", false);
                     UpdateModCount();
@@ -64,7 +65,7 @@ namespace ModernDesign.MVVM.View
                 }
             }
 
-            UpdateStatus(LanguageManager.IsSpanish
+            UpdateStatus(ServiceLocator.Get<ILanguageManager>().IsSpanish
                 ? "❌ No se encontró la carpeta Mods. Selecciónala manualmente."
                 : "❌ Mods folder not found. Select it manually.", true);
         }
@@ -88,14 +89,14 @@ namespace ModernDesign.MVVM.View
             int disabledPackages = Directory.GetFiles(_modsFolderPath, "*.leupackage", SearchOption.AllDirectories).Length;
             int disabledScripts = Directory.GetFiles(_modsFolderPath, "*.leuts4script", SearchOption.AllDirectories).Length;
 
-            ModCountText.Text = LanguageManager.IsSpanish
+            ModCountText.Text = ServiceLocator.Get<ILanguageManager>().IsSpanish
                 ? $"📊 Mods activos: {activePackages + activeScripts} | Desactivados: {disabledPackages + disabledScripts}"
                 : $"📊 Active mods: {activePackages + activeScripts} | Disabled: {disabledPackages + disabledScripts}";
         }
 
         private void UpdateIterationDisplay()
         {
-            IterationText.Text = LanguageManager.IsSpanish
+            IterationText.Text = ServiceLocator.Get<ILanguageManager>().IsSpanish
                 ? $"Iteración actual: {_currentIteration}"
                 : $"Current iteration: {_currentIteration}";
         }
@@ -105,7 +106,7 @@ namespace ModernDesign.MVVM.View
             if (string.IsNullOrEmpty(_modsFolderPath) || !Directory.Exists(_modsFolderPath))
             {
                 MessageBox.Show(
-                    LanguageManager.IsSpanish ? "Selecciona la carpeta Mods primero." : "Select the Mods folder first.",
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish ? "Selecciona la carpeta Mods primero." : "Select the Mods folder first.",
                     "Error",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
@@ -122,10 +123,10 @@ namespace ModernDesign.MVVM.View
                 if (allActiveFiles.Count == 0)
                 {
                     MessageBox.Show(
-                        LanguageManager.IsSpanish
+                        ServiceLocator.Get<ILanguageManager>().IsSpanish
                             ? "No hay mods activos para desactivar. Usa 'Reactivar Todos' primero."
                             : "No active mods to disable. Use 'Enable All' first.",
-                        LanguageManager.IsSpanish ? "Sin Mods" : "No Mods",
+                        ServiceLocator.Get<ILanguageManager>().IsSpanish ? "Sin Mods" : "No Mods",
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
                     return;
@@ -149,23 +150,23 @@ namespace ModernDesign.MVVM.View
                 UpdateModCount();
 
                 UpdateStatus(
-                    LanguageManager.IsSpanish
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish
                         ? $"✅ Se desactivaron {disabledCount} mods (50% del total)"
                         : $"✅ Disabled {disabledCount} mods (50% of total)",
                     false);
 
                 MessageBox.Show(
-                    LanguageManager.IsSpanish
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish
                         ? $"Se desactivaron {disabledCount} mods.\n\nAhora prueba el juego:\n• Si el error persiste → el problema está en los mods activos\n• Si el error desaparece → el problema está en los desactivados"
                         : $"Disabled {disabledCount} mods.\n\nNow test the game:\n• If error persists → problem is in active mods\n• If error disappears → problem is in disabled mods",
-                    LanguageManager.IsSpanish ? "Paso Completado" : "Step Completed",
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish ? "Paso Completado" : "Step Completed",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
                 UpdateStatus(
-                    LanguageManager.IsSpanish ? $"❌ Error: {ex.Message}" : $"❌ Error: {ex.Message}",
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish ? $"❌ Error: {ex.Message}" : $"❌ Error: {ex.Message}",
                     true);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -176,7 +177,7 @@ namespace ModernDesign.MVVM.View
             if (string.IsNullOrEmpty(_modsFolderPath) || !Directory.Exists(_modsFolderPath))
             {
                 MessageBox.Show(
-                    LanguageManager.IsSpanish ? "Selecciona la carpeta Mods primero." : "Select the Mods folder first.",
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish ? "Selecciona la carpeta Mods primero." : "Select the Mods folder first.",
                     "Error",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
@@ -205,23 +206,23 @@ namespace ModernDesign.MVVM.View
 
                 UpdateModCount();
                 UpdateStatus(
-                    LanguageManager.IsSpanish
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish
                         ? $"✅ Se reactivaron {enabledCount} mods"
                         : $"✅ Enabled {enabledCount} mods",
                     false);
 
                 MessageBox.Show(
-                    LanguageManager.IsSpanish
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish
                         ? $"Se reactivaron {enabledCount} mods."
                         : $"Enabled {enabledCount} mods.",
-                    LanguageManager.IsSpanish ? "Listo" : "Done",
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish ? "Listo" : "Done",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
                 UpdateStatus(
-                    LanguageManager.IsSpanish ? $"❌ Error: {ex.Message}" : $"❌ Error: {ex.Message}",
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish ? $"❌ Error: {ex.Message}" : $"❌ Error: {ex.Message}",
                     true);
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -238,7 +239,7 @@ namespace ModernDesign.MVVM.View
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog
             {
-                Description = LanguageManager.IsSpanish
+                Description = ServiceLocator.Get<ILanguageManager>().IsSpanish
                     ? "Selecciona la carpeta Mods de The Sims 4"
                     : "Select The Sims 4 Mods folder"
             };
@@ -247,7 +248,7 @@ namespace ModernDesign.MVVM.View
             {
                 _modsFolderPath = dialog.SelectedPath;
                 UpdateStatus(
-                    LanguageManager.IsSpanish
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish
                         ? $"📁 Carpeta seleccionada: {_modsFolderPath}"
                         : $"📁 Folder selected: {_modsFolderPath}",
                     false);

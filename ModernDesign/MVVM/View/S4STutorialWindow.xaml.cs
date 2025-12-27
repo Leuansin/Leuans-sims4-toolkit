@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Shapes;
+using LeuanS4ToolKit.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -41,7 +42,7 @@ namespace ModernDesign.MVVM.View
 
         private void LoadSteps()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             _steps = GetStepsForCategory(_category, es);
         }
 
@@ -356,7 +357,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             string categoryName = GetCategoryDisplayName(_category, es);
             SubtitleText.Text = es ? $"Aprende a crear: {categoryName}" : $"Learn to create: {categoryName}";
@@ -385,7 +386,7 @@ namespace ModernDesign.MVVM.View
         {
             if (_steps == null || _steps.Count == 0) return;
 
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             var step = _steps[_currentStep];
 
             StepIndicator.Text = es

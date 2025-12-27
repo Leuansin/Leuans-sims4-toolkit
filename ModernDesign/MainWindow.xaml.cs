@@ -15,6 +15,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using LeuanS4ToolKit.Core;
+using ModernDesign.Localization;
 
 namespace ModernDesign
 {
@@ -24,6 +26,7 @@ namespace ModernDesign
         private DispatcherTimer _ramMonitorTimer;
         private readonly Random _rng = new Random();
         private bool _ramWarningShown = false;
+        private readonly ILanguageManager _lm;
 
         private bool isChatbotOpen = false;
         private List<ChatbotResponse> chatbotResponses = new List<ChatbotResponse>();
@@ -37,13 +40,14 @@ namespace ModernDesign
             public string Action { get; set; } // acción a ejecutar
 
         }
-
+        
         public MainWindow()
         {
             InitializeComponent();
             StartCleanerTimer();
             StartRamMonitorTimer();
 
+            _lm = ServiceLocator.Get<ILanguageManager>();
             // Limpieza también cuando se cierre la ventana principal
             this.Closed += MainWindow_Closed;
         }
@@ -113,18 +117,10 @@ namespace ModernDesign
 
         private void ShowRamWarning(double ramUsageMB)
         {
-            string languageCode = GetLanguageCode();
-            bool isSpanish = languageCode.StartsWith("es", StringComparison.OrdinalIgnoreCase);
-
-            string message = isSpanish
-                ? $"⚠️ Alto uso de RAM detectado ({ramUsageMB:F0} MB)\n\n" +
-                  "Recomendamos DESACTIVAR la opción 'Preload Images on Startup' en Settings para reducir el consumo de memoria.\n\n" +
-                  "Esto mejorará significativamente el rendimiento de la aplicación."
-                : $"⚠️ High RAM usage detected ({ramUsageMB:F0} MB)\n\n" +
-                  "We strongly recommend DISABLING the 'Preload Images on Startup' option in Settings to reduce memory consumption.\n\n" +
-                  "This will significantly improve application performance.";
-
-            string title = isSpanish ? "Advertencia de Memoria" : "Memory Warning";
+            var title = _lm.Get("RamWarningTitle");
+            var message = string.Format(
+                _lm.Get("RamWarningMessage"), 
+                ramUsageMB.ToString("F0"));
 
             MessageBox.Show(
                 message,

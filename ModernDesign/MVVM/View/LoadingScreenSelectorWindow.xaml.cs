@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using LeuanS4ToolKit.Core;
 using WinForms = System.Windows.Forms;
 
 namespace ModernDesign.MVVM.View
@@ -32,7 +33,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             this.Title = es ? "Selector de Pantallas de Carga" : "Loading Screen Selector";
             TitleText.Text = es ? "🎨 Selector de Pantallas de Carga" : "🎨 Loading Screen Selector";
@@ -183,7 +184,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
                 string[] possiblePaths = new string[]
@@ -206,7 +207,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 ModsFolderText.Text = es ? "Error detectando carpeta" : "Error detecting folder";
             }
         }
@@ -222,7 +223,7 @@ namespace ModernDesign.MVVM.View
 
         private void CreateLoadingScreenCards()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             foreach (var screen in _loadingScreens)
             {
@@ -389,7 +390,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 if (string.IsNullOrEmpty(_modsFolder) || !Directory.Exists(_modsFolder))
                 {
@@ -437,7 +438,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error descargando fix: " : "Error downloading fix: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -454,7 +455,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 Button btn = sender as Button;
                 LoadingScreenItem screen = btn.Tag as LoadingScreenItem;
 
@@ -507,7 +508,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error descargando: " : "Error downloading: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -568,7 +569,7 @@ namespace ModernDesign.MVVM.View
 
         private void RefreshAllButtons()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             foreach (Border card in LoadingScreensPanel.Children)
             {
@@ -611,7 +612,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 // Obtener el estado actual
                 bool isCurrentlyEnabled = GetRandomizeLoadingScreenSetting();
@@ -667,7 +668,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error: " : "Error: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -804,7 +805,7 @@ namespace ModernDesign.MVVM.View
 
         private void UpdateRandomizeButtonState()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             bool isEnabled = GetRandomizeLoadingScreenSetting();
 
             if (isEnabled)
@@ -848,7 +849,7 @@ namespace ModernDesign.MVVM.View
 
         private async void ChangeFolderButton_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             var dialog = new WinForms.FolderBrowserDialog
             {
