@@ -19,7 +19,7 @@
   "SettingsViewRefreshBtn": "🔄 Actualizar Estado",
   "OpenFolderBtn": "📁 Abrir Carpeta",
   "ResetBtn": "🔧 Resetear Config",
-  "MainWindowSettingsRadio": "⚙️ Configuración",
+  "MainWindowSettingsText": "⚙️ Configuración",
   "MainSelectionViewHeaderText": "🎮 ¿Qué quieres hacer?",
   "MainSelectionViewSubHeaderText": "Selecciona una opción para continuar",
   "MainSelectionViewDownloadDLCsBtn": "Descargar DLCs",
@@ -158,7 +158,7 @@
   "CheatsGuideView.RemoveAllMoodletsDescription": "Elimina todos los estados de ánimo del Sim.",
   "CheatsGuideView.AllCategory": "Todos",
   "CheatsGuideView.FavoritesCategory": "⭐ Favoritos",
-  "CheatsGuideView.NoCheatsFound": "No se encontraron trucos"
-
-
+  "CheatsGuideView.NoCheatsFound": "No se encontraron trucos",
+  "SettingsView.UpdaterLatestInstalled": "✓ Actualizado",
+  "SettingsView.UpdaterNewVersionAvailable": "⬆ Actualización disponible"
 }

@@ -1,16 +1,30 @@
 ﻿using ModernDesign.Core;
 using ModernDesign.MVVM.View;
 using System.Windows.Input;
+using LeuanS4ToolKit.Core;
 using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.ViewModel
 {
-    public class MainViewModel : ObservableObject
+    public class MainViewModel : LocalizedObservableObject
     {
         private object _currentView;
 
-        public string SettingsText => LanguageManager.Get("MainWindowSettingsRadio");
+        [LocalizeKey("MainWindowSettingsText")]
+        public string SettingsText => _lm.Get(GetPropertyKey());
+
+        [LocalizeKey("MainWindowHomeText")]
+        public string HomeText => _lm.Get(GetPropertyKey());
         
+        [LocalizeKey("MainWindowDiscoveryText")]
+        public string DiscoveryText => _lm.Get(GetPropertyKey());
+        
+         [LocalizeKey("MainWindowFpsBoosterText")]
+         public string FpsBoosterText => _lm.Get(GetPropertyKey());
+        
+         [LocalizeKey("MainWindowSocialText")]
+         public string SocialText => _lm.Get(GetPropertyKey());
+
         public object CurrentView
         {
             get => _currentView;
@@ -31,30 +45,15 @@ namespace ModernDesign.MVVM.ViewModel
         {
             CurrentView = new HomeView();
 
-            HomeViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = new HomeView();
-            });
+            HomeViewCommand = new RelayCommand(o => { CurrentView = new HomeView(); });
 
-            DiscoveryViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = new DiscoveryView();
-            });
+            DiscoveryViewCommand = new RelayCommand(o => { CurrentView = new DiscoveryView(); });
 
-            FPSBoosterViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = new FPSBoosterView();
-            });
+            FPSBoosterViewCommand = new RelayCommand(o => { CurrentView = new FPSBoosterView(); });
 
-            SocialViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = new SocialView();
-            });
+            SocialViewCommand = new RelayCommand(o => { CurrentView = new SocialView(); });
 
-            SettingsViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = new SettingsView();
-            });
+            SettingsViewCommand = new RelayCommand(o => { CurrentView = new SettingsView(); });
         }
     }
 }

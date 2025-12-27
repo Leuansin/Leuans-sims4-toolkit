@@ -6,6 +6,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
+using LeuanS4ToolKit.Core;
 using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
@@ -24,7 +25,7 @@ namespace ModernDesign.MVVM.View
         #region Language
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             Title = es ? "Hub de Modding Intermedio" : "Intermediate Modding Hub";
             TitleText.Text = es ? "🛠️ Hub de Modding Intermedio" : "🛠️ Intermediate Modding Hub";
             SubtitleText.Text = es ? "Lleva tus habilidades de modding al siguiente nivel" : "Take your modding skills to the next level";
@@ -63,7 +64,7 @@ namespace ModernDesign.MVVM.View
 
         private void LoadVideosAndDocs()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             VideosList.Items.Clear();
             DocsList.Items.Clear();
 
@@ -132,7 +133,7 @@ namespace ModernDesign.MVVM.View
 
         private void ShowLessonMessage(int lesson)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             string title = "", msg = "";
             switch (lesson)
             {

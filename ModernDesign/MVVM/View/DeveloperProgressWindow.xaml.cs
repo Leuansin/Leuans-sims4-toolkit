@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using LeuanS4ToolKit.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -19,8 +20,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
-
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             TitleText.Text = es ? "Progreso Developer Mode" : "Developer Mode Progress";
             SubtitleText.Text = es ? "Completa todos los requisitos para desbloquear" : "Complete all requirements to unlock";
 
@@ -38,7 +38,7 @@ namespace ModernDesign.MVVM.View
 
         private void LoadProgress()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             var progress = DeveloperModeManager.GetProgress();
 
             // Overall Progress

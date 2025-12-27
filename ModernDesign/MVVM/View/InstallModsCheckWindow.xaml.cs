@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media;
+using LeuanS4ToolKit.Core;
 using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
@@ -21,7 +22,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             Title = es ? "Instalar mods – Comprobación" : "Install Mods – Checker";
             WindowTitleText.Text = es ? "Instalar mods – Comprobación" : "Install Mods – Checker";
             CheckerIntroText.Text = es ? "Voy a buscar automáticamente la carpeta Mods en tus documentos de The Sims 4." : "I'll automatically search for the Mods folder in your The Sims 4 documents.";
@@ -47,7 +48,7 @@ namespace ModernDesign.MVVM.View
                 };
 
                 _modsFolderPath = null;
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 string header = es ? "Buscando carpeta Mods en:\n" : "Searching Mods folder in:\n";
                 string infoText = header;
 
@@ -73,7 +74,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                ShowError(LanguageManager.IsSpanish ? $"Ocurrió un error al revisar las rutas:\n{ex.Message}" : $"An error occurred while checking paths:\n{ex.Message}");
+                ShowError(ServiceLocator.Get<ILanguageManager>().IsSpanish ? $"Ocurrió un error al revisar las rutas:\n{ex.Message}" : $"An error occurred while checking paths:\n{ex.Message}");
             }
         }
 
@@ -97,7 +98,7 @@ namespace ModernDesign.MVVM.View
         {
             using (var dialog = new FolderBrowserDialog())
             {
-                dialog.Description = LanguageManager.IsSpanish ? "Selecciona la carpeta de documentos de The Sims 4" : "Select The Sims 4 documents folder";
+                dialog.Description = ServiceLocator.Get<ILanguageManager>().IsSpanish ? "Selecciona la carpeta de documentos de The Sims 4" : "Select The Sims 4 documents folder";
                 dialog.ShowNewFolderButton = false;
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     ManualPathTextBox.Text = dialog.SelectedPath;
@@ -106,7 +107,7 @@ namespace ModernDesign.MVVM.View
 
         private void SelectDifferentFolder_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             using (var dialog = new FolderBrowserDialog())
             {
                 dialog.Description = es ? "Selecciona la carpeta de documentos de The Sims 4 (donde está o debería estar la carpeta Mods)" : "Select The Sims 4 documents folder (where the Mods folder is or should be)";
@@ -151,7 +152,7 @@ namespace ModernDesign.MVVM.View
         private void VerifyManualPath_Click(object sender, RoutedEventArgs e)
         {
             string basePath = ManualPathTextBox.Text?.Trim();
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             if (string.IsNullOrWhiteSpace(basePath)) { ShowError(es ? "Por favor ingresa una ruta válida." : "Please enter a valid path."); return; }
 
@@ -179,7 +180,7 @@ namespace ModernDesign.MVVM.View
                 try { Process.Start(new ProcessStartInfo { FileName = _modsFolderPath, UseShellExecute = true }); }
                 catch (Exception ex)
                 {
-                    System.Windows.MessageBox.Show(LanguageManager.IsSpanish ? $"No se pudo abrir la carpeta:\n{ex.Message}" : $"Could not open folder:\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show(ServiceLocator.Get<ILanguageManager>().IsSpanish ? $"No se pudo abrir la carpeta:\n{ex.Message}" : $"Could not open folder:\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

@@ -19,7 +19,11 @@
   "SettingsViewRefreshBtn": "🔄 Refresh Status",
   "OpenFolderBtn": "📁 Open Data Folder",
   "ResetBtn": "🔧 Reset Settings",
-  "MainWindowSettingsRadio" : "⚙️ Settings",
+  "MainWindowSettingsText" : "⚙️ Settings",
+  "MainWindowSocialText" : "\uD83D\uDC65  Social",
+  "MainWindowFpsBoosterText" : "⚡  FPS Booster",
+  "MainWindowDiscoveryText" : "\uD83D\uDD0D  Discovery",
+  "MainWindowHomeText" : "\uD83C\uDFE0  Home",
   "MainSelectionViewHeaderText": "🎮 What do you want to do?",
   "MainSelectionViewSubHeaderText": "Select an option to continue",
   "MainSelectionViewDownloadDLCsBtn": "Download DLC's",
@@ -157,6 +161,7 @@
   "CheatsGuideView.RemoveAllMoodletsDescription": "Removes all moodlets from the Sim.",
   "CheatsGuideView.AllCategory": "All",
   "CheatsGuideView.FavoritesCategory": "⭐ Favorites",
-  "CheatsGuideView.NoCheatsFound": "No cheats found"
-
+  "CheatsGuideView.NoCheatsFound": "No cheats found",
+  "SettingsView.UpdaterLatestInstalled": "✓ Up to date",
+  "SettingsView.UpdaterNewVersionAvailable": "⬆ Update available"
 }

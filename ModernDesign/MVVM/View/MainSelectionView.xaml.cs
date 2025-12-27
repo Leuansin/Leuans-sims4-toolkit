@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using LeuanS4ToolKit.Core;
 using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
 {
     public partial class MainSelectionView : UserControl
     {
+        private readonly ILanguageManager _lm;
+
         public MainSelectionView()
         {
+            _lm = ServiceLocator.Get<ILanguageManager>();
             InitializeComponent();
             ApplyLanguage();
         }
@@ -17,12 +21,12 @@ namespace ModernDesign.MVVM.View
         {
             bool isSpanish = IsSpanishLanguage();
 
-            HeaderText.Text = LanguageManager.Get("MainSelectionViewHeaderText");
-            SubHeaderText.Text = LanguageManager.Get("MainSelectionViewSubHeaderText");
-            DownloadDLCsBtn.Content = LanguageManager.Get("MainSelectionViewDownloadDLCsBtn");
-            DownloadDLCsBtn.ToolTip = LanguageManager.Get("MainSelectionViewDownloadDLCsBtnTooltip");
-            UpdateGameBtn.Content = LanguageManager.Get("MainSelectionViewUpdateGameBtn");
-            UpdateGameBtn.ToolTip = LanguageManager.Get("MainSelectionViewUpdateGameBtnTooltip");
+            HeaderText.Text = _lm.Get("MainSelectionViewHeaderText");
+            SubHeaderText.Text = _lm.Get("MainSelectionViewSubHeaderText");
+            DownloadDLCsBtn.Content = _lm.Get("MainSelectionViewDownloadDLCsBtn");
+            DownloadDLCsBtn.ToolTip = _lm.Get("MainSelectionViewDownloadDLCsBtnTooltip");
+            UpdateGameBtn.Content = _lm.Get("MainSelectionViewUpdateGameBtn");
+            UpdateGameBtn.ToolTip = _lm.Get("MainSelectionViewUpdateGameBtnTooltip");
         }
 
         private static bool IsSpanishLanguage()
@@ -70,9 +74,9 @@ namespace ModernDesign.MVVM.View
 
         private void UpdateGameBtn_Click(object sender, RoutedEventArgs e)
         {
-            string message = LanguageManager.Get("MainSelectionViewUpdateWarning");
+            string message = _lm.Get("MainSelectionViewUpdateWarning");
 
-            string title = LanguageManager.Get("Warning");
+            string title = _lm.Get("Warning");
 
             var result = MessageBox.Show(message, title, MessageBoxButton.YesNo, MessageBoxImage.Warning);
 

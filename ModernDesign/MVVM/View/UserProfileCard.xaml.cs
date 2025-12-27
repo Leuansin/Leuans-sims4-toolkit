@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
+using LeuanS4ToolKit.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -151,7 +152,7 @@ namespace ModernDesign.MVVM.View
 
         public void LoadProfile()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             var profile = ProfileManager.CurrentProfile;
 
             if (profile != null)

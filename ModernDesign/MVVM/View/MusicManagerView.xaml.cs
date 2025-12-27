@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 using System.IO.Compression;
-
+using LeuanS4ToolKit.Core;
 using WpfMessageBox = System.Windows.MessageBox;
 
 namespace ModernDesign.MVVM.View
@@ -60,7 +60,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             this.Title = es ? "Gestor de Música - Descargas Personalizadas" : "Music Manager - Custom Downloads";
 
@@ -125,7 +125,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
                 string[] possiblePaths = new string[]
@@ -157,7 +157,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 WpfMessageBox.Show(
                     $"{(es ? "Error detectando carpeta: " : "Error detecting folder: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -179,7 +179,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 musicDownloaderPath = Path.Combine(appDataPath, "Leuan's - Sims 4 ToolKit", "music_downloader");
@@ -202,7 +202,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 WpfMessageBox.Show(
                     $"{(es ? "Error inicializando descargador: " : "Error initializing downloader: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -215,7 +215,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 ShowProgress(es ? "Descargando LeuMusic..." : "Downloading LeuMusic...", 0);
 
@@ -286,7 +286,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 HideProgress();
                 WpfMessageBox.Show(
                     $"{(es ? "Error descargando/extrayendo: " : "Error downloading/extracting: ")}{ex.Message}",
@@ -313,7 +313,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 string query = SearchBox.Text.Trim();
 
                 if (string.IsNullOrEmpty(query))
@@ -353,7 +353,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 isSearching = false;
                 LoadingSearchPanel.Visibility = Visibility.Collapsed;
                 WpfMessageBox.Show(
@@ -615,7 +615,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 if (string.IsNullOrEmpty(customMusicPath) || !Directory.Exists(customMusicPath))
                 {
@@ -732,7 +732,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 HideProgress();
                 WpfMessageBox.Show(
                     $"{(es ? "Error descargando: " : "Error downloading: ")}{ex.Message}",
@@ -746,7 +746,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 DownloadsGrid.Children.Clear();
                 downloadedSongs.Clear();
@@ -798,7 +798,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 WpfMessageBox.Show(
                     $"{(es ? "Error cargando descargas: " : "Error loading downloads: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -954,7 +954,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 WpfMessageBox.Show(
                     $"{(es ? "Error reproduciendo: " : "Error playing: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -967,7 +967,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 var result = WpfMessageBox.Show(
                     es ? $"¿Eliminar '{song.Title}'?" : $"Delete '{song.Title}'?",
@@ -988,7 +988,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 WpfMessageBox.Show(
                     $"{(es ? "Error eliminando: " : "Error deleting: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -1031,7 +1031,7 @@ namespace ModernDesign.MVVM.View
         {
             if (string.IsNullOrEmpty(customMusicPath) || !Directory.Exists(customMusicPath))
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 WpfMessageBox.Show(
                     es ? "Por favor selecciona la carpeta 'Custom Music' primero." : "Please select the 'Custom Music' folder first.",
                     es ? "Carpeta No Configurada" : "Folder Not Configured",
@@ -1053,7 +1053,7 @@ namespace ModernDesign.MVVM.View
 
         private void ChangeFolderButton_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             var dialog = new System.Windows.Forms.FolderBrowserDialog
             {

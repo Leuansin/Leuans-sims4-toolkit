@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using LeuanS4ToolKit.Core;
 using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
@@ -14,28 +15,25 @@ namespace ModernDesign.MVVM.View
     public partial class CheatsGuideView : Window
     {
         private List<CheatItem> _allCheats = new List<CheatItem>();
-        private string _selectedCategory = LanguageManager.Get("CheatsGuideView.AllCategory");
+        private string SelectedCategory
+        {
+            get => _selectedCategory;
+            set => _selectedCategory = value;
+        } 
         private HashSet<string> _favoriteCommands = new HashSet<string>();
+        private readonly ILanguageManager _lm;
+        
+        private string _selectedCategory;
 
         public CheatsGuideView()
         {
+            _lm = ServiceLocator.Get<ILanguageManager>();
             InitializeComponent();
             LoadFavorites();
-            ApplyLanguage();
             InitializeCheats();
+            SelectedCategory = _lm.Get("CheatsGuideView.AllCategory");
         }
-
-        private void ApplyLanguage()
-        {
-            Title = LanguageManager.Get("CheatsGuide.Title");
-            TitleText.Text = LanguageManager.Get("CheatsGuide.TitleText");
-            SubtitleText.Text = LanguageManager.Get("CheatsGuide.SubtitleText");
-            SearchBox.Text = LanguageManager.Get("CheatsGuide.SearchBox");
-            ExportAllButton.Content = LanguageManager.Get("CheatsGuide.ExportAllButton");
-            ExportAllButton.ToolTip = LanguageManager.Get("CheatsGuide.ExportAllButtonTooltip");
-            ExportFavoritesButton.Content = LanguageManager.Get("CheatsGuide.ExportFavoritesButton");
-            ExportFavoritesButton.ToolTip = LanguageManager.Get("CheatsGuide.ExportFavoritesButtonTooltip");
-        }
+        
 
         private void LoadFavorites()
         {
@@ -84,142 +82,140 @@ namespace ModernDesign.MVVM.View
 
         private void InitializeCheats()
         {
-            bool es = LanguageManager.IsSpanish;
-
-            _allCheats = new List<CheatItem>
+           _allCheats = new List<CheatItem>
             {
                 // BASIC CHEATS
                 new CheatItem
                 {
-                    Category = LanguageManager.Get("CheatsGuideView.BasicCategory"),
+                    Category = _lm.Get("CheatsGuideView.BasicCategory"),
                     Command = "testingcheats true",
-                    Name = LanguageManager.Get("CheatsGuideView.EnableCheatsName"),
-                    Description = LanguageManager.Get("CheatsGuideView.EnableCheatsDescription"),
-                    Usage = LanguageManager.Get("CheatsGuideView.EnableCheatsUsage")
+                    Name = _lm.Get("CheatsGuideView.EnableCheatsName"),
+                    Description = _lm.Get("CheatsGuideView.EnableCheatsDescription"),
+                    Usage = _lm.Get("CheatsGuideView.EnableCheatsUsage")
                 },
                 new CheatItem
                 {
-                    Category = LanguageManager.Get("CheatsGuideView.BasicCategory"),
+                    Category = _lm.Get("CheatsGuideView.BasicCategory"),
                     Command = "testingcheats false",
-                    Name = LanguageManager.Get("CheatsGuideView.DisableCheatsName"),
-                    Description = LanguageManager.Get("CheatsGuideView.DisableCheatsDescription"),
-                    Usage = LanguageManager.Get("CheatsGuideView.DisableCheatsUsage")
+                    Name = _lm.Get("CheatsGuideView.DisableCheatsName"),
+                    Description = _lm.Get("CheatsGuideView.DisableCheatsDescription"),
+                    Usage = _lm.Get("CheatsGuideView.DisableCheatsUsage")
                 },
                 new CheatItem
                 {
-                    Category = LanguageManager.Get("CheatsGuideView.BasicCategory"),
+                    Category = _lm.Get("CheatsGuideView.BasicCategory"),
                     Command = "headlineeffects on/off",
-                    Name = LanguageManager.Get("CheatsGuideView.HeadlineEffectsName"),
-                    Description = LanguageManager.Get("CheatsGuideView.HeadlineEffectsDescription"),
-                    Usage = LanguageManager.Get("CheatsGuideView.HeadlineEffectsUsage")
+                    Name = _lm.Get("CheatsGuideView.HeadlineEffectsName"),
+                    Description = _lm.Get("CheatsGuideView.HeadlineEffectsDescription"),
+                    Usage = _lm.Get("CheatsGuideView.HeadlineEffectsUsage")
                 },
                 new CheatItem
                 {
-                    Category = LanguageManager.Get("CheatsGuideView.BasicCategory"),
+                    Category = _lm.Get("CheatsGuideView.BasicCategory"),
                     Command = "fps on/off",
-                    Name = LanguageManager.Get("CheatsGuideView.FPSName"),
-                    Description = LanguageManager.Get("CheatsGuideView.FPSDescription"),
-                    Usage = LanguageManager.Get("CheatsGuideView.FPSUsage")
+                    Name = _lm.Get("CheatsGuideView.FPSName"),
+                    Description = _lm.Get("CheatsGuideView.FPSDescription"),
+                    Usage = _lm.Get("CheatsGuideView.FPSUsage")
                 },
                 new CheatItem
                 {
-                    Category = LanguageManager.Get("CheatsGuideView.BasicCategory"),
+                    Category = _lm.Get("CheatsGuideView.BasicCategory"),
                     Command = "fullscreen",
-                    Name = LanguageManager.Get("CheatsGuideView.FullscreenName"),
-                    Description = LanguageManager.Get("CheatsGuideView.FullscreenDescription"),
-                    Usage = LanguageManager.Get("CheatsGuideView.FullscreenUsage")
+                    Name = _lm.Get("CheatsGuideView.FullscreenName"),
+                    Description = _lm.Get("CheatsGuideView.FullscreenDescription"),
+                    Usage = _lm.Get("CheatsGuideView.FullscreenUsage")
                 },
                 
                 new CheatItem
                 {
-                Category = LanguageManager.Get("CheatsGuideView.BasicCategory"),
+                Category = _lm.Get("CheatsGuideView.BasicCategory"),
                 Command = "hovereffects on/off",
-                Name = LanguageManager.Get("CheatsGuideView.HoverEffectsName"),
-                Description = LanguageManager.Get("CheatsGuideView.HoverEffectsDescription"),
+                Name = _lm.Get("CheatsGuideView.HoverEffectsName"),
+                Description = _lm.Get("CheatsGuideView.HoverEffectsDescription"),
                 Usage = "hovereffects on / hovereffects off"
             },
 
 // MONEY CHEATS
             new CheatItem
             {
-                Category = LanguageManager.Get("CheatsGuideView.MoneyCategory"),
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
                 Command = "motherlode",
-                Name = LanguageManager.Get("CheatsGuideView.MotherlodeName"),
-                Description = LanguageManager.Get("CheatsGuideView.MotherlodeDescription"),
+                Name = _lm.Get("CheatsGuideView.MotherlodeName"),
+                Description = _lm.Get("CheatsGuideView.MotherlodeDescription"),
                 Usage = "motherlode"
             },
             new CheatItem
             {
-                Category = LanguageManager.Get("CheatsGuideView.MoneyCategory"),
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
                 Command = "kaching",
-                Name = LanguageManager.Get("CheatsGuideView.KachingName"),
-                Description = LanguageManager.Get("CheatsGuideView.KachingDescription"),
+                Name = _lm.Get("CheatsGuideView.KachingName"),
+                Description = _lm.Get("CheatsGuideView.KachingDescription"),
                 Usage = "kaching"
             },
             new CheatItem
             {
-                Category = LanguageManager.Get("CheatsGuideView.MoneyCategory"),
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
                 Command = "rosebud",
-                Name = LanguageManager.Get("CheatsGuideView.RosebudName"),
-                Description = LanguageManager.Get("CheatsGuideView.RosebudDescription"),
+                Name = _lm.Get("CheatsGuideView.RosebudName"),
+                Description = _lm.Get("CheatsGuideView.RosebudDescription"),
                 Usage = "rosebud"
             },
             new CheatItem
             {
-                Category = LanguageManager.Get("CheatsGuideView.MoneyCategory"),
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
                 Command = "money [cantidad]",
-                Name = LanguageManager.Get("CheatsGuideView.ExactMoneyName"),
-                Description = LanguageManager.Get("CheatsGuideView.ExactMoneyDescription"),
+                Name = _lm.Get("CheatsGuideView.ExactMoneyName"),
+                Description = _lm.Get("CheatsGuideView.ExactMoneyDescription"),
                 Usage = "money 1000000 (replace with desired amount)"
             },
             new CheatItem
             {
-                Category = LanguageManager.Get("CheatsGuideView.MoneyCategory"),
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
                 Command = "household.autopay_bills true/false",
-                Name = LanguageManager.Get("CheatsGuideView.AutoPayBillsName"),
-                Description = LanguageManager.Get("CheatsGuideView.AutoPayBillsDescription"),
+                Name = _lm.Get("CheatsGuideView.AutoPayBillsName"),
+                Description = _lm.Get("CheatsGuideView.AutoPayBillsDescription"),
                 Usage = "household.autopay_bills true / false"
             },
             new CheatItem
             {
-                Category = LanguageManager.Get("CheatsGuideView.MoneyCategory"),
+                Category = _lm.Get("CheatsGuideView.MoneyCategory"),
                 Command = "FreeRealEstate on/off",
-                Name = LanguageManager.Get("CheatsGuideView.FreeRealEstateName"),
-                Description = LanguageManager.Get("CheatsGuideView.FreeRealEstateDescription"),
+                Name = _lm.Get("CheatsGuideView.FreeRealEstateName"),
+                Description = _lm.Get("CheatsGuideView.FreeRealEstateDescription"),
                 Usage = "FreeRealEstate on / off"
             },
 
 // NEEDS CHEATS
             new CheatItem
             {
-                Category = LanguageManager.Get("CheatsGuideView.NeedsCategory"),
+                Category = _lm.Get("CheatsGuideView.NeedsCategory"),
                 Command = "fillmotive motive_[tipo]",
-                Name = LanguageManager.Get("CheatsGuideView.FillNeedName"),
-                Description = LanguageManager.Get("CheatsGuideView.FillNeedDescription"),
+                Name = _lm.Get("CheatsGuideView.FillNeedName"),
+                Description = _lm.Get("CheatsGuideView.FillNeedDescription"),
                 Usage = "fillmotive motive_hunger"
             },
             new CheatItem
             {
-                Category = LanguageManager.Get("CheatsGuideView.NeedsCategory"),
+                Category = _lm.Get("CheatsGuideView.NeedsCategory"),
                 Command = "sims.fill_all_commodities",
-                Name = LanguageManager.Get("CheatsGuideView.FillAllNeedsName"),
-                Description = LanguageManager.Get("CheatsGuideView.FillAllNeedsDescription"),
+                Name = _lm.Get("CheatsGuideView.FillAllNeedsName"),
+                Description = _lm.Get("CheatsGuideView.FillAllNeedsDescription"),
                 Usage = "sims.fill_all_commodities"
             },
             new CheatItem
             {
-                Category = LanguageManager.Get("CheatsGuideView.NeedsCategory"),
+                Category = _lm.Get("CheatsGuideView.NeedsCategory"),
                 Command = "sims.disable_all_commodities",
-                Name = LanguageManager.Get("CheatsGuideView.DisableNeedsDecayName"),
-                Description = LanguageManager.Get("CheatsGuideView.DisableNeedsDecayDescription"),
+                Name = _lm.Get("CheatsGuideView.DisableNeedsDecayName"),
+                Description = _lm.Get("CheatsGuideView.DisableNeedsDecayDescription"),
                 Usage = "sims.disable_all_commodities"
             },
             new CheatItem
             {
-                Category = LanguageManager.Get("CheatsGuideView.NeedsCategory"),
+                Category = _lm.Get("CheatsGuideView.NeedsCategory"),
                 Command = "sims.enable_all_commodities",
-                Name = LanguageManager.Get("CheatsGuideView.EnableNeedsDecayName"),
-                Description = LanguageManager.Get("CheatsGuideView.EnableNeedsDecayDescription"),
+                Name = _lm.Get("CheatsGuideView.EnableNeedsDecayName"),
+                Description = _lm.Get("CheatsGuideView.EnableNeedsDecayDescription"),
                 Usage = "sims.enable_all_commodities"
             }
 ,
@@ -227,68 +223,68 @@ namespace ModernDesign.MVVM.View
                 // SKILLS CHEATS
                 new CheatItem
                 {
-                    Category = LanguageManager.Get("CheatsGuideView.SkillsCategory"),
+                    Category = _lm.Get("CheatsGuideView.SkillsCategory"),
                     Command = "stats.set_skill_level Major_[habilidad] [nivel]",
-                    Name = LanguageManager.Get("CheatsGuideView.SetMajorSkillName"),
-                    Description = LanguageManager.Get("CheatsGuideView.SetMajorSkillDescription"),
+                    Name = _lm.Get("CheatsGuideView.SetMajorSkillName"),
+                    Description = _lm.Get("CheatsGuideView.SetMajorSkillDescription"),
                     Usage = "stats.set_skill_level Major_Painting 10"
                 },
                 new CheatItem
                 {
-                    Category = LanguageManager.Get("CheatsGuideView.SkillsCategory"),
+                    Category = _lm.Get("CheatsGuideView.SkillsCategory"),
                     Command = "stats.set_skill_level Minor_[habilidad] [nivel]",
-                    Name = LanguageManager.Get("CheatsGuideView.SetMinorSkillName"),
-                    Description = LanguageManager.Get("CheatsGuideView.SetMinorSkillDescription"),
+                    Name = _lm.Get("CheatsGuideView.SetMinorSkillName"),
+                    Description = _lm.Get("CheatsGuideView.SetMinorSkillDescription"),
                     Usage = "stats.set_skill_level Minor_Dancing 5"
                 },
                 new CheatItem
                 {
-                    Category = LanguageManager.Get("CheatsGuideView.SkillsCategory"),
+                    Category = _lm.Get("CheatsGuideView.SkillsCategory"),
                     Command = "stats.set_skill_level Skill_Child_[habilidad] [nivel]",
-                    Name = LanguageManager.Get("CheatsGuideView.ChildSkillName"),
-                    Description = LanguageManager.Get("CheatsGuideView.ChildSkillDescription"),
+                    Name = _lm.Get("CheatsGuideView.ChildSkillName"),
+                    Description = _lm.Get("CheatsGuideView.ChildSkillDescription"),
                     Usage = "stats.set_skill_level Skill_Child_Creativity 10"
                 },
                 new CheatItem
                 {
-                    Category = LanguageManager.Get("CheatsGuideView.SkillsCategory"),
+                    Category = _lm.Get("CheatsGuideView.SkillsCategory"),
                     Command = "stats.set_skill_level Skill_Toddler_[habilidad] [nivel]",
-                    Name = LanguageManager.Get("CheatsGuideView.ToddlerSkillName"),
-                    Description = LanguageManager.Get("CheatsGuideView.ToddlerSkillDescription"),
+                    Name = _lm.Get("CheatsGuideView.ToddlerSkillName"),
+                    Description = _lm.Get("CheatsGuideView.ToddlerSkillDescription"),
                     Usage = "stats.set_skill_level Skill_Toddler_Thinking 5"
                 }
 ,
 // CAREER CHEATS
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.CareersCategory"),
+    Category = _lm.Get("CheatsGuideView.CareersCategory"),
     Command = "careers.promote [carrera]",
-    Name = LanguageManager.Get("CheatsGuideView.InstantPromotionName"),
-    Description = LanguageManager.Get("CheatsGuideView.InstantPromotionDescription"),
+    Name = _lm.Get("CheatsGuideView.InstantPromotionName"),
+    Description = _lm.Get("CheatsGuideView.InstantPromotionDescription"),
     Usage = "careers.promote Adult_Painter"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.CareersCategory"),
+    Category = _lm.Get("CheatsGuideView.CareersCategory"),
     Command = "careers.demote [carrera]",
-    Name = LanguageManager.Get("CheatsGuideView.DemoteCareerName"),
-    Description = LanguageManager.Get("CheatsGuideView.DemoteCareerDescription"),
+    Name = _lm.Get("CheatsGuideView.DemoteCareerName"),
+    Description = _lm.Get("CheatsGuideView.DemoteCareerDescription"),
     Usage = "careers.demote Adult_Painter"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.CareersCategory"),
+    Category = _lm.Get("CheatsGuideView.CareersCategory"),
     Command = "careers.add_career [carrera]",
-    Name = LanguageManager.Get("CheatsGuideView.AddCareerName"),
-    Description = LanguageManager.Get("CheatsGuideView.AddCareerDescription"),
+    Name = _lm.Get("CheatsGuideView.AddCareerName"),
+    Description = _lm.Get("CheatsGuideView.AddCareerDescription"),
     Usage = "careers.add_career Adult_Painter"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.CareersCategory"),
+    Category = _lm.Get("CheatsGuideView.CareersCategory"),
     Command = "careers.remove_career [carrera]",
-    Name = LanguageManager.Get("CheatsGuideView.RemoveCareerName"),
-    Description = LanguageManager.Get("CheatsGuideView.RemoveCareerDescription"),
+    Name = _lm.Get("CheatsGuideView.RemoveCareerName"),
+    Description = _lm.Get("CheatsGuideView.RemoveCareerDescription"),
     Usage = "careers.remove_career Adult_Painter"
 }
 ,
@@ -296,184 +292,184 @@ new CheatItem
 // RELATIONSHIPS CHEATS
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.RelationshipsCategory"),
+    Category = _lm.Get("CheatsGuideView.RelationshipsCategory"),
     Command = "modifyrelationship [Sim1] [Sim2] [cantidad] LTR_Friendship_Main",
-    Name = LanguageManager.Get("CheatsGuideView.ModifyFriendshipName"),
-    Description = LanguageManager.Get("CheatsGuideView.ModifyFriendshipDescription"),
+    Name = _lm.Get("CheatsGuideView.ModifyFriendshipName"),
+    Description = _lm.Get("CheatsGuideView.ModifyFriendshipDescription"),
     Usage = "modifyrelationship John Doe Jane Doe 100 LTR_Friendship_Main"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.RelationshipsCategory"),
+    Category = _lm.Get("CheatsGuideView.RelationshipsCategory"),
     Command = "modifyrelationship [Sim1] [Sim2] [cantidad] LTR_Romance_Main",
-    Name = LanguageManager.Get("CheatsGuideView.ModifyRomanceName"),
-    Description = LanguageManager.Get("CheatsGuideView.ModifyRomanceDescription"),
+    Name = _lm.Get("CheatsGuideView.ModifyRomanceName"),
+    Description = _lm.Get("CheatsGuideView.ModifyRomanceDescription"),
     Usage = "modifyrelationship John Doe Jane Doe 100 LTR_Romance_Main"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.RelationshipsCategory"),
+    Category = _lm.Get("CheatsGuideView.RelationshipsCategory"),
     Command = "relationship.introduce_sim_to_all_others",
-    Name = LanguageManager.Get("CheatsGuideView.MeetEveryoneName"),
-    Description = LanguageManager.Get("CheatsGuideView.MeetEveryoneDescription"),
+    Name = _lm.Get("CheatsGuideView.MeetEveryoneName"),
+    Description = _lm.Get("CheatsGuideView.MeetEveryoneDescription"),
     Usage = "relationship.introduce_sim_to_all_others"
 },
 
 // BUILD/BUY CHEATS
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.BuildCategory"),
+    Category = _lm.Get("CheatsGuideView.BuildCategory"),
     Command = "bb.moveobjects on/off",
-    Name = LanguageManager.Get("CheatsGuideView.MoveObjectsName"),
-    Description = LanguageManager.Get("CheatsGuideView.MoveObjectsDescription"),
+    Name = _lm.Get("CheatsGuideView.MoveObjectsName"),
+    Description = _lm.Get("CheatsGuideView.MoveObjectsDescription"),
     Usage = "bb.moveobjects on"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.BuildCategory"),
+    Category = _lm.Get("CheatsGuideView.BuildCategory"),
     Command = "bb.showhiddenobjects",
-    Name = LanguageManager.Get("CheatsGuideView.HiddenObjectsName"),
-    Description = LanguageManager.Get("CheatsGuideView.HiddenObjectsDescription"),
+    Name = _lm.Get("CheatsGuideView.HiddenObjectsName"),
+    Description = _lm.Get("CheatsGuideView.HiddenObjectsDescription"),
     Usage = "bb.showhiddenobjects"
 }
 ,
                new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.BuildCategory"),
+    Category = _lm.Get("CheatsGuideView.BuildCategory"),
     Command = "bb.showliveeditobjects",
-    Name = LanguageManager.Get("CheatsGuideView.LiveEditObjectsName"),
-    Description = LanguageManager.Get("CheatsGuideView.LiveEditObjectsDescription"),
+    Name = _lm.Get("CheatsGuideView.LiveEditObjectsName"),
+    Description = _lm.Get("CheatsGuideView.LiveEditObjectsDescription"),
     Usage = "bb.showliveeditobjects"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.BuildCategory"),
+    Category = _lm.Get("CheatsGuideView.BuildCategory"),
     Command = "bb.ignoregameplayunlocksentitlement",
-    Name = LanguageManager.Get("CheatsGuideView.UnlockCareerObjectsName"),
-    Description = LanguageManager.Get("CheatsGuideView.UnlockCareerObjectsDescription"),
+    Name = _lm.Get("CheatsGuideView.UnlockCareerObjectsName"),
+    Description = _lm.Get("CheatsGuideView.UnlockCareerObjectsDescription"),
     Usage = "bb.ignoregameplayunlocksentitlement"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.BuildCategory"),
+    Category = _lm.Get("CheatsGuideView.BuildCategory"),
     Command = "bb.enablefreebuild",
-    Name = LanguageManager.Get("CheatsGuideView.FreeBuildName"),
-    Description = LanguageManager.Get("CheatsGuideView.FreeBuildDescription"),
+    Name = _lm.Get("CheatsGuideView.FreeBuildName"),
+    Description = _lm.Get("CheatsGuideView.FreeBuildDescription"),
     Usage = "bb.enablefreebuild"
 },
 
 // CAS CHEATS
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.CASCategory"),
+    Category = _lm.Get("CheatsGuideView.CASCategory"),
     Command = "cas.fulleditmode",
-    Name = LanguageManager.Get("CheatsGuideView.FullEditModeCASName"),
-    Description = LanguageManager.Get("CheatsGuideView.FullEditModeCASDescription"),
+    Name = _lm.Get("CheatsGuideView.FullEditModeCASName"),
+    Description = _lm.Get("CheatsGuideView.FullEditModeCASDescription"),
     Usage = "cas.fulleditmode"
 },
 
 // DEATH & LIFE CHEATS
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.LifeDeathCategory"),
+    Category = _lm.Get("CheatsGuideView.LifeDeathCategory"),
     Command = "death.toggle true/false",
-    Name = LanguageManager.Get("CheatsGuideView.DisableDeathName"),
-    Description = LanguageManager.Get("CheatsGuideView.DisableDeathDescription"),
+    Name = _lm.Get("CheatsGuideView.DisableDeathName"),
+    Description = _lm.Get("CheatsGuideView.DisableDeathDescription"),
     Usage = "death.toggle false (desactiva muerte / disables death)"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.LifeDeathCategory"),
+    Category = _lm.Get("CheatsGuideView.LifeDeathCategory"),
     Command = "traits.equip_trait Ghost_[tipo]",
-    Name = LanguageManager.Get("CheatsGuideView.MakeGhostName"),
-    Description = LanguageManager.Get("CheatsGuideView.MakeGhostDescription"),
+    Name = _lm.Get("CheatsGuideView.MakeGhostName"),
+    Description = _lm.Get("CheatsGuideView.MakeGhostDescription"),
     Usage = "traits.equip_trait Ghost_OldAge"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.LifeDeathCategory"),
+    Category = _lm.Get("CheatsGuideView.LifeDeathCategory"),
     Command = "traits.remove_trait Ghost_[tipo]",
-    Name = LanguageManager.Get("CheatsGuideView.RemoveGhostName"),
-    Description = LanguageManager.Get("CheatsGuideView.RemoveGhostDescription"),
+    Name = _lm.Get("CheatsGuideView.RemoveGhostName"),
+    Description = _lm.Get("CheatsGuideView.RemoveGhostDescription"),
     Usage = "traits.remove_trait Ghost_OldAge"
 },
 
 // ASPIRATION & SATISFACTION CHEATS
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.AspirationsCategory"),
+    Category = _lm.Get("CheatsGuideView.AspirationsCategory"),
     Command = "aspirations.complete_current_milestone",
-    Name = LanguageManager.Get("CheatsGuideView.CompleteCurrentMilestoneName"),
-    Description = LanguageManager.Get("CheatsGuideView.CompleteCurrentMilestoneDescription"),
+    Name = _lm.Get("CheatsGuideView.CompleteCurrentMilestoneName"),
+    Description = _lm.Get("CheatsGuideView.CompleteCurrentMilestoneDescription"),
     Usage = "aspirations.complete_current_milestone"
 }
 ,
             new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.AspirationsCategory"),
+    Category = _lm.Get("CheatsGuideView.AspirationsCategory"),
     Command = "sims.give_satisfaction_points [cantidad]",
-    Name = LanguageManager.Get("CheatsGuideView.SatisfactionPointsName"),
-    Description = LanguageManager.Get("CheatsGuideView.SatisfactionPointsDescription"),
+    Name = _lm.Get("CheatsGuideView.SatisfactionPointsName"),
+    Description = _lm.Get("CheatsGuideView.SatisfactionPointsDescription"),
     Usage = "sims.give_satisfaction_points 5000"
 },
 
 // TRAITS CHEATS
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.TraitsCategory"),
+    Category = _lm.Get("CheatsGuideView.TraitsCategory"),
     Command = "traits.equip_trait [rasgo]",
-    Name = LanguageManager.Get("CheatsGuideView.AddTraitName"),
-    Description = LanguageManager.Get("CheatsGuideView.AddTraitDescription"),
+    Name = _lm.Get("CheatsGuideView.AddTraitName"),
+    Description = _lm.Get("CheatsGuideView.AddTraitDescription"),
     Usage = "traits.equip_trait Creative"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.TraitsCategory"),
+    Category = _lm.Get("CheatsGuideView.TraitsCategory"),
     Command = "traits.remove_trait [rasgo]",
-    Name = LanguageManager.Get("CheatsGuideView.RemoveTraitName"),
-    Description = LanguageManager.Get("CheatsGuideView.RemoveTraitDescription"),
+    Name = _lm.Get("CheatsGuideView.RemoveTraitName"),
+    Description = _lm.Get("CheatsGuideView.RemoveTraitDescription"),
     Usage = "traits.remove_trait Creative"
 },
 
 // MISC CHEATS
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.MiscCategory"),
+    Category = _lm.Get("CheatsGuideView.MiscCategory"),
     Command = "sims.hard_reset",
-    Name = LanguageManager.Get("CheatsGuideView.ResetSimName"),
-    Description = LanguageManager.Get("CheatsGuideView.ResetSimDescription"),
+    Name = _lm.Get("CheatsGuideView.ResetSimName"),
+    Description = _lm.Get("CheatsGuideView.ResetSimDescription"),
     Usage = "sims.hard_reset"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.MiscCategory"),
+    Category = _lm.Get("CheatsGuideView.MiscCategory"),
     Command = "sims.spawnsimple [ID]",
-    Name = LanguageManager.Get("CheatsGuideView.SpawnObjectName"),
-    Description = LanguageManager.Get("CheatsGuideView.SpawnObjectDescription"),
+    Name = _lm.Get("CheatsGuideView.SpawnObjectName"),
+    Description = _lm.Get("CheatsGuideView.SpawnObjectDescription"),
     Usage = "sims.spawnsimple"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.MiscCategory"),
+    Category = _lm.Get("CheatsGuideView.MiscCategory"),
     Command = "clock.advance_game_time [horas] [minutos] [segundos]",
-    Name = LanguageManager.Get("CheatsGuideView.AdvanceTimeName"),
-    Description = LanguageManager.Get("CheatsGuideView.AdvanceTimeDescription"),
+    Name = _lm.Get("CheatsGuideView.AdvanceTimeName"),
+    Description = _lm.Get("CheatsGuideView.AdvanceTimeDescription"),
     Usage = "clock.advance_game_time 8 0 0"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.MiscCategory"),
+    Category = _lm.Get("CheatsGuideView.MiscCategory"),
     Command = "sims.add_buff [buff]",
-    Name = LanguageManager.Get("CheatsGuideView.AddMoodletName"),
-    Description = LanguageManager.Get("CheatsGuideView.AddMoodletDescription"),
+    Name = _lm.Get("CheatsGuideView.AddMoodletName"),
+    Description = _lm.Get("CheatsGuideView.AddMoodletDescription"),
     Usage = "sims.add_buff e_buff_happy"
 },
 new CheatItem
 {
-    Category = LanguageManager.Get("CheatsGuideView.MiscCategory"),
+    Category = _lm.Get("CheatsGuideView.MiscCategory"),
     Command = "sims.remove_all_buffs",
-    Name = LanguageManager.Get("CheatsGuideView.RemoveAllMoodletsName"),
-    Description = LanguageManager.Get("CheatsGuideView.RemoveAllMoodletsDescription"),
+    Name = _lm.Get("CheatsGuideView.RemoveAllMoodletsName"),
+    Description = _lm.Get("CheatsGuideView.RemoveAllMoodletsDescription"),
     Usage = "sims.remove_all_buffs"
 }
 
@@ -488,14 +484,14 @@ new CheatItem
 
         private void CreateCategoryButtons()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = _lm.IsSpanish;
 
             // Get unique categories
             var categories = _allCheats.Select(c => c.Category).Distinct().OrderBy(c => c).ToList();
-            categories.Insert(0, LanguageManager.Get("CheatsGuideView.AllCategory"));
+            categories.Insert(0, _lm.Get("CheatsGuideView.AllCategory"));
 
             // Add Favorites category
-            categories.Insert(1, LanguageManager.Get("CheatsGuideView.FavoritesCategory"));
+            categories.Insert(1, _lm.Get("CheatsGuideView.FavoritesCategory"));
 
             foreach (var category in categories)
             {
@@ -506,7 +502,7 @@ new CheatItem
                     Tag = category
                 };
 
-                if (category == LanguageManager.Get("CheatsGuideView.AllCategory"))
+                if (category == _lm.Get("CheatsGuideView.AllCategory"))
                 {
                     btn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6366F1"));
                 }
@@ -519,12 +515,12 @@ new CheatItem
         private void CategoryButton_Click(object sender, RoutedEventArgs e)
         {
              Button btn = sender as Button;
-            _selectedCategory = btn.Tag.ToString();
+            SelectedCategory = btn.Tag.ToString();
 
             // Update button colors
             foreach (Button categoryBtn in CategoryPanel.Children)
             {
-                if (categoryBtn.Tag.ToString() == _selectedCategory)
+                if (categoryBtn.Tag.ToString() == SelectedCategory)
                 {
                     categoryBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6366F1"));
                 }
@@ -544,24 +540,24 @@ new CheatItem
 
         private void DisplayCheats()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = _lm.IsSpanish;
             CheatsPanel.Children.Clear();
 
             string searchText = SearchBox.Text.ToLower();
             var filteredCheats = _allCheats.AsEnumerable();
 
             // Filter by category
-            if (_selectedCategory == LanguageManager.Get("CheatsGuideView.FavoritesCategory"))
+            if (SelectedCategory == _lm.Get("CheatsGuideView.FavoritesCategory"))
             {
                 filteredCheats = filteredCheats.Where(c => _favoriteCommands.Contains(c.Command));
             }
-            else if (_selectedCategory != LanguageManager.Get("CheatsGuideView.AllCategory"))
+            else if (SelectedCategory != _lm.Get("CheatsGuideView.AllCategory"))
             {
-                filteredCheats = filteredCheats.Where(c => c.Category == _selectedCategory);
+                filteredCheats = filteredCheats.Where(c => c.Category == SelectedCategory);
             }
 
             // Filter by search
-            if (!string.IsNullOrWhiteSpace(searchText) && searchText != LanguageManager.Get("CheatsGuide.SearchBox").ToLower())
+            if (!string.IsNullOrWhiteSpace(searchText) && searchText != _lm.Get("CheatsGuide.SearchBox").ToLower())
             {
                 filteredCheats = filteredCheats.Where(c =>
                     c.Command.ToLower().Contains(searchText) ||
@@ -578,7 +574,7 @@ new CheatItem
             {
                 TextBlock noResults = new TextBlock
                 {
-                    Text = LanguageManager.Get("CheatsGuideView.NoCheatsFound"),
+                    Text = _lm.Get("CheatsGuideView.NoCheatsFound"),
                     Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#94A3B8")),
                     FontSize = 16,
                     FontFamily = new FontFamily("Bahnschrift Light"),
@@ -592,7 +588,7 @@ new CheatItem
 
         private void CreateCheatCard(CheatItem cheat)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = _lm.IsSpanish;
 
             Border card = new Border
             {
@@ -759,7 +755,7 @@ new CheatItem
 
         private void CopyButton_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = _lm.IsSpanish;
             Button btn = sender as Button;
             string command = btn.Tag.ToString();
 
@@ -795,7 +791,7 @@ new CheatItem
 
             if (!favoriteCheats.Any())
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = _lm.IsSpanish;
                 MessageBox.Show(
                     es ? "No tienes trucos favoritos marcados." : "You don't have any favorite cheats marked.",
                     es ? "Sin Favoritos" : "No Favorites",
@@ -809,7 +805,7 @@ new CheatItem
 
         private void ExportCheats(List<CheatItem> cheats, string fileName)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = _lm.IsSpanish;
 
             try
             {

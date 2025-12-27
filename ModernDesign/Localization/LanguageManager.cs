@@ -1,42 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 
 namespace ModernDesign.Localization
 {
-    public static class LanguageManager
+    public class LanguageManager : ILanguageManager
     {
-        public static bool IsSpanish { get; private set; }
+        public event EventHandler<EventArgs> LanguageChanged;
+
+        public bool IsSpanish { get; set; }
+
+        public string CurrentLocale
+        {
+            get => _currentLocale;
+            set
+            {
+                _currentLocale = value;
+                LanguageChanged?.Invoke(null, EventArgs.Empty);
+            }
+        }
+
+        private static string _currentLocale =
+            System.Threading.Thread.CurrentThread.CurrentCulture.Name; // default
 
         private static readonly Dictionary<string, Dictionary<string, string>> Translations =
             new Dictionary<string, Dictionary<string, string>>();
-        private static string _currentLocale = "en-US"; // default
-        static LanguageManager()
+
+        private static IEnumerable<string> _supportedLanguages;
+
+        public LanguageManager()
         {
             LoadLanguage();
             Initialize();
         }
 
-        public static string CurrentLocale 
-        { 
-            get => _currentLocale; 
-            set => _currentLocale = value; 
-        }
-        
-        public static void Initialize()
+        public bool LanguageSupported(string languageCode)
         {
-            var allResources = Assembly.GetExecutingAssembly().GetManifestResourceNames();
-            Console.WriteLine("ALL RESOURCES: " + string.Join(" | ", allResources));
-            
-            
-            LoadEmbeddedTranslations("en-US");
-            LoadEmbeddedTranslations("es-ES");
-            LoadEmbeddedTranslations("ru-RU");
+            return _supportedLanguages.Contains(languageCode);
         }
-        
-        private static void LoadEmbeddedTranslations(string locale)
+
+        public string Get(string key)
+        {
+            if (Translations.TryGetValue(_currentLocale, out var localeDict) &&
+                localeDict.TryGetValue(key, out var value))
+            {
+                return value;
+            }
+
+            // Fallback to English
+            if (Translations.TryGetValue("en-US", out var enDict) &&
+                enDict.TryGetValue(key, out var fallback))
+            {
+                return fallback;
+            }
+
+            return $"[{key}]";
+        }
+
+        private void Initialize()
+        {
+            _supportedLanguages = Assembly.GetExecutingAssembly()
+                .GetManifestResourceNames()
+                .Where(r => r.StartsWith("LeuanS4ToolKit.Localization."))
+                .Select(r => r.Split('.')[2]);
+
+            foreach (var supportedLanguage in _supportedLanguages)
+            {
+                LoadEmbeddedTranslations(supportedLanguage);
+            }
+        }
+
+        private void LoadEmbeddedTranslations(string locale)
         {
             try
             {
@@ -52,10 +89,10 @@ namespace ModernDesign.Localization
                         return;
                     }
 
-                    using( var reader = new StreamReader(stream))
+                    using (var reader = new StreamReader(stream))
                     {
                         var json = reader.ReadToEnd();
-                        var dict = JsonSerializer.Deserialize<Dictionary<string, string >> (json);
+                        var dict = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
 
                         if (dict != null && dict.Count > 0)
                         {
@@ -70,26 +107,8 @@ namespace ModernDesign.Localization
                 Console.WriteLine($"Failed load locale resource {locale}: {ex.Message}");
             }
         }
-        
-        public static string Get(string key)
-        {
-            if (Translations.TryGetValue(_currentLocale, out var localeDict) && 
-                localeDict.TryGetValue(key, out var value))
-            {
-                return value;
-            }
 
-            // Fallback to English
-            if (Translations.TryGetValue("en-US", out var enDict) && 
-                enDict.TryGetValue(key, out var fallback))
-            {
-                return fallback;
-            }
-
-            return $"[{key}]";
-        }
-        
-        public static void LoadLanguage()
+        private void LoadLanguage()
         {
             try
             {
@@ -113,7 +132,7 @@ namespace ModernDesign.Localization
                         if (parts.Length >= 2)
                         {
                             var value = parts[1].Trim();
-                            _currentLocale = value;
+                            CurrentLocale = value;
                             return;
                         }
                     }

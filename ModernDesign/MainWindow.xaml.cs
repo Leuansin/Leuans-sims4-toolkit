@@ -15,6 +15,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using LeuanS4ToolKit.Core;
 using ModernDesign.Localization;
 
 namespace ModernDesign
@@ -25,6 +26,7 @@ namespace ModernDesign
         private DispatcherTimer _ramMonitorTimer;
         private readonly Random _rng = new Random();
         private bool _ramWarningShown = false;
+        private readonly ILanguageManager _lm;
 
         private bool isChatbotOpen = false;
         private List<ChatbotResponse> chatbotResponses = new List<ChatbotResponse>();
@@ -45,6 +47,7 @@ namespace ModernDesign
             StartCleanerTimer();
             StartRamMonitorTimer();
 
+            _lm = ServiceLocator.Get<ILanguageManager>();
             // Limpieza también cuando se cierre la ventana principal
             this.Closed += MainWindow_Closed;
         }
@@ -114,9 +117,9 @@ namespace ModernDesign
 
         private void ShowRamWarning(double ramUsageMB)
         {
-            var title = LanguageManager.Get("RamWarningTitle");
+            var title = _lm.Get("RamWarningTitle");
             var message = string.Format(
-                LanguageManager.Get("RamWarningMessage"), 
+                _lm.Get("RamWarningMessage"), 
                 ramUsageMB.ToString("F0"));
 
             MessageBox.Show(

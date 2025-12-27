@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using LeuanS4ToolKit.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -20,7 +21,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             TitleText.Text = es
                 ? "🛠️ Categorías de Modding Intermedio"
@@ -72,7 +73,7 @@ namespace ModernDesign.MVVM.View
 
         private void UpdateCategoryUI()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             LessonsPanel.Children.Clear();
 
             switch (_currentCategory)

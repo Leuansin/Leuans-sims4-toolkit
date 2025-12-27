@@ -15,6 +15,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 using System.Windows.Navigation;
 using System.Windows.Threading;
+using LeuanS4ToolKit.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -41,7 +42,7 @@ namespace ModernDesign.MVVM.View
         #region Multi-language
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             TitleText.Text = es ? "Centro de Descubrimiento" : "Discovery Hub";
             SubtitleText.Text = es ? "Aprende todo sobre cómo modear The Sims 4" : "Learn everything about modding The Sims 4";
 
@@ -175,7 +176,7 @@ namespace ModernDesign.MVVM.View
         {
             if (_currentLesson == 1 && !_overlayModsExists)
             {
-                OverlayStatusText.Text = LanguageManager.IsSpanish
+                OverlayStatusText.Text = ServiceLocator.Get<ILanguageManager>().IsSpanish
                     ? "❌ Asegúrate de crear primero la carpeta Mods antes de continuar."
                     : "❌ Please make sure the Mods folder exists before continuing.";
                 return;
@@ -458,7 +459,7 @@ namespace ModernDesign.MVVM.View
         #region Lesson UI
         private void UpdateLessonUI()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             LessonIndicator.Text = es
                 ? $"Lección {_currentLesson} de {TotalLessons}"
@@ -499,7 +500,7 @@ namespace ModernDesign.MVVM.View
                 ? "Vamos a comprobar si tu juego puede usar mods y, si no, la arreglamos creando la carpeta Mods correcta."
                 : "We will check if your game can use mods and, if not, fix it by creating the correct Mods folder.";
 
-            bool esSpanish = LanguageManager.IsSpanish;
+            bool esSpanish = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             AddStep("1", "#22C55E",
                 es ? "Abre la carpeta de Documentos de The Sims 4" : "Open The Sims 4 Documents folder",
@@ -884,7 +885,7 @@ namespace ModernDesign.MVVM.View
                 }
 
                 OverlayStatusBorder.Visibility = Visibility.Visible;
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 if (_overlayModsFolderPath != null)
                 {
@@ -940,7 +941,7 @@ namespace ModernDesign.MVVM.View
                     new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FCA5A5"));
 
                 _overlayModsExists = false;
-                OverlayStatusText.Text = LanguageManager.IsSpanish
+                OverlayStatusText.Text = ServiceLocator.Get<ILanguageManager>().IsSpanish
                     ? $"No se pudo comprobar la carpeta Mods:\n{ex.Message}"
                     : $"Could not check Mods folder:\n{ex.Message}";
 
@@ -952,7 +953,7 @@ namespace ModernDesign.MVVM.View
         {
             try
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
                 if (string.IsNullOrEmpty(_overlayBaseFolderPath))
                 {
@@ -988,7 +989,7 @@ namespace ModernDesign.MVVM.View
                     new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FCA5A5"));
 
                 _overlayModsExists = false;
-                OverlayStatusText.Text = LanguageManager.IsSpanish
+                OverlayStatusText.Text = ServiceLocator.Get<ILanguageManager>().IsSpanish
                     ? $"No se pudo crear la carpeta Mods:\n{ex.Message}"
                     : $"Could not create Mods folder:\n{ex.Message}";
                 OverlayNextButton.IsEnabled = false;
@@ -1119,7 +1120,7 @@ namespace ModernDesign.MVVM.View
         private void S4SCard_Click(object sender, MouseButtonEventArgs e)
         {
             var owner = Window.GetWindow(this);
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             var dialog = new ModdingLevelDialog
             {
@@ -1177,7 +1178,7 @@ namespace ModernDesign.MVVM.View
 
         private void OverlaySelectFolderButton_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             var dialog = new System.Windows.Forms.FolderBrowserDialog
             {
@@ -1261,7 +1262,7 @@ namespace ModernDesign.MVVM.View
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    LanguageManager.IsSpanish
+                    ServiceLocator.Get<ILanguageManager>().IsSpanish
                         ? $"No se pudo abrir el enlace:\n{ex.Message}"
                         : $"Could not open link:\n{ex.Message}",
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);

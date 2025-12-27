@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using LeuanS4ToolKit.Core;
 using ModernDesign.Localization;
 
 namespace ModernDesign.MVVM.View
@@ -25,7 +26,7 @@ namespace ModernDesign.MVVM.View
         #region Language
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             Title = es ? "Mod Manager" : "Mod Manager";
             TitleText.Text = es ? "📁 Mod Manager" : "📁 Mod Manager";
             SubtitleText.Text = es ? "Administra, activa, desactiva o elimina tus mods" : "Manage, enable, disable or delete your mods";
@@ -42,7 +43,7 @@ namespace ModernDesign.MVVM.View
 
         private void UpdateStats()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             int total = _mods.Count;
             int active = _mods.Count(m => m.IsActive);
             int disabled = total - active;
@@ -81,7 +82,7 @@ namespace ModernDesign.MVVM.View
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog
             {
-                Description = LanguageManager.IsSpanish ? "Selecciona tu carpeta Mods" : "Select your Mods folder",
+                Description = ServiceLocator.Get<ILanguageManager>().IsSpanish ? "Selecciona tu carpeta Mods" : "Select your Mods folder",
                 ShowNewFolderButton = false
             };
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -210,7 +211,7 @@ namespace ModernDesign.MVVM.View
         #region Script Fix
         private void FixScriptsButton_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             if (_scriptsInSubfolders.Count == 0)
             {
@@ -313,7 +314,7 @@ namespace ModernDesign.MVVM.View
         {
             if (((System.Windows.Controls.Button)sender).Tag is ModEntry mod)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 try
                 {
                     if (mod.IsActive)
@@ -366,7 +367,7 @@ namespace ModernDesign.MVVM.View
         {
             if (((System.Windows.Controls.Button)sender).Tag is ModEntry mod)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 var result = MessageBox.Show(
                     es ? $"¿Estás seguro de eliminar permanentemente '{mod.DisplayName}'?\n\nEsta acción no se puede deshacer." : $"Are you sure you want to permanently delete '{mod.DisplayName}'?\n\nThis action cannot be undone.",
                     es ? "Confirmar eliminación" : "Confirm deletion",
@@ -416,7 +417,7 @@ namespace ModernDesign.MVVM.View
         {
             get
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 if (HasPackage && HasScript) return es ? "📦 Package + 💻 Script" : "📦 Package + 💻 Script";
                 if (HasPackage) return es ? "📦 Solo Package" : "📦 Package only";
                 return es ? "💻 Solo Script" : "💻 Script only";
@@ -446,11 +447,11 @@ namespace ModernDesign.MVVM.View
             }
         }
 
-        public string StatusText => IsActive ? (LanguageManager.IsSpanish ? "ACTIVO" : "ACTIVE") : (LanguageManager.IsSpanish ? "DESACTIVADO" : "DISABLED");
+        public string StatusText => IsActive ? (ServiceLocator.Get<ILanguageManager>().IsSpanish ? "ACTIVO" : "ACTIVE") : (ServiceLocator.Get<ILanguageManager>().IsSpanish ? "DESACTIVADO" : "DISABLED");
         public Brush StatusColor => IsActive ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#22C55E")) : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F97316"));
-        public string ToggleButtonText => IsActive ? (LanguageManager.IsSpanish ? "Desactivar" : "Disable") : (LanguageManager.IsSpanish ? "Activar" : "Enable");
+        public string ToggleButtonText => IsActive ? (ServiceLocator.Get<ILanguageManager>().IsSpanish ? "Desactivar" : "Disable") : (ServiceLocator.Get<ILanguageManager>().IsSpanish ? "Activar" : "Enable");
         public Brush ToggleButtonColor => IsActive ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F97316")) : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#22C55E"));
-        public string DeleteTooltip => LanguageManager.IsSpanish ? "Eliminar mod permanentemente" : "Delete mod permanently";
+        public string DeleteTooltip => ServiceLocator.Get<ILanguageManager>().IsSpanish ? "Eliminar mod permanentemente" : "Delete mod permanently";
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyChanges()

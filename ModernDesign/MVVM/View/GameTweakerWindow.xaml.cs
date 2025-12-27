@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using LeuanS4ToolKit.Core;
 using Microsoft.Win32;
 using ModernDesign.Localization;
 
@@ -587,7 +588,7 @@ namespace ModernDesign.MVVM.View
         #region Language
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             
             Title = "Game Tweaker";
             TitleText.Text = "⚙️ Game Tweaker";
@@ -629,7 +630,7 @@ namespace ModernDesign.MVVM.View
                 return;
             }
 
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             MessageBox.Show(
                 es ? "No se pudo detectar automáticamente Options.ini. Por favor, selecciona la ubicación manualmente." 
                    : "Could not auto-detect Options.ini. Please select the location manually.",
@@ -655,7 +656,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error al crear backup: " : "Error creating backup: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -692,7 +693,7 @@ namespace ModernDesign.MVVM.View
             }
             catch (Exception ex)
             {
-                bool es = LanguageManager.IsSpanish;
+                bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
                 MessageBox.Show(
                     $"{(es ? "Error al cargar Options.ini: " : "Error loading Options.ini: ")}{ex.Message}",
                     es ? "Error" : "Error",
@@ -708,7 +709,7 @@ namespace ModernDesign.MVVM.View
             SettingsPanel.Children.Clear();
             _controls.Clear();
 
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             // Group settings by category with colors
             var categories = new Dictionary<string, (List<string> settings, string color)>
@@ -819,7 +820,7 @@ namespace ModernDesign.MVVM.View
 
         private void AddSettingControl(string key, string value)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             
             var border = new Border
             {
@@ -938,7 +939,7 @@ namespace ModernDesign.MVVM.View
         #region Save & Reload
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             
             // Show warning message
             string warningTitle = es ? "⚠️ Confirmar Cambios" : "⚠️ Confirm Changes";
@@ -1045,7 +1046,7 @@ namespace ModernDesign.MVVM.View
         #region Restore
         private void RestoreButton_Click(object sender, RoutedEventArgs e)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
             
             if (string.IsNullOrEmpty(_optionsIniPath))
             {

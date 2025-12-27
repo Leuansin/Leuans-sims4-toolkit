@@ -1,6 +1,7 @@
 ﻿using ModernDesign.Localization;
 using ModernDesign.Profile;
 using System.Windows;
+using LeuanS4ToolKit.Core;
 
 namespace ModernDesign.MVVM.View
 {
@@ -19,7 +20,7 @@ namespace ModernDesign.MVVM.View
 
         private void ApplyLanguage()
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             TitleText.Text = es ? "🎉 ¡Tutorial Completado!" : "🎉 Tutorial Completed!";
             SubtitleText.Text = es
@@ -64,7 +65,7 @@ namespace ModernDesign.MVVM.View
 
         private void SaveMedalAndClose(MedalType medal)
         {
-            bool es = LanguageManager.IsSpanish;
+            bool es = ServiceLocator.Get<ILanguageManager>().IsSpanish;
 
             // Guardar la medalla
             ProfileManager.SetTutorialMedal(_tutorialId, medal);

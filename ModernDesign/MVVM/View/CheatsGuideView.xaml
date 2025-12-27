@@ -1,6 +1,7 @@
 ﻿<Window x:Class="ModernDesign.MVVM.View.CheatsGuideView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:core="clr-namespace:LeuanS4ToolKit.Core"
         Title="Cheats Guide"
         Width="1024"
         Height="550"
@@ -11,7 +12,8 @@
         WindowStyle="None"
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        core:LocalizationProperties.LocalizeTitle="CheatsGuide.Title">
 
     <Window.Resources>
         <Style x:Key="CopyButton" TargetType="Button">
@@ -159,6 +161,7 @@
                     <TextBlock x:Name="TitleText" Text="🎮 Cheats Guide" 
                                Foreground="White" FontSize="28"
                                FontWeight="Bold" FontFamily="Bahnschrift Light"
+                               core:LocalizationProperties.LocalizeText="CheatsGuide.TitleText"
                                FontStyle="Italic">
                         <TextBlock.Effect>
                             <DropShadowEffect ShadowDepth="2" Opacity="0.8" BlurRadius="10" Color="#6366F1"/>
@@ -166,6 +169,7 @@
                     </TextBlock>
                     <TextBlock x:Name="SubtitleText" 
                                Text="Complete list of The Sims 4 cheat codes"
+                               core:LocalizationProperties.LocalizeText="CheatsGuide.SubtitleText"
                                Foreground="#94A3B8" FontSize="14"
                                FontFamily="Bahnschrift Light"
                                FontWeight="Bold"
@@ -180,11 +184,15 @@
                 <!-- Export Buttons -->
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
                     <Button x:Name="ExportAllButton" 
+                            core:LocalizationProperties.LocalizeText="CheatsGuide.ExportAllButton"
                             Content="📥 Export All" 
                             Style="{StaticResource ExportButton}"
                             Click="ExportAllButton_Click"
+                            core:LocalizationProperties.LocalizeTooltip="CheatsGuide.ExportAllButtonTooltip"
                             ToolTip="Export all cheats to a .txt file on Desktop"/>
                     <Button x:Name="ExportFavoritesButton" 
+                            core:LocalizationProperties.LocalizeText="CheatsGuide.ExportFavoritesButton"
+                            core:LocalizationProperties.LocalizeTooltip="CheatsGuide.ExportFavoritesButtonTooltip"
                             Content="⭐ Export Favorites" 
                             Style="{StaticResource ExportButton}"
                             Click="ExportFavoritesButton_Click"
@@ -241,6 +249,7 @@
                                    VerticalAlignment="Center" Margin="0,0,10,0"/>
 
                         <TextBox x:Name="SearchBox" Grid.Column="1"
+                                 core:LocalizationProperties.LocalizeText="CheatsGuide.SearchBox"
                                  Background="#0F172A"
                                  Foreground="White"
                                  FontSize="14"
