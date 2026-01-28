@@ -187,15 +187,6 @@
       "isOfflineMode": false
     },
     {
-      "id": "EP21",
-      "name": "Offline Mode & Latest Update",
-      "description": "Offline mode enabler and latest game updates.",
-      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/latestupdateandcrack/LatestUpdateAndCrack.zip"],
-      "imageFileName": "EP21.jpg",
-      "price": 0.00,
-      "isOfflineMode": true
-    },
-    {
       "id": "GP01",
       "name": "Outdoor Retreat",
       "description": "Go camping, explore Granite Falls, and enjoy outdoor activities.",
