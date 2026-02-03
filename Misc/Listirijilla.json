@@ -1,6 +1,15 @@
 {
   "dlcs": [
     {
+      "id": "LatestUpdate",
+      "name": "Cracked Update - 03 February 2026",
+      "description": "Update your cracked version with the Feb 3th update.",
+      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/latestupdateandcrack/LatestUpdateAndCrack.zip"],
+      "imageFileName": "EP01.jpg",
+      "price": 0,
+      "isOfflineMode": false
+    },
+    {
       "id": "EP01",
       "name": "Get to Work",
       "description": "Run your own retail business, become a doctor, detective, or scientist with active careers.",
