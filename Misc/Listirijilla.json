@@ -1,12 +1,43 @@
 {
   "dlcs": [
     {
-      "id": "LatestUpdate",
-      "name": "Cracked Update - 03 February 2026",
-      "description": "Update your cracked version with the Feb 3th update.",
-      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/latestupdateandcrack/LatestUpdateAndCrack.zip"],
-      "imageFileName": "EP01.jpg",
-      "price": 0,
+    {
+      "id": "Bundle1",
+      "name": "Royalty Legacy - Bundle",
+      "description": "NEW - Royalty Legacy DLC + Extra Stuff + Kits.",
+      "urls": [
+        "https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/NewBundle1.zip",
+        "https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/EP21_1.zip"
+      ],
+      "imageFileName": "EP21.jpg",
+      "price": 39.99,
+      "isOfflineMode": false
+    },
+      "id": "EP21",
+      "name": "Royalty Legacy",
+      "description": "NEW - Royalty Legacy DLC + 3 Extra Items.",
+      "urls": [
+        "https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/EP21_1.zip",
+        "https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/EP21_2.zip"
+      ],
+      "imageFileName": "EP21.jpg",
+      "price": 39.99,
+      "isOfflineMode": false
+    },
+      "id": "SP77",
+      "name": "Royalty Legacy - Extra Kit",
+      "description": "SP 77 - Extra Kits for Royalty Legacy",
+      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/SP77.zip"],
+      "imageFileName": "SP77.jpg",
+      "price": 4.99,
+      "isOfflineMode": false
+    },
+      "id": "SP76",
+      "name": "Royalty Legacy - Extra Kit",
+      "description": "SP 76 - Extra Kits for Royalty Legacy",
+      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/SP76.zip"],
+      "imageFileName": "SP76.jpg",
+      "price": 4.99,
       "isOfflineMode": false
     },
     {
