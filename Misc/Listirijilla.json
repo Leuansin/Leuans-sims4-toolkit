@@ -13,6 +13,15 @@
       "isOfflineMode": false
     },
     {
+      "id": "InstallerFolder",
+      "name": "__Installer Folder",
+      "description": "Only needed if you have the game vvia Steam/EA",
+      "urls": ["https://github.com/Leuansin/asd/releases/download/ep1n2/__Installer.zip"],
+      "imageFileName": "SinFoto.jpg",
+      "price": 0.0,
+      "isOfflineMode": false
+    },
+    {
       "id": "EP21",
       "name": "Royalty Legacy",
       "description": "NEW - Royalty Legacy DLC + 3 Extra Items.",
@@ -46,7 +55,7 @@
       "id": "EP01",
       "name": "Get to Work",
       "description": "Run your own retail business, become a doctor, detective, or scientist with active careers.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP01/Sims4_DLC_EP01_Get_to_Work.zip"],
+      "urls": ["https://github.com/Leuansin/asd/releases/download/ep1n2/EP01.zip"],
       "imageFileName": "EP01.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -55,7 +64,7 @@
       "id": "EP02",
       "name": "Get Together",
       "description": "Create and join clubs, explore Windenburg, and enjoy new social activities.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP02/Sims4_DLC_EP02_Get_Together.zip"],
+      "urls": ["https://github.com/Leuansin/asd/releases/download/ep1n2/EP02.zip"],
       "imageFileName": "EP02.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -76,7 +85,7 @@
       "id": "EP04",
       "name": "Cats and Dogs",
       "description": "Create cats and dogs, become a veterinarian, and explore Brindleton Bay.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP04/Sims4_DLC_EP04_Cats_and_Dogs.zip"],
+      "urls": ["https://github.com/Leuansin/asd/releases/download/ep1n2/EP04.zip"],
       "imageFileName": "EP04.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -85,7 +94,7 @@
       "id": "EP05",
       "name": "Seasons",
       "description": "Experience weather changes, seasonal holidays, and gardening careers.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP05/Sims4_DLC_EP05_Seasons.zip"],
+      "urls": ["https://github.com/Leuansin/asd/releases/download/ep1n2/EP05.zip"],
       "imageFileName": "EP05.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -106,7 +115,7 @@
       "id": "EP07",
       "name": "Island Living",
       "description": "Live on a tropical island, become a conservationist, and interact with mermaids.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP07/Sims4_DLC_EP07_Island_Living.zip"],
+      "urls": ["https://github.com/Leuansin/asd/releases/download/ep1n2/EP07.zip"],
       "imageFileName": "EP07.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -115,7 +124,7 @@
       "id": "EP08",
       "name": "Discover University",
       "description": "Enroll in university, join organizations, and earn degrees.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP08/Sims4_DLC_EP08_Discover_University.zip"],
+      "urls": ["https://github.com/Leuansin/asd/releases/download/ep1n2/EP08.zip"],
       "imageFileName": "EP08.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -124,7 +133,7 @@
       "id": "EP09",
       "name": "Eco Lifestyle",
       "description": "Influence your neighborhood's eco-footprint and craft eco-friendly items.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP09/Sims4_DLC_EP09_Eco_Lifestyle.zip"],
+      "urls": ["https://github.com/Johnn-sin/mRwORLDwIDE/releases/download/ep9n12/EP09.zip"],
       "imageFileName": "EP09.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -133,7 +142,7 @@
       "id": "EP10",
       "name": "Snowy Escape",
       "description": "Explore Mt. Komorebi, go skiing, snowboarding, and experience Japanese culture.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP10/Sims4_DLC_EP10_Snowy_Escape.zip"],
+      "urls": ["https://github.com/Johnn-sin/mRwORLDwIDE/releases/download/ep9n12/EP10.zip"],
       "imageFileName": "EP10.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -142,7 +151,7 @@
       "id": "EP11",
       "name": "Cottage Living",
       "description": "Live a rural life, raise animals, and participate in village fairs.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP11/Sims4_DLC_EP11_Cottage_Living.zip"],
+      "urls": ["https://github.com/Johnn-sin/mRwORLDwIDE/releases/download/ep9n12/EP11.zip"],
       "imageFileName": "EP11.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -151,7 +160,7 @@
       "id": "EP12",
       "name": "High School Years",
       "description": "Experience high school life, attend prom, and explore Copperdale.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP12/Sims4_DLC_EP12_High_School_Years.zip"],
+      "urls": ["https://github.com/Johnn-sin/mRwORLDwIDE/releases/download/ep9n12/EP12.zip"],
       "imageFileName": "EP12.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -160,7 +169,7 @@
       "id": "EP13",
       "name": "Growing Together",
       "description": "Deepen family relationships and watch Sims grow through life stages.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP13/Sims4_DLC_EP13_Growing_Together.zip"],
+      "urls": ["https://github.com/Johnn-sin/mRwORLDwIDE/releases/download/ep9n12/EP13.zip"],
       "imageFileName": "EP13.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -169,7 +178,7 @@
       "id": "EP14",
       "name": "Horse Ranch",
       "description": "Raise horses, explore Chestnut Ridge, and compete in equestrian events.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP14/Sims4_DLC_EP14_Horse_Ranch.zip"],
+      "urls": ["https://github.com/Johnn-sin/mRwORLDwIDE/releases/download/ep9n12/EP14.zip"],
       "imageFileName": "EP14.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -178,7 +187,7 @@
       "id": "EP15",
       "name": "For Rent",
       "description": "Become a property owner or tenant, manage rentals, and deal with unique neighbors.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP15/Sims4_DLC_EP15_For_Rent.zip"],
+      "urls": ["https://github.com/Johnn-sin/LeuanRocks/releases/download/p15n20/EP15.zip"],
       "imageFileName": "EP15.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -187,7 +196,7 @@
       "id": "EP16",
       "name": "Lovestruck",
       "description": "Experience deeper romantic relationships and new dating features.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP16/Sims4_DLC_EP16_Lovestruck.zip"],
+      "urls": ["https://github.com/Johnn-sin/LeuanRocks/releases/download/p15n20/EP16.zip"],
       "imageFileName": "EP16.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -196,7 +205,7 @@
       "id": "EP17",
       "name": "Life and Death",
       "description": "Explore the circle of life, mortality, and the afterlife.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP17/Sims4_DLC_EP17_Life_and_Death.zip"],
+      "urls": ["https://github.com/Johnn-sin/LeuanRocks/releases/download/p15n20/EP17.zip"],
       "imageFileName": "EP17.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -205,7 +214,7 @@
       "id": "EP18",
       "name": "Businesses and Hobbies",
       "description": "Start new businesses and explore diverse hobbies.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP18/Sims4_DLC_EP18_Businesses_and_Hobbies.zip"],
+      "urls": ["https://github.com/Johnn-sin/LeuanRocks/releases/download/p15n20/EP18.zip"],
       "imageFileName": "EP18.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -214,7 +223,7 @@
       "id": "EP19",
       "name": "Enchanted by Nature",
       "description": "Connect with nature and discover magical elements.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP19/Sims4_DLC_EP19_Enchanted_by_Nature_Expansion_Pack.zip"],
+      "urls": ["https://github.com/Johnn-sin/LeuanRocks/releases/download/p15n20/EP19.zip"],
       "imageFileName": "EP19.jpg",
       "price": 39.99,
       "isOfflineMode": false
@@ -223,25 +232,25 @@
       "id": "EP20",
       "name": "Adventure Awaits",
       "description": "Embark on exciting adventures and explore new destinations.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/EP20/Sims4_DLC_EP20_Adventure_Awaits_Expansion_Pack.zip"],
+      "urls": ["https://github.com/Johnn-sin/LeuanRocks/releases/download/p15n20/EP20.zip"],
       "imageFileName": "EP20.jpg",
       "price": 39.99,
       "isOfflineMode": false
     },
     {
-      "id": "GP01",
-      "name": "Outdoor Retreat",
-      "description": "Go camping, explore Granite Falls, and enjoy outdoor activities.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP01/Sims4_DLC_GP01_Outdoor_Retreat.zip"],
-      "imageFileName": "GP01.jpg",
-      "price": 19.99,
-      "isOfflineMode": false
+    "id": "GP01",
+    "name": "Outdoor Retreat",
+    "description": "Go camping, explore Granite Falls, and enjoy outdoor activities.",
+    "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP01.zip"],
+    "imageFileName": "GP01.jpg",
+    "price": 19.99,
+    "isOfflineMode": false
     },
     {
       "id": "GP02",
       "name": "Spa Day",
       "description": "Relax with spa treatments, yoga, and meditation.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP02/Sims4_DLC_GP02_Spa_Day.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP02.zip"],
       "imageFileName": "GP02.jpg",
       "price": 19.99,
       "isOfflineMode": false
@@ -250,7 +259,7 @@
       "id": "GP03",
       "name": "Dine Out",
       "description": "Own and manage restaurants, or enjoy dining out.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP03/Sims4_DLC_GP03_Dine_Out.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP03.zip"],
       "imageFileName": "GP03.jpg",
       "price": 19.99,
       "isOfflineMode": false
@@ -259,7 +268,7 @@
       "id": "GP04",
       "name": "Vampires",
       "description": "Become a vampire with unique powers and weaknesses.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP04/Sims4_DLC_GP04_Vampires.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP04.zip"],
       "imageFileName": "GP04.jpg",
       "price": 19.99,
       "isOfflineMode": false
@@ -268,7 +277,7 @@
       "id": "GP05",
       "name": "Parenthood",
       "description": "Shape your Sims' children with new parenting skills and character values.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP05/Sims4_DLC_GP05_Parenthood.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP05.zip"],
       "imageFileName": "GP05.jpg",
       "price": 19.99,
       "isOfflineMode": false
@@ -277,7 +286,7 @@
       "id": "GP06",
       "name": "Jungle Adventure",
       "description": "Explore Selvadorada, discover ancient ruins and hidden treasures.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP06/Sims4_DLC_GP06_Jungle_Adventure.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP06.zip"],
       "imageFileName": "GP06.jpg",
       "price": 19.99,
       "isOfflineMode": false
@@ -286,7 +295,7 @@
       "id": "GP07",
       "name": "StrangerVille",
       "description": "Solve the mystery of StrangerVille and uncover its secrets.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP07/Sims4_DLC_GP07_StrangerVille.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP07.zip"],
       "imageFileName": "GP07.jpg",
       "price": 19.99,
       "isOfflineMode": false
@@ -295,7 +304,7 @@
       "id": "GP08",
       "name": "Realm of Magic",
       "description": "Become a spellcaster and explore the magical realm.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP08/Sims4_DLC_GP08_Realm_of_Magic.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP08.zip"],
       "imageFileName": "GP08.jpg",
       "price": 19.99,
       "isOfflineMode": false
@@ -304,7 +313,7 @@
       "id": "GP09",
       "name": "Star Wars: Journey to Batuu",
       "description": "Visit Batuu and experience Star Wars adventures.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP09/Sims4_DLC_GP09_Star_Wars_Journey_to_Batuu.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP09.zip"],
       "imageFileName": "GP09.jpg",
       "price": 19.99,
       "isOfflineMode": false
@@ -313,7 +322,7 @@
       "id": "GP10",
       "name": "Dream Home Decorator",
       "description": "Become an interior decorator and renovate homes.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP10/Sims4_DLC_GP10_Dream_Home_Decorator.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP10.zip"],
       "imageFileName": "GP10.jpg",
       "price": 19.99,
       "isOfflineMode": false
@@ -322,7 +331,7 @@
       "id": "GP11",
       "name": "My Wedding Stories",
       "description": "Plan and celebrate weddings with new events and traditions.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP11/Sims4_DLC_GP11_My_Wedding_Stories.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP11.zip"],
       "imageFileName": "GP11.jpg",
       "price": 19.99,
       "isOfflineMode": false
@@ -331,16 +340,16 @@
       "id": "GP12",
       "name": "Werewolves",
       "description": "Transform into a werewolf and explore Moonwood Mill.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/GP12/Sims4_DLC_GP12_Werewolves.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/GP12.zip"],
       "imageFileName": "GP12.jpg",
       "price": 19.99,
       "isOfflineMode": false
     },
-    {
+     {
       "id": "SP01",
       "name": "Luxury Party Stuff",
       "description": "Throw luxurious parties with elegant decorations and attire.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP01/Sims4_DLC_SP01_Luxury_Party_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP01.zip"],
       "imageFileName": "SP01.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -349,7 +358,7 @@
       "id": "SP02",
       "name": "Perfect Patio Stuff",
       "description": "Create the perfect outdoor patio space.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP02/Sims4_DLC_SP02_Perfect_Patio_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP02.zip"],
       "imageFileName": "SP02.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -358,7 +367,7 @@
       "id": "SP03",
       "name": "Cool Kitchen Stuff",
       "description": "Add new kitchen appliances and décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP03/Sims4_DLC_SP03_Cool_Kitchen_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP03.zip"],
       "imageFileName": "SP03.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -367,7 +376,7 @@
       "id": "SP04",
       "name": "Spooky Stuff",
       "description": "Celebrate Halloween with spooky decorations and costumes.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP04/Sims4_DLC_SP04_Spooky_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP04.zip"],
       "imageFileName": "SP04.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -376,7 +385,7 @@
       "id": "SP05",
       "name": "Movie Hangout Stuff",
       "description": "Enjoy movie nights with popcorn and new furniture.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP05/Sims4_DLC_SP05_Movie_Hangout_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP05.zip"],
       "imageFileName": "SP05.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -385,7 +394,7 @@
       "id": "SP06",
       "name": "Romantic Garden Stuff",
       "description": "Create romantic garden spaces and host wishing well events.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP06/Sims4_DLC_SP06_Romantic_Garden_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP06.zip"],
       "imageFileName": "SP06.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -394,7 +403,7 @@
       "id": "SP07",
       "name": "Kids Room Stuff",
       "description": "Decorate kids' rooms with fun furniture and toys.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP07/Sims4_DLC_SP07_Kids_Room_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP07.zip"],
       "imageFileName": "SP07.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -403,7 +412,7 @@
       "id": "SP08",
       "name": "Backyard Stuff",
       "description": "Enhance your backyard with new outdoor items.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP08/Sims4_DLC_SP08_Backyard_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP08.zip"],
       "imageFileName": "SP08.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -412,7 +421,7 @@
       "id": "SP09",
       "name": "Vintage Glamour Stuff",
       "description": "Add vintage Hollywood glamour to your Sims' lives.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP09/Sims4_DLC_SP09_Vintage_Glamour_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP09.zip"],
       "imageFileName": "SP09.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -421,7 +430,7 @@
       "id": "SP10",
       "name": "Bowling Night Stuff",
       "description": "Build bowling alleys and enjoy bowling activities.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP10/Sims4_DLC_SP10_Bowling_Night_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP10.zip"],
       "imageFileName": "SP10.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -430,7 +439,7 @@
       "id": "SP11",
       "name": "Fitness Stuff",
       "description": "Get fit with new workout equipment and activities.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP11/Sims4_DLC_SP11_Fitness_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP11.zip"],
       "imageFileName": "SP11.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -439,7 +448,7 @@
       "id": "SP12",
       "name": "Toddler Stuff",
       "description": "Add new items and activities for toddlers.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP12/Sims4_DLC_SP12_Toddler_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP12.zip"],
       "imageFileName": "SP12.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -448,7 +457,7 @@
       "id": "SP13",
       "name": "Laundry Day Stuff",
       "description": "Add laundry activities and related items to your game.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP13/Sims4_DLC_SP13_Laundry_Day_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP13.zip"],
       "imageFileName": "SP13.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -457,7 +466,7 @@
       "id": "SP14",
       "name": "My First Pet Stuff",
       "description": "Add small pets like hamsters and new pet furniture.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP14/Sims4_DLC_SP14_My_First_Pet_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP14.zip"],
       "imageFileName": "SP14.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -466,7 +475,7 @@
       "id": "SP15",
       "name": "Moschino Stuff",
       "description": "Become a fashion photographer with Moschino-inspired items.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP15/Sims4_DLC_SP15_Moschino_Stuff.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP15.zip"],
       "imageFileName": "SP15.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -475,7 +484,7 @@
       "id": "SP16",
       "name": "Tiny Living Stuff",
       "description": "Live large in tiny homes with space-saving furniture.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP16/Sims4_DLC_SP16_Tiny_Living_Stuff_Pack.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP16.zip"],
       "imageFileName": "SP16.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -484,7 +493,7 @@
       "id": "SP17",
       "name": "Nifty Knitting",
       "description": "Learn to knit and create custom items.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP17/Sims4_DLC_SP17_Nifty_Knitting.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP17.zip"],
       "imageFileName": "SP17.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -493,7 +502,7 @@
       "id": "SP18",
       "name": "Paranormal Stuff",
       "description": "Investigate paranormal activities and become a paranormal investigator.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP18/Sims4_DLC_SP18_Paranormal_Stuff_Pack.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP18.zip"],
       "imageFileName": "SP18.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -502,7 +511,7 @@
       "id": "SP20",
       "name": "Throwback Fit Kit",
       "description": "Retro fitness-inspired clothing and accessories.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP20/Sims4_DLC_SP20_Throwback_Fit_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP20.zip"],
       "imageFileName": "SP20.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -511,7 +520,7 @@
       "id": "SP21",
       "name": "Country Kitchen Kit",
       "description": "Rustic country kitchen décor and appliances.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP21/Sims4_DLC_SP21_Country_Kitchen_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP21.zip"],
       "imageFileName": "SP21.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -520,7 +529,7 @@
       "id": "SP22",
       "name": "Bust the Dust Kit",
       "description": "Add dust and cleaning mechanics to your game.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP22/Sims4_DLC_SP22_Bust_the_Dust_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP22.zip"],
       "imageFileName": "SP22.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -529,7 +538,7 @@
       "id": "SP23",
       "name": "Courtyard Oasis Kit",
       "description": "Create beautiful courtyard spaces with Moroccan-inspired décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP23/Sims4_DLC_SP23_Courtyard_Oasis_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP23.zip"],
       "imageFileName": "SP23.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -538,7 +547,7 @@
       "id": "SP24",
       "name": "Fashion Street Kit",
       "description": "Urban streetwear fashion inspired by Korea.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP24/Sims4_DLC_SP24_Fashion_Street_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP24.zip"],
       "imageFileName": "SP24.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -547,7 +556,7 @@
       "id": "SP25",
       "name": "Industrial Loft Kit",
       "description": "Industrial-style furniture and décor for lofts.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP25/Sims4_DLC_SP25_Industrial_Loft_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP25.zip"],
       "imageFileName": "SP25.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -556,7 +565,7 @@
       "id": "SP26",
       "name": "Incheon Arrivals Kit",
       "description": "Korean airport-inspired fashion and accessories.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP26/Sims4_DLC_SP26_Incheon_Arrivals_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP26.zip"],
       "imageFileName": "SP26.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -565,7 +574,7 @@
       "id": "SP28",
       "name": "Modern Menswear Kit",
       "description": "Contemporary men's fashion and style.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP28/Sims4_DLC_SP28_Modern_Menswear_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP28.zip"],
       "imageFileName": "SP28.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -574,7 +583,7 @@
       "id": "SP29",
       "name": "Blooming Rooms Kit",
       "description": "Floral-themed furniture and decorations.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP29/Sims4_DLC_SP29_Blooming_Rooms_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP29.zip"],
       "imageFileName": "SP29.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -583,7 +592,7 @@
       "id": "SP30",
       "name": "Carnaval Streetwear Kit",
       "description": "Vibrant carnival-inspired fashion.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP30/Sims4_DLC_SP30_Carnaval_Streetwear_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP30.zip"],
       "imageFileName": "SP30.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -592,7 +601,7 @@
       "id": "SP31",
       "name": "Decor to the Max Kit",
       "description": "Maximize your decorating with unique items.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP31/Sims4_DLC_SP31_Decor_to_the_Max_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP31.zip"],
       "imageFileName": "SP31.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -601,7 +610,7 @@
       "id": "SP32",
       "name": "Moonlight Chic Kit",
       "description": "Elegant evening wear and sophisticated fashion.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP32/Sims4_DLC_SP32_Moonlight_Chic_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP32.zip"],
       "imageFileName": "SP32.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -610,7 +619,7 @@
       "id": "SP33",
       "name": "Little Campers Kit",
       "description": "Camping gear and activities for kids.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP33/Sims4_DLC_SP33_Little_Campers_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP33.zip"],
       "imageFileName": "SP33.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -619,7 +628,7 @@
       "id": "SP34",
       "name": "First Fits Kit",
       "description": "Trendy outfits for infants and toddlers.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP34/Sims4_DLC_SP34_First_Fits_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP34.zip"],
       "imageFileName": "SP34.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -628,7 +637,7 @@
       "id": "SP35",
       "name": "Desert Luxe Kit",
       "description": "Luxurious desert-inspired décor and fashion.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP35/Sims4_DLC_SP35_Desert_Luxe_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP35.zip"],
       "imageFileName": "SP35.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -637,7 +646,7 @@
       "id": "SP36",
       "name": "Pastel Pop Kit",
       "description": "Pastel-colored fashion and accessories.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP36/Sims4_DLC_SP36_Pastel_Pop_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP36.zip"],
       "imageFileName": "SP36.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -646,7 +655,7 @@
       "id": "SP37",
       "name": "Everyday Clutter Kit",
       "description": "Add realistic clutter items to your homes.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP37/Sims4_DLC_SP37_Everyday_Clutter_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP37.zip"],
       "imageFileName": "SP37.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -655,7 +664,7 @@
       "id": "SP38",
       "name": "Simtimates Collection Kit",
       "description": "Intimate apparel and romantic décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP38/Sims4_DLC_SP38_Simtimates_Collection_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP38.zip"],
       "imageFileName": "SP38.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -664,7 +673,7 @@
       "id": "SP39",
       "name": "Bathroom Clutter Kit",
       "description": "Bathroom accessories and clutter items.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP39/Sims4_DLC_SP39_Bathroom_Clutter_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP39.zip"],
       "imageFileName": "SP39.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -673,7 +682,7 @@
       "id": "SP40",
       "name": "Greenhouse Haven Kit",
       "description": "Build greenhouses and grow plants indoors.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP40/Sims4_DLC_SP40_Greenhouse_Haven_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP40.zip"],
       "imageFileName": "SP40.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -682,7 +691,7 @@
       "id": "SP41",
       "name": "Basement Treasures Kit",
       "description": "Basement-themed furniture and decorations.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP41/Sims4_DLC_SP41_Basement_Treasures_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP41.zip"],
       "imageFileName": "SP41.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -691,7 +700,7 @@
       "id": "SP42",
       "name": "Grunge Revival Kit",
       "description": "90s grunge-inspired fashion and style.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP42/Sims4_DLC_SP42_Grunge_Revival_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP42.zip"],
       "imageFileName": "SP42.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -700,7 +709,7 @@
       "id": "SP43",
       "name": "Book Nook Kit",
       "description": "Create cozy reading spaces with book-themed items.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP43/Sims4_DLC_SP43_Book_Nook_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP43.zip"],
       "imageFileName": "SP43.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -709,7 +718,7 @@
       "id": "SP44",
       "name": "Poolside Splash Kit",
       "description": "Pool furniture and summer fun items.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP44/Sims4_DLC_SP44_Poolside_Splash_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP44.zip"],
       "imageFileName": "SP44.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -718,7 +727,7 @@
       "id": "SP45",
       "name": "Modern Luxe Kit",
       "description": "Modern luxury furniture and décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP45/Sims4_DLC_SP45_Modern_Luxe_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP45.zip"],
       "imageFileName": "SP45.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -727,7 +736,7 @@
       "id": "SP46",
       "name": "Home Chef Hustle Stuff Pack",
       "description": "Run a home-based catering business.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP46/Sims4_DLC_SP46_Home_Chef_Hustle_Stuff_Pack.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP46.zip"],
       "imageFileName": "SP46.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -736,7 +745,7 @@
       "id": "SP47",
       "name": "Castle Estate Kit",
       "description": "Medieval castle-inspired architecture and décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP47/Sims4_DLC_SP47_Castle_Estate_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP47.zip"],
       "imageFileName": "SP47.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -745,7 +754,7 @@
       "id": "SP48",
       "name": "Goth Galore Kit",
       "description": "Gothic fashion and dark décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP48/Sims4_DLC_SP48_Goth_Galore_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP48.zip"],
       "imageFileName": "SP48.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -754,7 +763,7 @@
       "id": "SP49",
       "name": "Crystal Creations Stuff Pack",
       "description": "Collect and display crystals and gems.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP49/Sims4_DLC_SP49_Crystal_Creations_Stuff_Pack.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP49.zip"],
       "imageFileName": "SP49.jpg",
       "price": 9.99,
       "isOfflineMode": false
@@ -763,7 +772,7 @@
       "id": "SP50",
       "name": "Urban Homage Kit",
       "description": "Urban street culture-inspired items.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP50/Sims4_DLC_SP50_Urban_Homage_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP50.zip"],
       "imageFileName": "SP50.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -772,7 +781,7 @@
       "id": "SP51",
       "name": "Party Essentials Kit",
       "description": "Everything you need for the perfect party.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP51/Sims4_DLC_SP51_Party_Essentials_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP51.zip"],
       "imageFileName": "SP51.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -781,7 +790,7 @@
       "id": "SP52",
       "name": "Riviera Retreat Kit",
       "description": "Mediterranean-inspired vacation décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP52/Sims4_DLC_SP52_Riviera_Retreat_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP52.zip"],
       "imageFileName": "SP52.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -790,7 +799,7 @@
       "id": "SP53",
       "name": "Cozy Bistro Kit",
       "description": "Create charming café and bistro spaces.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP53/Sims4_DLC_SP53_Cozy_Bistro_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP53.zip"],
       "imageFileName": "SP53.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -799,7 +808,7 @@
       "id": "SP54",
       "name": "Artist Studio Kit",
       "description": "Art supplies and studio furniture for creative Sims.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP54/Sims4_DLC_SP54_Artist_Studio_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP54.zip"],
       "imageFileName": "SP54.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -808,7 +817,7 @@
       "id": "SP55",
       "name": "Storybook Nursery Kit",
       "description": "Whimsical nursery furniture and decorations.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP55/Sims4_DLC_SP55_Storybook_Nursery_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP55.zip"],
       "imageFileName": "SP55.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -817,7 +826,7 @@
       "id": "SP56",
       "name": "Sweet Slumber Party Kit",
       "description": "Slumber party essentials and pajamas.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP56/Sims4_DLC_SP56_Sweet_Slumber_Party_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP56.zip"],
       "imageFileName": "SP56.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -826,7 +835,7 @@
       "id": "SP57",
       "name": "Cozy Kitsch Kit",
       "description": "Quirky, colorful décor with a cozy vibe.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP57/Sims4_DLC_SP57_Cozy_Kitsch_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP57.zip"],
       "imageFileName": "SP57.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -835,7 +844,7 @@
       "id": "SP58",
       "name": "Comfy Gamer Kit",
       "description": "Gaming furniture and accessories.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP58/Sims4_DLC_SP58_Comfy_Gamer_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP58.zip"],
       "imageFileName": "SP58.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -844,7 +853,7 @@
       "id": "SP59",
       "name": "Secret Sanctuary Kit",
       "description": "Hidden rooms and secret spaces.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP59/Sims4_DLC_SP59_Secret_Sanctuary_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP59.zip"],
       "imageFileName": "SP59.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -853,7 +862,7 @@
       "id": "SP60",
       "name": "Casanova Cave Kit",
       "description": "Romantic bachelor pad décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP60/Sims4_DLC_SP60_Casanova_Cave_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP60.zip"],
       "imageFileName": "SP60.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -862,7 +871,7 @@
       "id": "SP61",
       "name": "Refined Living Room Kit",
       "description": "Elegant living room furniture.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP61/Sims4_DLC_SP61_Refined_Living_Room_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP61.zip"],
       "imageFileName": "SP61.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -871,7 +880,7 @@
       "id": "SP62",
       "name": "Business Chic Kit",
       "description": "Professional attire and office décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP62/Sims4_DLC_SP62_Business_Chic_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP62.zip"],
       "imageFileName": "SP62.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -880,7 +889,7 @@
       "id": "SP63",
       "name": "Sleek Bathroom Kit",
       "description": "Modern bathroom fixtures and décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP63/Sims4_DLC_SP63_Sleek_Bathroom_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP63.zip"],
       "imageFileName": "SP63.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -889,7 +898,7 @@
       "id": "SP64",
       "name": "Sweet Allure Kit",
       "description": "Sweet, romantic fashion and accessories.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP64/Sims4_DLC_SP64_Sweet_Allure_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP64.zip"],
       "imageFileName": "SP64.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -898,7 +907,7 @@
       "id": "SP65",
       "name": "Restoration Workshop Kit",
       "description": "Restore and craft furniture.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP65/Sims4_DLC_SP65_Restoration_Workshop_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP65.zip"],
       "imageFileName": "SP65.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -907,7 +916,7 @@
       "id": "SP66",
       "name": "Golden Years Kit",
       "description": "Items for elder Sims and retirement living.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP66/Sims4_DLC_SP66_Golden_Years_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP66.zip"],
       "imageFileName": "SP66.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -916,7 +925,7 @@
       "id": "SP67",
       "name": "Kitchen Clutter Kit",
       "description": "Kitchen accessories and clutter items.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP67/Sims4_DLC_SP67_Kitchen_Clutter_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP67.zip"],
       "imageFileName": "SP67.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -925,7 +934,7 @@
       "id": "SP68",
       "name": "Spongebob's House Kit",
       "description": "SpongeBob-themed items and decorations.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP68/SP68.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP68.zip"],
       "imageFileName": "SP68.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -934,7 +943,7 @@
       "id": "SP69",
       "name": "Autumn Apparel Kit",
       "description": "Autumn fashion and cozy clothing.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP69/Sims4_DLC_SP69_Autumn_Apparel_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP69.zip"],
       "imageFileName": "SP69.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -943,7 +952,7 @@
       "id": "SP70",
       "name": "Spongebob Kid's Room Kit",
       "description": "SpongeBob-themed kids' room furniture.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP70/SP70.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP70.zip"],
       "imageFileName": "SP70.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -952,7 +961,7 @@
       "id": "SP71",
       "name": "Grange Mudroom Kit",
       "description": "Farmhouse mudroom furniture and décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP71/Sims4_DLC_SP71_Grange_Mudroom_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP71.zip"],
       "imageFileName": "SP71.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -961,7 +970,7 @@
       "id": "SP72",
       "name": "Essential Glam Kit",
       "description": "Glamorous fashion essentials.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP72/Sims4_DLC_SP72_Essential_Glam_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP72.zip"],
       "imageFileName": "SP72.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -970,7 +979,7 @@
       "id": "SP73",
       "name": "Modern Retreat Kit",
       "description": "Contemporary retreat-style furniture.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP73/Sims4_DLC_SP73_Modern_Retreat_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP73.zip"],
       "imageFileName": "SP73.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -979,7 +988,7 @@
       "id": "SP74",
       "name": "Garden to Table Kit",
       "description": "Farm-to-table gardening and cooking items.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP74/Sims4_DLC_SP74_Garden_to_Table_Kit.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP74.zip"],
       "imageFileName": "SP74.jpg",
       "price": 4.99,
       "isOfflineMode": false
@@ -988,7 +997,7 @@
       "id": "SP81",
       "name": "Prairie Dreams Kit",
       "description": "Prairie-inspired furniture and décor.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/SP81/SP81.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP81.zip"],
       "imageFileName": "SP81.png",
       "price": 4.99,
       "isOfflineMode": false
@@ -997,7 +1006,7 @@
       "id": "FP01",
       "name": "Holiday Celebration Pack",
       "description": "Celebrate holidays with festive decorations and activities.",
-      "urls": ["https://github.com/l1ntol/lunia-dlc/releases/download/FP01/Sims4_DLC_FP01_Holiday_Celebration_Pack.zip"],
+      "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/FP01.zip"],
       "imageFileName": "FP01.jpg",
       "price": 0.00,
       "isOfflineMode": false
