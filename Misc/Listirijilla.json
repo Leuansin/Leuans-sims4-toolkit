@@ -1,15 +1,21 @@
 {
   "dlcs": [
     {
-      "id": "Bundle1",
-      "name": "Royalty Legacy - Bundle",
-      "description": "NEW - Royalty Legacy DLC + Extra Stuff + Kits.",
-      "urls": [
-        "https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/NewBundle1.zip",
-        "https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/EP21_1.zip"
-      ],
-      "imageFileName": "EP21.jpg",
-      "price": 39.99,
+      "id": "SP75",
+      "name": "NEW - Wonderland Playroom Kit",
+      "description": "SP75 - Build Kit for Children and younger Sims!.",
+      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/SP75.zip"],
+      "imageFileName": "SP75.jpg",
+      "price": 4.99,
+      "isOfflineMode": false
+    },
+    {
+      "id": "SP82",
+      "name": "Yard Charm (Creator) Kit",
+      "description": "SP82 - Kit created by a Creator.",
+      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/SP82.zip"],
+      "imageFileName": "SP82.jpg",
+      "price": 4.99,
       "isOfflineMode": false
     },
     {
@@ -19,36 +25,6 @@
       "urls": ["https://github.com/Leuansin/asd/releases/download/ep1n2/__Installer.zip"],
       "imageFileName": "SinFoto.jpg",
       "price": 0.0,
-      "isOfflineMode": false
-    },
-    {
-      "id": "EP21",
-      "name": "Royalty Legacy",
-      "description": "NEW - Royalty Legacy DLC + 3 Extra Items.",
-      "urls": [
-        "https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/EP21_1.zip",
-        "https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/EP21_2.zip"
-      ],
-      "imageFileName": "EP21.jpg",
-      "price": 39.99,
-      "isOfflineMode": false
-    },
-    {
-      "id": "SP77",
-      "name": "Royalty Legacy - Extra Kit",
-      "description": "SP 77 - Extra Kits for Royalty Legacy",
-      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/SP77.zip"],
-      "imageFileName": "SP77.jpg",
-      "price": 4.99,
-      "isOfflineMode": false
-    },
-    {
-      "id": "SP76",
-      "name": "Royalty Legacy - Extra Kit",
-      "description": "SP 76 - Extra Kits for Royalty Legacy",
-      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/SP76.zip"],
-      "imageFileName": "SP76.jpg",
-      "price": 4.99,
       "isOfflineMode": false
     },
     {
@@ -234,6 +210,18 @@
       "description": "Embark on exciting adventures and explore new destinations.",
       "urls": ["https://github.com/Johnn-sin/LeuanRocks/releases/download/p15n20/EP20.zip"],
       "imageFileName": "EP20.jpg",
+      "price": 39.99,
+      "isOfflineMode": false
+    },
+    {
+      "id": "EP21",
+      "name": "Royalty Legacy",
+      "description": "NEW - Royalty Legacy DLC + 3 Extra Items.",
+      "urls": [
+        "https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/EP21_1.zip",
+        "https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/EP21_2.zip"
+      ],
+      "imageFileName": "EP21.jpg",
       "price": 39.99,
       "isOfflineMode": false
     },
@@ -994,11 +982,47 @@
       "isOfflineMode": false
     },
     {
+      "id": "SP75",
+      "name": "Wonderland Playroom Kit",
+      "description": "Build Kit for Children and younger Sims!.",
+      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/SP75.zip"],
+      "imageFileName": "SP75.jpg",
+      "price": 4.99,
+      "isOfflineMode": false
+    },
+    {
+      "id": "SP76",
+      "name": "Silver Screen Style Kit",
+      "description": "SP 76 - Extra Kits for Royalty Legacy",
+      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/SP76.zip"],
+      "imageFileName": "SP76.jpg",
+      "price": 4.99,
+      "isOfflineMode": false
+    },
+    {
+      "id": "SP77",
+      "name": "Tea Time Solarium Kit",
+      "description": "SP 77 - Extra Kits for Royalty Legacy",
+      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/SP77.zip"],
+      "imageFileName": "SP77.jpg",
+      "price": 4.99,
+      "isOfflineMode": false
+    },
+    {
       "id": "SP81",
       "name": "Prairie Dreams Kit",
       "description": "Prairie-inspired furniture and décor.",
       "urls": ["https://github.com/ashinapulverizer-sketch/MishaelJackson/releases/download/GPNSP/SP81.zip"],
       "imageFileName": "SP81.png",
+      "price": 4.99,
+      "isOfflineMode": false
+    },
+    {
+      "id": "SP82",
+      "name": "Yard Charm (Creator) Kit",
+      "description": "Kit created by a Creator.",
+      "urls": ["https://github.com/Leuansin/leuan-dlcs/releases/download/newdlcs/SP82.zip"],
+      "imageFileName": "SP82.png",
       "price": 4.99,
       "isOfflineMode": false
     },
